@@ -1,14 +1,17 @@
-tab_amp <- tabItem(
-  tabName = "amp",
+tab_amp <- bslib::nav_panel(
+  "Amplifikationskurven",
+  value = "amp",
   fluidRow(
-    box(
+    column(
       width = 12,
-      title = "Amplifikationskurven",
-      status = "primary",
-      solidHeader = TRUE,
-      plotlyOutput("qpcr_curve_plot", height = "600px"),
-      br(),
-      downloadButton("download_amp_plot_png", "Download Amplifikationskurven (PNG)")
+      bslib::card(
+        bslib::card_header("Amplifikationskurven"),
+        bslib::card_body(
+          plotlyOutput("qpcr_curve_plot", height = "600px"),
+          br(),
+          downloadButton("download_amp_plot_png", "Download Amplifikationskurven (PNG)")
+        )
+      )
     )
   )
 )

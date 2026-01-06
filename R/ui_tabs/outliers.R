@@ -1,38 +1,43 @@
-tab_outliers <- tabItem(
-  tabName = "outliers",
+tab_outliers <- bslib::nav_panel(
+  "Outlier Tests",
+  value = "outliers",
   fluidRow(
-    box(
+    column(
       width = 12,
-      title = "Outlier Analyse (auf Residuen der Standardkurve, Ct pro Well)",
-      status = "danger",
-      solidHeader = TRUE,
-      fluidRow(
-        column(
-          width = 4,
-          uiOutput("outlier_target_ui")
-        ),
-        column(
-          width = 4,
-          uiOutput("outlier_sample_ui")
+      bslib::card(
+        bslib::card_header("Outlier Analyse (auf Residuen der Standardkurve, Ct pro Well)"),
+        bslib::card_body(
+          fluidRow(
+            column(
+              width = 4,
+              uiOutput("outlier_target_ui")
+            ),
+            column(
+              width = 4,
+              uiOutput("outlier_sample_ui")
+            )
+          ),
+          br(),
+          uiOutput("outlier_explanation"),
+          br(),
+          DTOutput("outlier_table"),
+          br(),
+          downloadButton("download_outlier_table_xlsx", "Download Outlier Tabelle (XLSX)")
         )
-      ),
-      br(),
-      uiOutput("outlier_explanation"),
-      br(),
-      DTOutput("outlier_table"),
-      br(),
-      downloadButton("download_outlier_table_xlsx", "Download Outlier Tabelle (XLSX)")
+      )
     )
   ),
   fluidRow(
-    box(
+    column(
       width = 12,
-      title = "Residuenplot – Ct vs Fit (Outlier-Markierung)",
-      status = "warning",
-      solidHeader = TRUE,
-      plotlyOutput("outlier_residual_plot", height = "600px"),
-      br(),
-      downloadButton("download_outlier_plot_png", "Download Residuenplot (PNG)")
+      bslib::card(
+        bslib::card_header("Residuenplot - Ct vs Fit (Outlier-Markierung)"),
+        bslib::card_body(
+          plotlyOutput("outlier_residual_plot", height = "600px"),
+          br(),
+          downloadButton("download_outlier_plot_png", "Download Residuenplot (PNG)")
+        )
+      )
     )
   )
 )

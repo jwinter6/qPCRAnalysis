@@ -1,12 +1,13 @@
 ############################################################
-# app.R – qPCR Dashboard (shinydashboard, Upload-basiert)
+# app.R – qPCR Dashboard (navbar, Upload-basiert)
 #
 # Plot-Themes:
 # - Alle ggplot2-Grafiken verwenden jetzt ggthemes::theme_gdocs()
 ############################################################
 
 library(shiny)
-library(shinydashboard)
+library(bslib)
+library(fresh)
 library(tidyverse)
 library(readxl)
 library(plotly)
@@ -34,22 +35,23 @@ source("R/ui_tabs/stdcurves.R")
 source("R/ui_tabs/outliers.R")
 source("R/ui_tabs/help.R")
 
-ui <- dashboardPage(
-  dashboardHeader(
-    title = "qPCR Dashboard"
-  ),
-  ui_sidebar,
-  dashboardBody(
-    tabItems(
-      tab_load,
-      tab_ctqty,
-      tab_amp,
-      tab_ctsd,
-      tab_melt,
-      tab_stdcurves,
-      tab_outliers,
-      tab_help
-    )
+
+
+ui <- tagList(
+  #fresh::use_theme(theme_qpcr),
+  bslib::page_navbar(
+    title = "qPCR Dashboard",
+    id = "tabs",
+    theme = bslib::bs_theme(version = 5, bootswatch = "cosmo"),
+    sidebar = ui_sidebar,
+    tab_load,
+    tab_ctqty,
+    tab_amp,
+    tab_ctsd,
+    tab_melt,
+    tab_stdcurves,
+    tab_outliers,
+    tab_help
   )
 )
 

@@ -9,6 +9,8 @@ Tabellen sowie Exportfunktionen.
 - Datenimport von QuantStudio- und AriaMX-Exporten (XLSX)
 - Automatische Vereinheitlichung der Datenstruktur
 - Globale Filter nach Target und Sample
+- Navigation ueber Navbar, globale Sidebar und Cards fuer Inhalte
+- UI-Theming mit `fresh` (Bootstrap 4)
 - Ct vs Quantity (Mittelwert + SD) als Plot und Tabelle
 - Amplifikationskurven (Rn / Delta Rn)
 - Ct SD Plots und Heatmap
@@ -30,7 +32,7 @@ Tabellen sowie Exportfunktionen.
 ## Installation
 
 1. R Pakete installieren (einmalig):
-   - `shiny`, `shinydashboard`, `tidyverse`, `readxl`, `plotly`, `ggthemes`, `DT`, `writexl`,
+   - `shiny`, `bslib`, `fresh`, `tidyverse`, `readxl`, `plotly`, `ggthemes`, `DT`, `writexl`,
      `outliers`, `EnvStats`
 2. Projektordner oeffnen.
 
@@ -40,6 +42,15 @@ In R oder RStudio:
 
 ```r
 shiny::runApp()
+```
+
+## Docker
+
+Das Dockerfile installiert die zusaetzlichen UI-Pakete `bslib` und `fresh`.
+
+```sh
+docker build -t qpcranalysis .
+docker run --rm -p 3838:3838 qpcranalysis
 ```
 
 ## Workflow (Kurzfassung)

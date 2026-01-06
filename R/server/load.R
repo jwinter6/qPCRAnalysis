@@ -111,7 +111,7 @@
       )
       output$load_info <- renderUI(NULL)
       showNotification("Keine gültigen qPCR-Dateien geladen.", type = "error", duration = 10)
-      updateTabItems(session, "tabs", "load")
+      updateTabsetPanel(session, "tabs", selected = "load")
       return(NULL)
     }
     
@@ -168,7 +168,7 @@
     })
     
     # Auf der Load-Seite bleiben
-    updateTabItems(session, "tabs", "load")
+    updateTabsetPanel(session, "tabs", selected = "load")
   })
   
   ##########################
@@ -356,5 +356,5 @@
       )
     )
     
-    updateTabItems(session, "tabs", "ctqty")
+    updateTabsetPanel(session, "tabs", selected = "ctqty")
   })
