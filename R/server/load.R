@@ -402,7 +402,7 @@
       )
     )
     
-    updateTabsetPanel(session, "tabs", selected = "ctqty")
+    updateTabsetPanel(session, "tabs", selected = "plate_overview")
     incProgress(0.1, detail = "Abschluss")
     })
   })
