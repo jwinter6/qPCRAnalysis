@@ -14,5 +14,7 @@
     qpcr_melt       = NULL,
     file_overview   = NULL,
     available_files = NULL,
-    has_delta_rn    = FALSE
+    has_delta_rn    = FALSE,
+    quantity_missing_any = FALSE,
+    quantity_missing_all = FALSE
   )

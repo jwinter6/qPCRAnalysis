@@ -33,6 +33,7 @@ tab_outliers <- bslib::nav_panel(
       bslib::card(
         bslib::card_header("Residuenplot - Ct vs Fit (Outlier-Markierung)"),
         bslib::card_body(
+          uiOutput("quantity_notice_outliers"),
           plotlyOutput("outlier_residual_plot", height = "600px"),
           br(),
           downloadButton("download_outlier_plot_png", "Download Residuenplot (PNG)")

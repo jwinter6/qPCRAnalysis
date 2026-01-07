@@ -7,6 +7,7 @@ tab_ctqty <- bslib::nav_panel(
       bslib::card(
         bslib::card_header("Ct (Mean +/- SD) vs Quantity"),
         bslib::card_body(
+          uiOutput("quantity_notice_ctqty"),
           plotlyOutput("qpcr_plot", height = "600px"),
           br(),
           downloadButton("download_ct_plot_png", "Download Ct-Plot (PNG)")

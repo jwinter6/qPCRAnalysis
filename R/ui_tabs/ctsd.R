@@ -7,6 +7,7 @@ tab_ctsd <- bslib::nav_panel(
       bslib::card(
         bslib::card_header("Ct SD vs Quantity"),
         bslib::card_body(
+          uiOutput("quantity_notice_ctsd"),
           plotlyOutput("qpcr_sd_plot", height = "500px"),
           br(),
           downloadButton("download_ctsd_plot_png", "Download Ct SD Plot (PNG)")

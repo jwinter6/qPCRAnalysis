@@ -44,6 +44,7 @@ tab_stdcurves <- bslib::nav_panel(
       bslib::card(
         bslib::card_header("Standardkurven Scatterplots (Ct ~ log10(Quantity))"),
         bslib::card_body(
+          uiOutput("quantity_notice_stdcurves"),
           selectInput(
             "std_scatter_target",
             "Target (inkl. Kanal) fuer Scatterplot",

@@ -79,6 +79,38 @@
     
     df
   })
+
+  ##########################
+  # Hinweis: Quantity fehlt
+  ##########################
+
+  quantity_notice_block <- function() {
+    if (!isTRUE(rv$quantity_missing_any)) return(NULL)
+    tags$div(
+      class = "alert alert-warning",
+      tags$strong("Hinweis: Quantity fehlt."),
+      tags$span(
+        " Fehlende Quantity-Werte wurden auf 0 gesetzt. ",
+        "Plots mit Quantity auf der X-Achse koennen dadurch leer wirken oder irrefuehrend sein."
+      )
+    )
+  }
+
+  output$quantity_notice_ctqty <- renderUI({
+    quantity_notice_block()
+  })
+
+  output$quantity_notice_ctsd <- renderUI({
+    quantity_notice_block()
+  })
+
+  output$quantity_notice_stdcurves <- renderUI({
+    quantity_notice_block()
+  })
+
+  output$quantity_notice_outliers <- renderUI({
+    quantity_notice_block()
+  })
   
   ##########################
   # Dynamische UI: Y-Achse Amplifikationskurven

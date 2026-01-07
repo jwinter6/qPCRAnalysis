@@ -105,6 +105,8 @@
       rv$file_overview   <- NULL
       rv$available_files <- NULL
       rv$has_delta_rn    <- FALSE
+      rv$quantity_missing_any <- FALSE
+      rv$quantity_missing_all <- FALSE
       
       output$load_status <- renderText(
         "Es konnten keine gültigen qPCR-Dateien geladen werden."
@@ -151,6 +153,8 @@
     rv$file_overview   <- file_overview
     rv$available_files <- available_files
     rv$has_delta_rn    <- FALSE
+    rv$quantity_missing_any <- FALSE
+    rv$quantity_missing_all <- FALSE
     
     # Status / Info updaten
     output$load_status <- renderText(
@@ -243,16 +247,45 @@
       rep(NA_real_, nrow(qpcr_all))
     }
     
-    # 5) qpcr_summary aus ausgewählten Dateien berechnen
+    # 5) Quantity normalisieren (fehlende Werte -> 0) + Hinweis
+    quantity_vec <- suppressWarnings(as.numeric(qpcr_all$Quantity))
+    quantity_missing_any <- any(is.na(quantity_vec))
+    quantity_missing_all <- all(is.na(quantity_vec))
+    quantity_vec[is.na(quantity_vec)] <- 0
+    
+    if (isTRUE(quantity_missing_all)) {
+      showModal(
+        modalDialog(
+          title = "Warnung: Quantity fehlt",
+          tags$div(
+            style = "color:#721c24; background-color:#f8d7da; padding:12px; border:1px solid #f5c6cb; border-radius:6px;",
+            tags$p(
+              "In den ausgewaehlten Dateien fehlt die Spalte 'Quantity'. ",
+              "Eine Vergleichbarkeit mit Daten, die eine Quantity besitzen, ist daher nicht gegeben."
+            ),
+            tags$p(
+              "Die Quantity wurde fuer diese Analyse auf 0 gesetzt. ",
+              "Plots mit Quantity auf der X-Achse koennen dadurch leer wirken oder verfremdet sein."
+            )
+          ),
+          easyClose = TRUE,
+          footer = modalButton("OK")
+        )
+      )
+    }
+    
+    rv$quantity_missing_any <- quantity_missing_any
+    rv$quantity_missing_all <- quantity_missing_all
+    
+    # 6) qpcr_summary aus ausgewählten Dateien berechnen
     incProgress(0.15, detail = "Berechne Summary")
     qpcr_summary <- qpcr_all %>%
       mutate(
         Ct       = ct_vec,
-        Quantity = suppressWarnings(as.numeric(Quantity)),
+        Quantity = quantity_vec,
         Reporter = if ("Reporter" %in% names(.)) as.character(Reporter) else NA_character_
       ) %>%
       filter(
-        !is.na(Quantity),
         !is.na(Ct),
         !is.na(`Target Name_res`),
         !is.na(`Sample Name`)
@@ -278,7 +311,7 @@
         )
       )
     
-    # 6) Amplifikationsdaten für ausgewählte Dateien
+    # 7) Amplifikationsdaten für ausgewählte Dateien
     incProgress(0.15, detail = "Bereite Amplifikationsdaten vor")
     if (!("Cycle" %in% names(qpcr_all)) || !("Rn" %in% names(qpcr_all))) {
       showNotification(
@@ -317,7 +350,7 @@
         )
     }
     
-    # 7) Ct-Y-Achsen-Defaults aus qpcr_summary bestimmen
+    # 8) Ct-Y-Achsen-Defaults aus qpcr_summary bestimmen
     incProgress(0.1, detail = "Setze Achsen-Defaults")
     if (nrow(qpcr_summary) > 0) {
       ct_min <- floor(min(qpcr_summary$Ct_mean, na.rm = TRUE))
@@ -326,7 +359,7 @@
       updateNumericInput(session, "ct_y_max", value = ct_max)
     }
     
-    # 8) Sidebar-Filter mit Targets/Samples aus den ausgewählten Dateien füllen
+    # 9) Sidebar-Filter mit Targets/Samples aus den ausgewählten Dateien füllen
     incProgress(0.1, detail = "Aktualisiere Sidebar-Filter")
     all_targets <- qpcr_summary %>%
       distinct(Target_ID) %>%
@@ -351,7 +384,7 @@
       selected = all_samples
     )
     
-    # 9) Analyse-Daten in rv speichern
+    # 10) Analyse-Daten in rv speichern
     incProgress(0.1, detail = "Speichere Analyse-Daten")
     rv$qpcr_all     <- qpcr_all
     rv$qpcr_summary <- qpcr_summary
@@ -360,7 +393,7 @@
     rv$has_delta_rn <- has_delta_rn
     rv$data_loaded  <- TRUE
     
-    # 10) Status-Meldung + Tab-Wechsel
+    # 11) Status-Meldung + Tab-Wechsel
     output$load_status <- renderText(
       paste0(
         "Analyse gestartet mit ", length(selected), " Datei(en).\n",
