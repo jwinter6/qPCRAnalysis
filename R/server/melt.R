@@ -2,7 +2,7 @@
   # Schmelzkurven
   ##########################
   
-  output$melt_curve_plot <- renderPlotly({
+  melt_plot_gg <- reactive({
     df <- filtered_melt()
     validate(
       need(nrow(df) > 0, "Keine Schmelzkurvendaten vorhanden oder kein Melt-Sheet in den Dateien.")
@@ -14,7 +14,7 @@
     y_var <- if (y_axis == "Derivative") "Derivative" else "Fluorescence"
     y_label <- if (y_axis == "Derivative") "-d(RFU)/dT" else "Fluorescence"
     
-    p <- ggplot(
+    ggplot(
       df,
       aes(
         x = Temperature,
@@ -32,8 +32,10 @@
         title = paste("Schmelzkurven (Y:", y_label, ")")
       ) +
       theme_bw()
-    
-    ggplotly(p)
+  })
+  
+  output$melt_curve_plot <- renderPlotly({
+    ggplotly(melt_plot_gg())
   })
   
   output$download_melt_plot_png <- downloadHandler(
@@ -49,24 +51,7 @@
         y_label <- if (y_axis == "Derivative") "-d(RFU)/dT" else "Fluorescence"
         
         incProgress(0.4, detail = "Plot erstellen")
-        p <- ggplot(
-          df,
-          aes(
-            x = Temperature,
-            y = .data[[y_var]],
-            color = `Sample Name`,
-            group = interaction(source_file, well_position)
-          )
-        ) +
-          geom_line(alpha = 0.8) +
-          facet_wrap(~ Target_ID, scales = input$y_scale_mode) +
-          labs(
-            x     = "Temperature (C)",
-            y     = y_label,
-            color = "Sample Name",
-            title = paste("Schmelzkurven (Y:", y_label, ")")
-          ) +
-          theme_bw()
+        p <- melt_plot_gg()
         
         incProgress(0.3, detail = "Datei schreiben")
         ggsave(file, plot = p, width = 10, height = 7, dpi = 300)
@@ -178,3 +163,53 @@
       })
     }
   )
+  
+  observeEvent(input$add_report_melt_plot, {
+    withProgress(message = "Fuege Plot zum Report hinzu", value = 0, {
+      incProgress(0.4, detail = "Plot erzeugen")
+      plot_obj <- melt_plot_gg()
+      plotly_obj <- ggplotly(plot_obj)
+      incProgress(0.4, detail = "Speichern")
+      report_add_item(
+        title = "Schmelzkurven",
+        tab = "Schmelzkurven",
+        type = "plot",
+        plot = plot_obj,
+        plotly = plotly_obj
+      )
+      incProgress(0.2, detail = "Fertig")
+    })
+    showNotification("Plot zum Report hinzugefuegt.", type = "message", duration = 4)
+  })
+  
+  observeEvent(input$add_report_melt_peaks_table, {
+    withProgress(message = "Fuege Tabelle zum Report hinzu", value = 0, {
+      incProgress(0.4, detail = "Tabelle erzeugen")
+      out <- melt_peaks()
+      incProgress(0.4, detail = "Speichern")
+      report_add_item(
+        title = "Schmelzkurven-Peaks",
+        tab = "Schmelzkurven",
+        type = "table",
+        data = out
+      )
+      incProgress(0.2, detail = "Fertig")
+    })
+    showNotification("Tabelle zum Report hinzugefuegt.", type = "message", duration = 4)
+  })
+  
+  observeEvent(input$add_report_melt_summary_table, {
+    withProgress(message = "Fuege Tabelle zum Report hinzu", value = 0, {
+      incProgress(0.4, detail = "Tabelle erzeugen")
+      out <- melt_peak_summary()
+      incProgress(0.4, detail = "Speichern")
+      report_add_item(
+        title = "Schmelzkurven-Peak Summary",
+        tab = "Schmelzkurven",
+        type = "table",
+        data = out
+      )
+      incProgress(0.2, detail = "Fertig")
+    })
+    showNotification("Tabelle zum Report hinzugefuegt.", type = "message", duration = 4)
+  })

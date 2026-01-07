@@ -13,14 +13,23 @@
     # Ct pro Well aus den Rohdaten (nicht aus qpcr_summary)
     df <- rv$qpcr_all %>%
       mutate(
-        Ct = dplyr::case_when(
-          "CRT" %in% names(.)      ~ suppressWarnings(as.numeric(CRT)),
-          "CT" %in% names(.)       ~ suppressWarnings(as.numeric(CT)),
-          "Crt Mean" %in% names(.) ~ suppressWarnings(as.numeric(`Crt Mean`)),
-          TRUE                     ~ NA_real_
-        ),
         Quantity = suppressWarnings(as.numeric(Quantity)),
         Reporter = if ("Reporter" %in% names(.)) as.character(Reporter) else NA_character_
+      )
+    
+    ct_vec <- if ("CRT" %in% names(df)) {
+      suppressWarnings(as.numeric(df$CRT))
+    } else if ("CT" %in% names(df)) {
+      suppressWarnings(as.numeric(df$CT))
+    } else if ("Crt Mean" %in% names(df)) {
+      suppressWarnings(as.numeric(df$`Crt Mean`))
+    } else {
+      rep(NA_real_, nrow(df))
+    }
+    
+    df <- df %>%
+      mutate(
+        Ct = ct_vec
       ) %>%
       mutate(
         Target_ID = if_else(
@@ -136,12 +145,12 @@
     )
   })
   
-  output$outlier_table <- renderDT({
+  outlier_table_data <- reactive({
     df <- outlier_data()
     v <- df$resid
     flags <- run_outlier_test(v, method = input$outlier_test)
     
-    out <- df %>%
+    df %>%
       mutate(
         residual   = resid,
         is_outlier = flags
@@ -156,6 +165,10 @@
         residual,
         is_outlier
       )
+  })
+  
+  output$outlier_table <- renderDT({
+    out <- outlier_table_data()
     
     datatable(
       out,
@@ -174,25 +187,7 @@
     content = function(file) {
       withProgress(message = "Download vorbereiten: Outlier Tabelle (XLSX)", value = 0, {
         incProgress(0.5, detail = "Daten aufbereiten")
-        df <- outlier_data()
-        v <- df$resid
-        flags <- run_outlier_test(v, method = input$outlier_test)
-        
-        out <- df %>%
-          mutate(
-            residual   = resid,
-            is_outlier = flags
-          ) %>%
-          select(
-            source_file,
-            Target_ID,
-            `Sample Name`,
-            well_position,
-            Quantity,
-            Ct,
-            residual,
-            is_outlier
-          )
+        out <- outlier_table_data()
         
         write_xlsx(out, path = file)
         incProgress(0.5, detail = "Datei schreiben")
@@ -200,7 +195,7 @@
     }
   )
   
-  output$outlier_residual_plot <- renderPlotly({
+  outlier_plot_gg <- reactive({
     df <- outlier_data()
     v <- df$resid
     flags <- run_outlier_test(v, method = input$outlier_test)
@@ -208,7 +203,7 @@
     df <- df %>%
       mutate(is_outlier = flags)
     
-    p <- ggplot(
+    ggplot(
       df,
       aes(
         x     = logQ,
@@ -231,8 +226,10 @@
         )
       ) +
       theme_bw() 
-    
-    ggplotly(p)
+  })
+  
+  output$outlier_residual_plot <- renderPlotly({
+    ggplotly(outlier_plot_gg())
   })
   
   output$download_outlier_plot_png <- downloadHandler(
@@ -242,43 +239,48 @@
     content = function(file) {
       withProgress(message = "Download vorbereiten: Residuenplot (PNG)", value = 0, {
         incProgress(0.3, detail = "Daten filtern")
-      df <- outlier_data()
-      v <- df$resid
-      flags <- run_outlier_test(v, method = input$outlier_test)
-      
-      df <- df %>%
-        mutate(is_outlier = flags)
-      
       incProgress(0.4, detail = "Plot erstellen")
-      p <- ggplot(
-        df,
-        aes(
-          x     = logQ,
-          y     = resid,
-          color = is_outlier
-        )
-      ) +
-        geom_hline(yintercept = 0, linetype = "dashed") +
-        geom_point(size = 3) +
-        scale_color_manual(values = c(`TRUE` = "red", `FALSE` = "black")) +
-        labs(
-          x     = "log10(Quantity)",
-          y     = "Residual (Ct - Fit)",
-          color = "Outlier",
-          title = paste(
-            "Residuenplot –",
-            input$outlier_target, "/",
-            input$outlier_sample, "(",
-            input$outlier_test, ")"
-          )
-        ) +
-        theme_bw() 
+      p <- outlier_plot_gg()
       
       incProgress(0.3, detail = "Datei schreiben")
       ggsave(file, plot = p, width = 8, height = 6, dpi = 300)
       })
     }
   )
+  
+  observeEvent(input$add_report_outlier_table, {
+    withProgress(message = "Fuege Tabelle zum Report hinzu", value = 0, {
+      incProgress(0.4, detail = "Tabelle erzeugen")
+      out <- outlier_table_data()
+      incProgress(0.4, detail = "Speichern")
+      report_add_item(
+        title = "Outlier Tabelle",
+        tab = "Outlier Tests",
+        type = "table",
+        data = out
+      )
+      incProgress(0.2, detail = "Fertig")
+    })
+    showNotification("Tabelle zum Report hinzugefuegt.", type = "message", duration = 4)
+  })
+  
+  observeEvent(input$add_report_outlier_plot, {
+    withProgress(message = "Fuege Plot zum Report hinzu", value = 0, {
+      incProgress(0.4, detail = "Plot erzeugen")
+      plot_obj <- outlier_plot_gg()
+      plotly_obj <- ggplotly(plot_obj)
+      incProgress(0.4, detail = "Speichern")
+      report_add_item(
+        title = "Outlier Residuenplot",
+        tab = "Outlier Tests",
+        type = "plot",
+        plot = plot_obj,
+        plotly = plotly_obj
+      )
+      incProgress(0.2, detail = "Fertig")
+    })
+    showNotification("Plot zum Report hinzugefuegt.", type = "message", duration = 4)
+  })
   
   ##########################
   # Outlier UI Inputs (Targets & Samples)

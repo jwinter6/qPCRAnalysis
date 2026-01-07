@@ -39,6 +39,23 @@
     )
   })
   
+  observeEvent(input$add_report_file_overview_table, {
+    withProgress(message = "Fuege Tabelle zum Report hinzu", value = 0, {
+      incProgress(0.4, detail = "Daten aufbereiten")
+      fo <- rv$file_overview
+      if (is.null(fo)) fo <- tibble()
+      incProgress(0.4, detail = "Speichern")
+      report_add_item(
+        title = "Datei-Uebersicht",
+        tab = "Daten laden",
+        type = "table",
+        data = fo
+      )
+      incProgress(0.2, detail = "Fertig")
+    })
+    showNotification("Tabelle zum Report hinzugefuegt.", type = "message", duration = 4)
+  })
+  
   ##########################
   # Daten laden – nur Upload & Datei-Übersicht
   ##########################

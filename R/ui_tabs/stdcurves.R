@@ -9,6 +9,8 @@ tab_stdcurves <- bslib::nav_panel(
         bslib::card_body(
           DTOutput("standardcurve_table"),
           br(),
+          actionButton("add_report_stdcurve_table", "Zum Report hinzufuegen"),
+          br(),
           downloadButton("download_stdcurves_xlsx", "Download Standardkurven-Tabelle (XLSX)")
         )
       )
@@ -22,6 +24,8 @@ tab_stdcurves <- bslib::nav_panel(
         bslib::card_body(
           plotlyOutput("stdcurve_slope_plot", height = "500px"),
           br(),
+          actionButton("add_report_stdcurve_slope_plot", "Zum Report hinzufuegen"),
+          br(),
           downloadButton("download_stdcurve_slope_png", "Download Slope-Plot (PNG)")
         )
       )
@@ -32,6 +36,8 @@ tab_stdcurves <- bslib::nav_panel(
         bslib::card_header("Effizienz (%) je Sample/Target"),
         bslib::card_body(
           plotlyOutput("stdcurve_eff_plot", height = "500px"),
+          br(),
+          actionButton("add_report_stdcurve_eff_plot", "Zum Report hinzufuegen"),
           br(),
           downloadButton("download_stdcurve_eff_png", "Download Effizienz-Plot (PNG)")
         )
@@ -51,6 +57,8 @@ tab_stdcurves <- bslib::nav_panel(
             choices = NULL
           ),
           plotlyOutput("stdcurve_scatter_plot", height = "600px"),
+          br(),
+          actionButton("add_report_stdcurve_scatter_plot", "Zum Report hinzufuegen"),
           br(),
           downloadButton("download_stdcurve_scatter_png", "Download Scatterplot (PNG)")
         )

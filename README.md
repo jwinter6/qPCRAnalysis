@@ -33,8 +33,11 @@ Tabellen sowie Exportfunktionen.
 
 1. R Pakete installieren (einmalig):
    - `shiny`, `bslib`, `fresh`, `tidyverse`, `readxl`, `plotly`, `ggthemes`, `DT`, `writexl`,
-     `outliers`, `EnvStats`
+     `outliers`, `EnvStats`, `rmarkdown`, `knitr`, `tinytex`
 2. Projektordner oeffnen.
+
+Zusatz fuer Report-Export:
+- LaTeX (z. B. TinyTeX) fuer PDF-Export
 
 ## App starten
 
@@ -46,7 +49,7 @@ shiny::runApp()
 
 ## Docker
 
-Das Dockerfile installiert die zusaetzlichen UI-Pakete `bslib` und `fresh`.
+Das Dockerfile installiert zusaetzliche Pakete fuer Report-Export (rmarkdown, knitr, tinytex).
 
 ```sh
 docker build -t qpcranalysis .

@@ -189,25 +189,33 @@
       bslib::card(
         bslib::card_header("Targets"),
         bslib::card_body(
-          tags$div(style = "overflow:auto;", build_plate_table(df_lookup, layout, "Target", target_colors))
+          tags$div(style = "overflow:auto;", build_plate_table(df_lookup, layout, "Target", target_colors)),
+          br(),
+          actionButton("add_report_plate_targets", "Zum Report hinzufuegen")
         )
       ),
       bslib::card(
         bslib::card_header("Samples"),
         bslib::card_body(
-          tags$div(style = "overflow:auto;", build_plate_table(df_lookup, layout, "Sample", sample_colors))
+          tags$div(style = "overflow:auto;", build_plate_table(df_lookup, layout, "Sample", sample_colors)),
+          br(),
+          actionButton("add_report_plate_samples", "Zum Report hinzufuegen")
         )
       ),
       bslib::card(
         bslib::card_header("Farbstoffe"),
         bslib::card_body(
-          tags$div(style = "overflow:auto;", build_plate_table(df_lookup, layout, "Dye", dye_colors))
+          tags$div(style = "overflow:auto;", build_plate_table(df_lookup, layout, "Dye", dye_colors)),
+          br(),
+          actionButton("add_report_plate_dye", "Zum Report hinzufuegen")
         )
       ),
       bslib::card(
         bslib::card_header("Quantity"),
         bslib::card_body(
-          tags$div(style = "overflow:auto;", build_plate_table(df_lookup, layout, "Quantity", quantity_colors))
+          tags$div(style = "overflow:auto;", build_plate_table(df_lookup, layout, "Quantity", quantity_colors)),
+          br(),
+          actionButton("add_report_plate_quantity", "Zum Report hinzufuegen")
         )
       ),
       bslib::card(
@@ -216,8 +224,104 @@
           tags$div(
             style = "overflow:auto;",
             build_plate_table(df_lookup, layout, "Well_Type", welltype_colors, well_type_label)
-          )
+          ),
+          br(),
+          actionButton("add_report_plate_welltype", "Zum Report hinzufuegen")
         )
       )
     )
+  })
+  
+  plate_qc_report_table <- function(field) {
+    df <- plate_qc_data()
+    if (nrow(df) == 0) return(tibble())
+    df %>%
+      dplyr::transmute(
+        well_position = well_position,
+        value = .data[[field]]
+      )
+  }
+  
+  observeEvent(input$add_report_plate_targets, {
+    withProgress(message = "Fuege Platte zum Report hinzu", value = 0, {
+      incProgress(0.4, detail = "Daten aufbereiten")
+      out <- plate_qc_report_table("Target")
+      incProgress(0.4, detail = "Speichern")
+      report_add_item(
+        title = "Plate Overview - Targets",
+        tab = "Plate Overview",
+        type = "table",
+        data = out
+      )
+      incProgress(0.2, detail = "Fertig")
+    })
+    showNotification("Platte zum Report hinzugefuegt.", type = "message", duration = 4)
+  })
+  
+  observeEvent(input$add_report_plate_samples, {
+    withProgress(message = "Fuege Platte zum Report hinzu", value = 0, {
+      incProgress(0.4, detail = "Daten aufbereiten")
+      out <- plate_qc_report_table("Sample")
+      incProgress(0.4, detail = "Speichern")
+      report_add_item(
+        title = "Plate Overview - Samples",
+        tab = "Plate Overview",
+        type = "table",
+        data = out
+      )
+      incProgress(0.2, detail = "Fertig")
+    })
+    showNotification("Platte zum Report hinzugefuegt.", type = "message", duration = 4)
+  })
+  
+  observeEvent(input$add_report_plate_dye, {
+    withProgress(message = "Fuege Platte zum Report hinzu", value = 0, {
+      incProgress(0.4, detail = "Daten aufbereiten")
+      out <- plate_qc_report_table("Dye")
+      incProgress(0.4, detail = "Speichern")
+      report_add_item(
+        title = "Plate Overview - Farbstoffe",
+        tab = "Plate Overview",
+        type = "table",
+        data = out
+      )
+      incProgress(0.2, detail = "Fertig")
+    })
+    showNotification("Platte zum Report hinzugefuegt.", type = "message", duration = 4)
+  })
+  
+  observeEvent(input$add_report_plate_quantity, {
+    withProgress(message = "Fuege Platte zum Report hinzu", value = 0, {
+      incProgress(0.4, detail = "Daten aufbereiten")
+      out <- plate_qc_report_table("Quantity")
+      incProgress(0.4, detail = "Speichern")
+      report_add_item(
+        title = "Plate Overview - Quantity",
+        tab = "Plate Overview",
+        type = "table",
+        data = out
+      )
+      incProgress(0.2, detail = "Fertig")
+    })
+    showNotification("Platte zum Report hinzugefuegt.", type = "message", duration = 4)
+  })
+  
+  observeEvent(input$add_report_plate_welltype, {
+    withProgress(message = "Fuege Platte zum Report hinzu", value = 0, {
+      incProgress(0.4, detail = "Daten aufbereiten")
+      out <- plate_qc_report_table("Well_Type")
+      well_type_label <- attr(plate_qc_data(), "well_type_label")
+      if (is.null(well_type_label) || is.na(well_type_label)) {
+        well_type_label <- "Well Type"
+      }
+      incProgress(0.4, detail = "Speichern")
+      report_add_item(
+        title = paste("Plate Overview -", well_type_label),
+        tab = "Plate Overview",
+        type = "table",
+        data = out
+      )
+      incProgress(0.2, detail = "Fertig")
+    })
+    showNotification("Platte zum Report hinzugefuegt.", type = "message", duration = 4)
   })

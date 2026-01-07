@@ -10,6 +10,8 @@ tab_ctsd <- bslib::nav_panel(
           uiOutput("quantity_notice_ctsd"),
           plotlyOutput("qpcr_sd_plot", height = "500px"),
           br(),
+          actionButton("add_report_ctsd_plot", "Zum Report hinzufuegen"),
+          br(),
           downloadButton("download_ctsd_plot_png", "Download Ct SD Plot (PNG)")
         )
       )
@@ -22,6 +24,8 @@ tab_ctsd <- bslib::nav_panel(
         bslib::card_header("Ct SD Heatmap (Sample x Target)"),
         bslib::card_body(
           plotlyOutput("qpcr_sd_heatmap", height = "500px"),
+          br(),
+          actionButton("add_report_ctsd_heatmap", "Zum Report hinzufuegen"),
           br(),
           downloadButton("download_ctsd_heatmap_png", "Download Ct SD Heatmap (PNG)"),
           downloadButton("download_ctsd_heatmap_xlsx", "Download Ct SD Heatmap Tabelle (XLSX)")

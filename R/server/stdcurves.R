@@ -35,19 +35,23 @@
       ungroup()
   })
   
-  output$standardcurve_table <- DT::renderDT({
+  standardcurve_table_data <- reactive({
     df <- standardcurve_data()
     validate(
       need(nrow(df) > 0, "Keine Standardkurven-Daten.")
     )
     
-    out <- df %>%
+    df %>%
       mutate(
         slope      = round(slope, 3),
         intercept  = round(intercept, 3),
         r2         = round(r2, 4),
         efficiency = round(efficiency, 1)
       )
+  })
+  
+  output$standardcurve_table <- DT::renderDT({
+    out <- standardcurve_table_data()
     
     DT::datatable(
       out,
@@ -65,20 +69,20 @@
     content = function(file) {
       withProgress(message = "Download vorbereiten: Standardkurven-Tabelle (XLSX)", value = 0, {
         incProgress(0.5, detail = "Daten aufbereiten")
-        df <- standardcurve_data()
+        df <- standardcurve_table_data()
         write_xlsx(df, path = file)
         incProgress(0.5, detail = "Datei schreiben")
       })
     }
   )
   
-  output$stdcurve_slope_plot <- renderPlotly({
+  stdcurve_slope_plot_gg <- reactive({
     df <- standardcurve_data()
     validate(
       need(nrow(df) > 0, "Keine Standardkurven-Daten fuer Slope-Plot.")
     )
     
-    p <- ggplot(
+    ggplot(
       df,
       aes(
         x    = `Sample Name`,
@@ -98,8 +102,10 @@
       theme(
         axis.text.x = element_text(angle = 45, hjust = 1)
       )
-    
-    ggplotly(p)
+  })
+  
+  output$stdcurve_slope_plot <- renderPlotly({
+    ggplotly(stdcurve_slope_plot_gg())
   })
   
   output$download_stdcurve_slope_png <- downloadHandler(
@@ -112,26 +118,7 @@
         df <- standardcurve_data()
         
         incProgress(0.4, detail = "Plot erstellen")
-        p <- ggplot(
-          df,
-          aes(
-            x    = `Sample Name`,
-            y    = slope,
-            fill = `Sample Name`
-          )
-        ) +
-          geom_col() +
-          facet_wrap(~ Target_ID) +
-          labs(
-            x     = "Sample",
-            y     = "Slope",
-            fill  = "Sample",
-            title = "Steigungen der Standardkurven"
-          ) +
-          theme_bw() +
-          theme(
-            axis.text.x = element_text(angle = 45, hjust = 1)
-          )
+        p <- stdcurve_slope_plot_gg()
         
         incProgress(0.3, detail = "Datei schreiben")
         ggsave(file, plot = p, width = 10, height = 7, dpi = 300)
@@ -139,13 +126,13 @@
     }
   )
   
-  output$stdcurve_eff_plot <- renderPlotly({
+  stdcurve_eff_plot_gg <- reactive({
     df <- standardcurve_data()
     validate(
       need(nrow(df) > 0, "Keine Standardkurven-Daten fuer Effizienz-Plot.")
     )
     
-    p <- ggplot(
+    ggplot(
       df,
       aes(
         x    = `Sample Name`,
@@ -165,8 +152,10 @@
       theme(
         axis.text.x = element_text(angle = 45, hjust = 1)
       )
-    
-    ggplotly(p)
+  })
+  
+  output$stdcurve_eff_plot <- renderPlotly({
+    ggplotly(stdcurve_eff_plot_gg())
   })
   
   output$download_stdcurve_eff_png <- downloadHandler(
@@ -179,26 +168,7 @@
         df <- standardcurve_data()
         
         incProgress(0.4, detail = "Plot erstellen")
-        p <- ggplot(
-          df,
-          aes(
-            x    = `Sample Name`,
-            y    = efficiency,
-            fill = `Sample Name`
-          )
-        ) +
-          geom_col() +
-          facet_wrap(~ Target_ID) +
-          labs(
-            x     = "Sample",
-            y     = "Effizienz (%)",
-            fill  = "Sample",
-            title = "PCR-Effizienz je Sample/Target"
-          ) +
-          theme_bw() +
-          theme(
-            axis.text.x = element_text(angle = 45, hjust = 1)
-          )
+        p <- stdcurve_eff_plot_gg()
         
         incProgress(0.3, detail = "Datei schreiben")
         ggsave(file, plot = p, width = 10, height = 7, dpi = 300)
@@ -207,7 +177,7 @@
   )
   
   # Scatterplot: Ct_mean ~ log10(Quantity) je Target_ID, alle ausgewaehlten Samples
-  output$stdcurve_scatter_plot <- renderPlotly({
+  stdcurve_scatter_plot_gg <- reactive({
     df <- filtered_summary()
     validate(
       need(nrow(df) > 0, "Keine Daten fuer Standardkurven-Scatterplot.")
@@ -226,7 +196,7 @@
       need(nrow(df) > 0, "Keine Daten fuer das ausgewaehlte Target im Scatterplot.")
     )
     
-    p <- ggplot(
+    ggplot(
       df,
       aes(
         x    = logQ,
@@ -250,8 +220,10 @@
         title = paste("Standardkurven Scatterplot -", input$std_scatter_target)
       ) +
       theme_bw()
-    
-    ggplotly(p)
+  })
+  
+  output$stdcurve_scatter_plot <- renderPlotly({
+    ggplotly(stdcurve_scatter_plot_gg())
   })
   
   output$download_stdcurve_scatter_png <- downloadHandler(
@@ -272,30 +244,7 @@
           filter(Target_ID == input$std_scatter_target)
         
         incProgress(0.4, detail = "Plot erstellen")
-        p <- ggplot(
-          df,
-          aes(
-            x    = logQ,
-            y    = Ct_mean,
-            color = `Sample Name`
-          )
-        ) +
-          geom_point(size = 2) +
-          geom_smooth(method = "lm", se = FALSE) +
-          geom_segment(
-            aes(
-              xend = logQ,
-              yend = predict(lm(Ct_mean ~ logQ, data = df))
-            ),
-            alpha = 0.3
-          ) +
-          labs(
-            x     = "log10(Quantity)",
-            y     = "Ct (Mean)",
-            color = "Sample Name",
-            title = paste("Standardkurven Scatterplot -", input$std_scatter_target)
-          ) +
-          theme_bw()
+        p <- stdcurve_scatter_plot_gg()
     
         incProgress(0.3, detail = "Datei schreiben")
         ggsave(file, plot = p, width = 10, height = 7, dpi = 300)
@@ -317,4 +266,74 @@
         pull()
       updateSelectInput(session, "std_scatter_target", choices = targets, selected = targets[1])
     }
+  })
+
+  observeEvent(input$add_report_stdcurve_table, {
+    withProgress(message = "Fuege Tabelle zum Report hinzu", value = 0, {
+      incProgress(0.4, detail = "Tabelle erzeugen")
+      out <- standardcurve_table_data()
+      incProgress(0.4, detail = "Speichern")
+      report_add_item(
+        title = "Standardkurven (Tabelle)",
+        tab = "Standardkurven",
+        type = "table",
+        data = out
+      )
+      incProgress(0.2, detail = "Fertig")
+    })
+    showNotification("Tabelle zum Report hinzugefuegt.", type = "message", duration = 4)
+  })
+  
+  observeEvent(input$add_report_stdcurve_slope_plot, {
+    withProgress(message = "Fuege Plot zum Report hinzu", value = 0, {
+      incProgress(0.4, detail = "Plot erzeugen")
+      plot_obj <- stdcurve_slope_plot_gg()
+      plotly_obj <- ggplotly(plot_obj)
+      incProgress(0.4, detail = "Speichern")
+      report_add_item(
+        title = "Standardkurven Slope",
+        tab = "Standardkurven",
+        type = "plot",
+        plot = plot_obj,
+        plotly = plotly_obj
+      )
+      incProgress(0.2, detail = "Fertig")
+    })
+    showNotification("Plot zum Report hinzugefuegt.", type = "message", duration = 4)
+  })
+  
+  observeEvent(input$add_report_stdcurve_eff_plot, {
+    withProgress(message = "Fuege Plot zum Report hinzu", value = 0, {
+      incProgress(0.4, detail = "Plot erzeugen")
+      plot_obj <- stdcurve_eff_plot_gg()
+      plotly_obj <- ggplotly(plot_obj)
+      incProgress(0.4, detail = "Speichern")
+      report_add_item(
+        title = "Standardkurven Effizienz",
+        tab = "Standardkurven",
+        type = "plot",
+        plot = plot_obj,
+        plotly = plotly_obj
+      )
+      incProgress(0.2, detail = "Fertig")
+    })
+    showNotification("Plot zum Report hinzugefuegt.", type = "message", duration = 4)
+  })
+  
+  observeEvent(input$add_report_stdcurve_scatter_plot, {
+    withProgress(message = "Fuege Plot zum Report hinzu", value = 0, {
+      incProgress(0.4, detail = "Plot erzeugen")
+      plot_obj <- stdcurve_scatter_plot_gg()
+      plotly_obj <- ggplotly(plot_obj)
+      incProgress(0.4, detail = "Speichern")
+      report_add_item(
+        title = "Standardkurven Scatterplot",
+        tab = "Standardkurven",
+        type = "plot",
+        plot = plot_obj,
+        plotly = plotly_obj
+      )
+      incProgress(0.2, detail = "Fertig")
+    })
+    showNotification("Plot zum Report hinzugefuegt.", type = "message", duration = 4)
   })

@@ -59,7 +59,9 @@ tab_load <- bslib::nav_panel(
       bslib::card(
         bslib::card_header("Uebersicht je Datei (Targets / Samples / Quantities)"),
         bslib::card_body(
-          DTOutput("file_overview_table")
+          DTOutput("file_overview_table"),
+          br(),
+          actionButton("add_report_file_overview_table", "Zum Report hinzufuegen")
         )
       )
     )

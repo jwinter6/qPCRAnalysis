@@ -16,6 +16,7 @@ library(DT)
 library(writexl)
 library(outliers)
 library(EnvStats)
+library(quarto)
 
 source("R/helpers_readers.R")
 source("R/helpers_standardcurves.R")
@@ -35,6 +36,7 @@ source("R/ui_tabs/ctsd.R")
 source("R/ui_tabs/melt.R")
 source("R/ui_tabs/stdcurves.R")
 source("R/ui_tabs/outliers.R")
+source("R/ui_tabs/report.R")
 source("R/ui_tabs/help.R")
 
 
@@ -55,6 +57,7 @@ ui <- tagList(
     tab_melt,
     tab_stdcurves,
     tab_outliers,
+    tab_report,
     tab_help
   )
 )
@@ -77,6 +80,7 @@ server <- function(input, output, session) {
   source("R/server/melt.R", local = TRUE)
   source("R/server/stdcurves.R", local = TRUE)
   source("R/server/outliers.R", local = TRUE)
+  source("R/server/report.R", local = TRUE)
 }
 
 ############################

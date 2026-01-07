@@ -16,5 +16,10 @@
     available_files = NULL,
     has_delta_rn    = FALSE,
     quantity_missing_any = FALSE,
-    quantity_missing_all = FALSE
+    quantity_missing_all = FALSE,
+    report_items = list(),
+    report_last_path = NULL,
+    report_last_name = NULL,
+    report_last_format = NULL,
+    report_last_log = NULL
   )

@@ -22,6 +22,8 @@ tab_outliers <- bslib::nav_panel(
           br(),
           DTOutput("outlier_table"),
           br(),
+          actionButton("add_report_outlier_table", "Zum Report hinzufuegen"),
+          br(),
           downloadButton("download_outlier_table_xlsx", "Download Outlier Tabelle (XLSX)")
         )
       )
@@ -35,6 +37,8 @@ tab_outliers <- bslib::nav_panel(
         bslib::card_body(
           uiOutput("quantity_notice_outliers"),
           plotlyOutput("outlier_residual_plot", height = "600px"),
+          br(),
+          actionButton("add_report_outlier_plot", "Zum Report hinzufuegen"),
           br(),
           downloadButton("download_outlier_plot_png", "Download Residuenplot (PNG)")
         )
