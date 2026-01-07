@@ -16,7 +16,6 @@ library(DT)
 library(writexl)
 library(outliers)
 library(EnvStats)
-library(quarto)
 
 source("R/helpers_readers.R")
 source("R/helpers_standardcurves.R")
