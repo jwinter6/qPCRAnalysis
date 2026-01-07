@@ -15,6 +15,7 @@
       mutate(
         Ct = dplyr::case_when(
           "CRT" %in% names(.)      ~ suppressWarnings(as.numeric(CRT)),
+          "CT" %in% names(.)       ~ suppressWarnings(as.numeric(CT)),
           "Crt Mean" %in% names(.) ~ suppressWarnings(as.numeric(`Crt Mean`)),
           TRUE                     ~ NA_real_
         ),

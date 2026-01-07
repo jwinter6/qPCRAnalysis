@@ -226,15 +226,17 @@
       qpcr_melt <- tibble()
     }
     
-    # 4) Ct-Spalte bestimmen (CRT / Crt Mean)
+    # 4) Ct-Spalte bestimmen (CRT / CT / Crt Mean)
     incProgress(0.1, detail = "Bestimme Ct-Spalte")
     ct_vec <- if ("CRT" %in% names(qpcr_all)) {
       suppressWarnings(as.numeric(qpcr_all$CRT))
+    } else if ("CT" %in% names(qpcr_all)) {
+      suppressWarnings(as.numeric(qpcr_all$CT))
     } else if ("Crt Mean" %in% names(qpcr_all)) {
       suppressWarnings(as.numeric(qpcr_all$`Crt Mean`))
     } else {
       showNotification(
-        "Keine Ct-Spalte (CRT/Crt Mean) gefunden – Ct wird NA.",
+        "Keine Ct-Spalte (CRT/CT/Crt Mean) gefunden – Ct wird NA.",
         type     = "warning",
         duration = 8
       )

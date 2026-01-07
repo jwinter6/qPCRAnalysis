@@ -26,6 +26,11 @@ read_qpcr_file <- function(path, source_name = basename(path)) {
       col_names = TRUE
     )
     
+    # QuantStudio kann Ct als "CT" oder "CRT" benennen.
+    if ("CT" %in% names(results_raw) && !("CRT" %in% names(results_raw))) {
+      names(results_raw)[names(results_raw) == "CT"] <- "CRT"
+    }
+    
     # Amplification Data ab Zeile 45, falls vorhanden
     if ("Amplification Data" %in% sheets) {
       amp_raw <- read_excel(
