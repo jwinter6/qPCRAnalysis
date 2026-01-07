@@ -43,29 +43,34 @@
       paste0("amplification_curves_", Sys.Date(), ".png")
     },
     content = function(file) {
-      df <- filtered_amp()
-      y_axis <- input$y_axis
-      y_label <- if (y_axis == "Rn") "Rn" else "Delta Rn"
-      
-      p <- ggplot(
-        df,
-        aes(
-          x    = Cycle,
-          y    = if (y_axis == "Rn") Rn else DeltaRn,
-          color = `Sample Name`,
-          group = interaction(source_file, well_position)
-        )
-      ) +
-        geom_line(alpha = 0.8) +
-        facet_wrap(~ Target_ID, scales = input$y_scale_mode) +
-        labs(
-          x     = "Cycle",
-          y     = y_label,
-          color = "Sample Name",
-          title = paste("Amplifikationskurven (Y:", y_label, ")")
+      withProgress(message = "Download vorbereiten: Amplifikationskurven (PNG)", value = 0, {
+        incProgress(0.3, detail = "Daten filtern")
+        df <- filtered_amp()
+        y_axis <- input$y_axis
+        y_label <- if (y_axis == "Rn") "Rn" else "Delta Rn"
+        
+        incProgress(0.4, detail = "Plot erstellen")
+        p <- ggplot(
+          df,
+          aes(
+            x    = Cycle,
+            y    = if (y_axis == "Rn") Rn else DeltaRn,
+            color = `Sample Name`,
+            group = interaction(source_file, well_position)
+          )
         ) +
-        theme_bw() 
-      
-      ggsave(file, plot = p, width = 10, height = 7, dpi = 300)
+          geom_line(alpha = 0.8) +
+          facet_wrap(~ Target_ID, scales = input$y_scale_mode) +
+          labs(
+            x     = "Cycle",
+            y     = y_label,
+            color = "Sample Name",
+            title = paste("Amplifikationskurven (Y:", y_label, ")")
+          ) +
+          theme_bw()
+        
+        incProgress(0.3, detail = "Datei schreiben")
+        ggsave(file, plot = p, width = 10, height = 7, dpi = 300)
+      })
     }
   )

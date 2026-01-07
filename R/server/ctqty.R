@@ -1,10 +1,10 @@
   ##########################
-  # Ct vs Quantity – Plot
+  # Ct vs Quantity - Plot
   ##########################
   
   output$qpcr_plot <- renderPlotly({
     validate(
-      need(rv$data_loaded, "Bitte zunächst auf der Seite 'Daten laden' qPCR-Dateien laden.")
+      need(rv$data_loaded, "Bitte zunaechst auf der Seite 'Daten laden' qPCR-Dateien laden.")
     )
     df <- filtered_summary()
     req(nrow(df) > 0)
@@ -31,9 +31,9 @@
       coord_cartesian(ylim = c(input$ct_y_min, input$ct_y_max)) +
       labs(
         x    = "Quantity",
-        y    = "Ct (Mean ± SD)",
+        y    = "Ct (Mean +/- SD)",
         fill = "Sample Name",
-        title = "Ct (Mean ± SD) vs. Quantity je Target"
+        title = "Ct (Mean +/- SD) vs. Quantity je Target"
       ) +
       theme_bw() +
       theme(
@@ -49,38 +49,43 @@
       paste0("ct_vs_quantity_", Sys.Date(), ".png")
     },
     content = function(file) {
-      df <- filtered_summary()
-      facet_scales <- input$y_scale_mode
-      
-      p <- ggplot(
-        df,
-        aes(
-          x    = factor(Quantity),
-          y    = Ct_mean,
-          fill = `Sample Name`
-        )
-      ) +
-        geom_col(position = position_dodge(width = 0.9)) +
-        geom_errorbar(
-          aes(ymin = Ct_mean - Ct_sd, ymax = Ct_mean + Ct_sd),
-          position = position_dodge(width = 0.9),
-          width = 0.3
+      withProgress(message = "Download vorbereiten: Ct-Plot (PNG)", value = 0, {
+        incProgress(0.3, detail = "Daten filtern")
+        df <- filtered_summary()
+        facet_scales <- input$y_scale_mode
+        
+        incProgress(0.4, detail = "Plot erstellen")
+        p <- ggplot(
+          df,
+          aes(
+            x    = factor(Quantity),
+            y    = Ct_mean,
+            fill = `Sample Name`
+          )
         ) +
-        facet_wrap(~ Target_ID, scales = facet_scales) +
-        coord_cartesian(ylim = c(input$ct_y_min, input$ct_y_max)) +
-        labs(
-          x    = "Quantity",
-          y    = "Ct (Mean ± SD)",
-          fill = "Sample Name",
-          title = "Ct (Mean ± SD) vs. Quantity je Target"
-        ) +
-        theme_bw() +
-        theme(
-          panel.grid.minor = element_blank(),
-          axis.text.x = element_text(angle = 45, hjust = 1)
-        )
-      
-      ggsave(file, plot = p, width = 10, height = 7, dpi = 300)
+          geom_col(position = position_dodge(width = 0.9)) +
+          geom_errorbar(
+            aes(ymin = Ct_mean - Ct_sd, ymax = Ct_mean + Ct_sd),
+            position = position_dodge(width = 0.9),
+            width = 0.3
+          ) +
+          facet_wrap(~ Target_ID, scales = facet_scales) +
+          coord_cartesian(ylim = c(input$ct_y_min, input$ct_y_max)) +
+          labs(
+            x    = "Quantity",
+            y    = "Ct (Mean +/- SD)",
+            fill = "Sample Name",
+            title = "Ct (Mean +/- SD) vs. Quantity je Target"
+          ) +
+          theme_bw() +
+          theme(
+            panel.grid.minor = element_blank(),
+            axis.text.x = element_text(angle = 45, hjust = 1)
+          )
+        
+        incProgress(0.3, detail = "Datei schreiben")
+        ggsave(file, plot = p, width = 10, height = 7, dpi = 300)
+      })
     }
   )
   
@@ -97,7 +102,7 @@
     )
     df <- filtered_summary()
     validate(
-      need(nrow(df) > 0, "Keine Daten für die aktuelle Auswahl von Targets / Samples.")
+      need(nrow(df) > 0, "Keine Daten fuer die aktuelle Auswahl von Targets / Samples.")
     )
     
     # Ausgabe: eine Zeile pro Kombination aus Sample, Target, Reporter, Quantity
@@ -126,21 +131,25 @@
       paste0("ct_summary_", Sys.Date(), ".xlsx")
     },
     content = function(file) {
-      df <- filtered_summary()
-      if (nrow(df) == 0) {
-        # Fallback: leere Info-Tabelle
-        write_xlsx(tibble(Hinweis = "Keine Daten für die aktuelle Auswahl."), path = file)
-      } else {
-        out <- df %>%
-          dplyr::transmute(
-            Sample   = `Sample Name`,
-            Target   = `Target Name_res`,
-            Reporter = Reporter,
-            Quantity = Quantity,
-            `Ct Mean` = Ct_mean,
-            `Ct SD`   = Ct_sd
-          )
-        write_xlsx(out, path = file)
-      }
+      withProgress(message = "Download vorbereiten: Ct-Tabelle (XLSX)", value = 0, {
+        incProgress(0.5, detail = "Daten aufbereiten")
+        df <- filtered_summary()
+        if (nrow(df) == 0) {
+          # Fallback: leere Info-Tabelle
+          write_xlsx(tibble(Hinweis = "Keine Daten fuer die aktuelle Auswahl."), path = file)
+        } else {
+          out <- df %>%
+            dplyr::transmute(
+              Sample   = `Sample Name`,
+              Target   = `Target Name_res`,
+              Reporter = Reporter,
+              Quantity = Quantity,
+              `Ct Mean` = Ct_mean,
+              `Ct SD`   = Ct_sd
+            )
+          write_xlsx(out, path = file)
+        }
+        incProgress(0.5, detail = "Datei schreiben")
+      })
     }
   )

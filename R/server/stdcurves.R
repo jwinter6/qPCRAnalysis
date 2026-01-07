@@ -63,15 +63,19 @@
       paste0("standardcurves_", Sys.Date(), ".xlsx")
     },
     content = function(file) {
-      df <- standardcurve_data()
-      write_xlsx(df, path = file)
+      withProgress(message = "Download vorbereiten: Standardkurven-Tabelle (XLSX)", value = 0, {
+        incProgress(0.5, detail = "Daten aufbereiten")
+        df <- standardcurve_data()
+        write_xlsx(df, path = file)
+        incProgress(0.5, detail = "Datei schreiben")
+      })
     }
   )
   
   output$stdcurve_slope_plot <- renderPlotly({
     df <- standardcurve_data()
     validate(
-      need(nrow(df) > 0, "Keine Standardkurven-Daten für Slope-Plot.")
+      need(nrow(df) > 0, "Keine Standardkurven-Daten fuer Slope-Plot.")
     )
     
     p <- ggplot(
@@ -103,37 +107,42 @@
       paste0("standardcurve_slopes_", Sys.Date(), ".png")
     },
     content = function(file) {
-      df <- standardcurve_data()
-      
-      p <- ggplot(
-        df,
-        aes(
-          x    = `Sample Name`,
-          y    = slope,
-          fill = `Sample Name`
-        )
-      ) +
-        geom_col() +
-        facet_wrap(~ Target_ID) +
-        labs(
-          x     = "Sample",
-          y     = "Slope",
-          fill  = "Sample",
-          title = "Steigungen der Standardkurven"
+      withProgress(message = "Download vorbereiten: Slope-Plot (PNG)", value = 0, {
+        incProgress(0.3, detail = "Daten aufbereiten")
+        df <- standardcurve_data()
+        
+        incProgress(0.4, detail = "Plot erstellen")
+        p <- ggplot(
+          df,
+          aes(
+            x    = `Sample Name`,
+            y    = slope,
+            fill = `Sample Name`
+          )
         ) +
-        theme_bw() +
-        theme(
-          axis.text.x = element_text(angle = 45, hjust = 1)
-        )
-      
-      ggsave(file, plot = p, width = 10, height = 7, dpi = 300)
+          geom_col() +
+          facet_wrap(~ Target_ID) +
+          labs(
+            x     = "Sample",
+            y     = "Slope",
+            fill  = "Sample",
+            title = "Steigungen der Standardkurven"
+          ) +
+          theme_bw() +
+          theme(
+            axis.text.x = element_text(angle = 45, hjust = 1)
+          )
+        
+        incProgress(0.3, detail = "Datei schreiben")
+        ggsave(file, plot = p, width = 10, height = 7, dpi = 300)
+      })
     }
   )
   
   output$stdcurve_eff_plot <- renderPlotly({
     df <- standardcurve_data()
     validate(
-      need(nrow(df) > 0, "Keine Standardkurven-Daten für Effizienz-Plot.")
+      need(nrow(df) > 0, "Keine Standardkurven-Daten fuer Effizienz-Plot.")
     )
     
     p <- ggplot(
@@ -165,38 +174,43 @@
       paste0("standardcurve_efficiency_", Sys.Date(), ".png")
     },
     content = function(file) {
-      df <- standardcurve_data()
-      
-      p <- ggplot(
-        df,
-        aes(
-          x    = `Sample Name`,
-          y    = efficiency,
-          fill = `Sample Name`
-        )
-      ) +
-        geom_col() +
-        facet_wrap(~ Target_ID) +
-        labs(
-          x     = "Sample",
-          y     = "Effizienz (%)",
-          fill  = "Sample",
-          title = "PCR-Effizienz je Sample/Target"
+      withProgress(message = "Download vorbereiten: Effizienz-Plot (PNG)", value = 0, {
+        incProgress(0.3, detail = "Daten aufbereiten")
+        df <- standardcurve_data()
+        
+        incProgress(0.4, detail = "Plot erstellen")
+        p <- ggplot(
+          df,
+          aes(
+            x    = `Sample Name`,
+            y    = efficiency,
+            fill = `Sample Name`
+          )
         ) +
-        theme_bw() +
-        theme(
-          axis.text.x = element_text(angle = 45, hjust = 1)
-        )
-      
-      ggsave(file, plot = p, width = 10, height = 7, dpi = 300)
+          geom_col() +
+          facet_wrap(~ Target_ID) +
+          labs(
+            x     = "Sample",
+            y     = "Effizienz (%)",
+            fill  = "Sample",
+            title = "PCR-Effizienz je Sample/Target"
+          ) +
+          theme_bw() +
+          theme(
+            axis.text.x = element_text(angle = 45, hjust = 1)
+          )
+        
+        incProgress(0.3, detail = "Datei schreiben")
+        ggsave(file, plot = p, width = 10, height = 7, dpi = 300)
+      })
     }
   )
   
-  # Scatterplot: Ct_mean ~ log10(Quantity) je Target_ID, alle ausgewählten Samples
+  # Scatterplot: Ct_mean ~ log10(Quantity) je Target_ID, alle ausgewaehlten Samples
   output$stdcurve_scatter_plot <- renderPlotly({
     df <- filtered_summary()
     validate(
-      need(nrow(df) > 0, "Keine Daten für Standardkurven-Scatterplot.")
+      need(nrow(df) > 0, "Keine Daten fuer Standardkurven-Scatterplot.")
     )
     
     df <- df %>%
@@ -209,7 +223,7 @@
     df <- df %>%
       filter(Target_ID == input$std_scatter_target)
     validate(
-      need(nrow(df) > 0, "Keine Daten für das ausgewählte Target im Scatterplot.")
+      need(nrow(df) > 0, "Keine Daten fuer das ausgewaehlte Target im Scatterplot.")
     )
     
     p <- ggplot(
@@ -233,7 +247,7 @@
         x     = "log10(Quantity)",
         y     = "Ct (Mean)",
         color = "Sample Name",
-        title = paste("Standardkurven Scatterplot –", input$std_scatter_target)
+        title = paste("Standardkurven Scatterplot -", input$std_scatter_target)
       ) +
       theme_bw()
     
@@ -245,47 +259,52 @@
       paste0("standardcurve_scatter_", Sys.Date(), ".png")
     },
     content = function(file) {
-      df <- filtered_summary()
-      df <- df %>%
-        filter(Quantity > 0) %>%
-        mutate(
-          logQ = log10(Quantity)
-        )
-      req(input$std_scatter_target)
-      df <- df %>%
-        filter(Target_ID == input$std_scatter_target)
-      
-      p <- ggplot(
-        df,
-        aes(
-          x    = logQ,
-          y    = Ct_mean,
-          color = `Sample Name`
-        )
-      ) +
-        geom_point(size = 2) +
-        geom_smooth(method = "lm", se = FALSE) +
-        geom_segment(
+      withProgress(message = "Download vorbereiten: Scatterplot (PNG)", value = 0, {
+        incProgress(0.3, detail = "Daten filtern")
+        df <- filtered_summary()
+        df <- df %>%
+          filter(Quantity > 0) %>%
+          mutate(
+            logQ = log10(Quantity)
+          )
+        req(input$std_scatter_target)
+        df <- df %>%
+          filter(Target_ID == input$std_scatter_target)
+        
+        incProgress(0.4, detail = "Plot erstellen")
+        p <- ggplot(
+          df,
           aes(
-            xend = logQ,
-            yend = predict(lm(Ct_mean ~ logQ, data = df))
-          ),
-          alpha = 0.3
+            x    = logQ,
+            y    = Ct_mean,
+            color = `Sample Name`
+          )
         ) +
-        labs(
-          x     = "log10(Quantity)",
-          y     = "Ct (Mean)",
-          color = "Sample Name",
-          title = paste("Standardkurven Scatterplot –", input$std_scatter_target)
-        ) +
-        theme_bw() 
+          geom_point(size = 2) +
+          geom_smooth(method = "lm", se = FALSE) +
+          geom_segment(
+            aes(
+              xend = logQ,
+              yend = predict(lm(Ct_mean ~ logQ, data = df))
+            ),
+            alpha = 0.3
+          ) +
+          labs(
+            x     = "log10(Quantity)",
+            y     = "Ct (Mean)",
+            color = "Sample Name",
+            title = paste("Standardkurven Scatterplot -", input$std_scatter_target)
+          ) +
+          theme_bw()
     
-      ggsave(file, plot = p, width = 10, height = 7, dpi = 300)
+        incProgress(0.3, detail = "Datei schreiben")
+        ggsave(file, plot = p, width = 10, height = 7, dpi = 300)
+      })
     }
   )
 
   ##########################
-  # Standardkurven-Target-Auswahl für Scatterplots
+  # Standardkurven-Target-Auswahl fuer Scatterplots
   ##########################
   
   observe({

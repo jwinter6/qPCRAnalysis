@@ -171,27 +171,31 @@
       paste0("outliers_", input$outlier_target, "_", input$outlier_sample, "_", Sys.Date(), ".xlsx")
     },
     content = function(file) {
-      df <- outlier_data()
-      v <- df$resid
-      flags <- run_outlier_test(v, method = input$outlier_test)
-      
-      out <- df %>%
-        mutate(
-          residual   = resid,
-          is_outlier = flags
-        ) %>%
-        select(
-          source_file,
-          Target_ID,
-          `Sample Name`,
-          well_position,
-          Quantity,
-          Ct,
-          residual,
-          is_outlier
-        )
-      
-      write_xlsx(out, path = file)
+      withProgress(message = "Download vorbereiten: Outlier Tabelle (XLSX)", value = 0, {
+        incProgress(0.5, detail = "Daten aufbereiten")
+        df <- outlier_data()
+        v <- df$resid
+        flags <- run_outlier_test(v, method = input$outlier_test)
+        
+        out <- df %>%
+          mutate(
+            residual   = resid,
+            is_outlier = flags
+          ) %>%
+          select(
+            source_file,
+            Target_ID,
+            `Sample Name`,
+            well_position,
+            Quantity,
+            Ct,
+            residual,
+            is_outlier
+          )
+        
+        write_xlsx(out, path = file)
+        incProgress(0.5, detail = "Datei schreiben")
+      })
     }
   )
   
@@ -235,6 +239,8 @@
       paste0("outlier_residuals_", input$outlier_target, "_", input$outlier_sample, "_", Sys.Date(), ".png")
     },
     content = function(file) {
+      withProgress(message = "Download vorbereiten: Residuenplot (PNG)", value = 0, {
+        incProgress(0.3, detail = "Daten filtern")
       df <- outlier_data()
       v <- df$resid
       flags <- run_outlier_test(v, method = input$outlier_test)
@@ -242,6 +248,7 @@
       df <- df %>%
         mutate(is_outlier = flags)
       
+      incProgress(0.4, detail = "Plot erstellen")
       p <- ggplot(
         df,
         aes(
@@ -266,7 +273,9 @@
         ) +
         theme_bw() 
       
+      incProgress(0.3, detail = "Datei schreiben")
       ggsave(file, plot = p, width = 8, height = 6, dpi = 300)
+      })
     }
   )
   

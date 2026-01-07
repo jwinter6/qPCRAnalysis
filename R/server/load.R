@@ -48,13 +48,13 @@
     
     files_df <- input$xlsx_files
     
-    withProgress(message = "Lade qPCR-Dateien...", value = 0, {
+    withProgress(message = "Dateien werden geladen", value = 0, {
       n <- nrow(files_df)
       all_runs  <- list()
       all_melts <- list()
       
       for (i in seq_len(n)) {
-        incProgress(1/n, detail = paste("Verarbeite:", files_df$name[i]))
+        incProgress(1/n, detail = paste("Lese Datei:", files_df$name[i]))
         path <- files_df$datapath[i]
         name <- files_df$name[i]
         
@@ -176,6 +176,8 @@
   ##########################
   
   observeEvent(input$analysis_btn, {
+    withProgress(message = "Analyse wird gestartet", value = 0, {
+      incProgress(0.05, detail = "Pruefe Dateiverfuegbarkeit")
     # 1) Sicherstellen, dass überhaupt Dateien geladen wurden
     if (!isTRUE(rv$files_loaded) || is.null(rv$raw_qpcr_all) || nrow(rv$raw_qpcr_all) == 0) {
       showNotification(
@@ -188,6 +190,7 @@
     }
     
     # 2) Auswahl der Dateien prüfen
+    incProgress(0.05, detail = "Pruefe Dateiauswahl")
     selected <- input$selected_files
     if (is.null(selected) || length(selected) == 0) {
       showNotification(
@@ -200,6 +203,7 @@
     }
     
     # 3) Rohdaten auf ausgewählte Dateien einschränken
+    incProgress(0.1, detail = "Filtere Rohdaten")
     qpcr_all <- rv$raw_qpcr_all %>%
       dplyr::filter(source_file %in% selected)
     
@@ -214,6 +218,7 @@
     }
     
     # Melt-Daten auf Auswahl einschränken
+    incProgress(0.1, detail = "Bereite Melt-Daten vor")
     if (!is.null(rv$raw_qpcr_melt) && nrow(rv$raw_qpcr_melt) > 0) {
       qpcr_melt <- rv$raw_qpcr_melt %>%
         dplyr::filter(source_file %in% selected)
@@ -222,6 +227,7 @@
     }
     
     # 4) Ct-Spalte bestimmen (CRT / Crt Mean)
+    incProgress(0.1, detail = "Bestimme Ct-Spalte")
     ct_vec <- if ("CRT" %in% names(qpcr_all)) {
       suppressWarnings(as.numeric(qpcr_all$CRT))
     } else if ("Crt Mean" %in% names(qpcr_all)) {
@@ -236,6 +242,7 @@
     }
     
     # 5) qpcr_summary aus ausgewählten Dateien berechnen
+    incProgress(0.15, detail = "Berechne Summary")
     qpcr_summary <- qpcr_all %>%
       mutate(
         Ct       = ct_vec,
@@ -270,6 +277,7 @@
       )
     
     # 6) Amplifikationsdaten für ausgewählte Dateien
+    incProgress(0.15, detail = "Bereite Amplifikationsdaten vor")
     if (!("Cycle" %in% names(qpcr_all)) || !("Rn" %in% names(qpcr_all))) {
       showNotification(
         "Cycle oder Rn fehlen – Amplifikationskurven werden nicht angezeigt.",
@@ -308,6 +316,7 @@
     }
     
     # 7) Ct-Y-Achsen-Defaults aus qpcr_summary bestimmen
+    incProgress(0.1, detail = "Setze Achsen-Defaults")
     if (nrow(qpcr_summary) > 0) {
       ct_min <- floor(min(qpcr_summary$Ct_mean, na.rm = TRUE))
       ct_max <- ceiling(max(qpcr_summary$Ct_mean, na.rm = TRUE))
@@ -316,6 +325,7 @@
     }
     
     # 8) Sidebar-Filter mit Targets/Samples aus den ausgewählten Dateien füllen
+    incProgress(0.1, detail = "Aktualisiere Sidebar-Filter")
     all_targets <- qpcr_summary %>%
       distinct(Target_ID) %>%
       arrange(Target_ID) %>%
@@ -340,6 +350,7 @@
     )
     
     # 9) Analyse-Daten in rv speichern
+    incProgress(0.1, detail = "Speichere Analyse-Daten")
     rv$qpcr_all     <- qpcr_all
     rv$qpcr_summary <- qpcr_summary
     rv$qpcr_amp     <- qpcr_amp
@@ -357,4 +368,6 @@
     )
     
     updateTabsetPanel(session, "tabs", selected = "ctqty")
+    incProgress(0.1, detail = "Abschluss")
+    })
   })

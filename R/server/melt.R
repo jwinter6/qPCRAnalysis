@@ -26,7 +26,7 @@
       geom_line(alpha = 0.8) +
       facet_wrap(~ Target_ID, scales = input$y_scale_mode) +
       labs(
-        x     = "Temperature (°C)",
+        x     = "Temperature (C)",
         y     = y_label,
         color = "Sample Name",
         title = paste("Schmelzkurven (Y:", y_label, ")")
@@ -41,36 +41,41 @@
       paste0("melt_curves_", Sys.Date(), ".png")
     },
     content = function(file) {
-      df <- filtered_melt()
-      y_axis <- input$melt_y_axis
-      y_var  <- if (y_axis == "Derivative") "Derivative" else "Fluorescence"
-      y_label <- if (y_axis == "Derivative") "-d(RFU)/dT" else "Fluorescence"
-      
-      p <- ggplot(
-        df,
-        aes(
-          x = Temperature,
-          y = .data[[y_var]],
-          color = `Sample Name`,
-          group = interaction(source_file, well_position)
-        )
-      ) +
-        geom_line(alpha = 0.8) +
-        facet_wrap(~ Target_ID, scales = input$y_scale_mode) +
-        labs(
-          x     = "Temperature (°C)",
-          y     = y_label,
-          color = "Sample Name",
-          title = paste("Schmelzkurven (Y:", y_label, ")")
+      withProgress(message = "Download vorbereiten: Schmelzkurven (PNG)", value = 0, {
+        incProgress(0.3, detail = "Daten filtern")
+        df <- filtered_melt()
+        y_axis <- input$melt_y_axis
+        y_var  <- if (y_axis == "Derivative") "Derivative" else "Fluorescence"
+        y_label <- if (y_axis == "Derivative") "-d(RFU)/dT" else "Fluorescence"
+        
+        incProgress(0.4, detail = "Plot erstellen")
+        p <- ggplot(
+          df,
+          aes(
+            x = Temperature,
+            y = .data[[y_var]],
+            color = `Sample Name`,
+            group = interaction(source_file, well_position)
+          )
         ) +
-        theme_bw()
-      
-      ggsave(file, plot = p, width = 10, height = 7, dpi = 300)
+          geom_line(alpha = 0.8) +
+          facet_wrap(~ Target_ID, scales = input$y_scale_mode) +
+          labs(
+            x     = "Temperature (C)",
+            y     = y_label,
+            color = "Sample Name",
+            title = paste("Schmelzkurven (Y:", y_label, ")")
+          ) +
+          theme_bw()
+        
+        incProgress(0.3, detail = "Datei schreiben")
+        ggsave(file, plot = p, width = 10, height = 7, dpi = 300)
+      })
     }
   )
   
   ##########################
-  # Schmelzkurven – Peak-Analyse
+  # Schmelzkurven - Peak-Analyse
   ##########################
   
   # Peaks pro Well (lokale Maxima in der Derivative)
@@ -119,8 +124,12 @@
       paste0("melt_peaks_", Sys.Date(), ".xlsx")
     },
     content = function(file) {
-      df <- melt_peaks()
-      write_xlsx(df, path = file)
+      withProgress(message = "Download vorbereiten: Melt Peaks (XLSX)", value = 0, {
+        incProgress(0.5, detail = "Daten aufbereiten")
+        df <- melt_peaks()
+        write_xlsx(df, path = file)
+        incProgress(0.5, detail = "Datei schreiben")
+      })
     }
   )
   
@@ -144,7 +153,7 @@
   output$melt_peak_summary_table <- DT::renderDT({
     df <- melt_peak_summary()
     validate(
-      need(nrow(df) > 0, "Keine Peak-Summary verfügbar.")
+      need(nrow(df) > 0, "Keine Peak-Summary verfuegbar.")
     )
     
     DT::datatable(
@@ -161,7 +170,11 @@
       paste0("melt_peak_summary_", Sys.Date(), ".xlsx")
     },
     content = function(file) {
-      df <- melt_peak_summary()
-      write_xlsx(df, path = file)
+      withProgress(message = "Download vorbereiten: Peak-Summary (XLSX)", value = 0, {
+        incProgress(0.5, detail = "Daten aufbereiten")
+        df <- melt_peak_summary()
+        write_xlsx(df, path = file)
+        incProgress(0.5, detail = "Datei schreiben")
+      })
     }
   )
