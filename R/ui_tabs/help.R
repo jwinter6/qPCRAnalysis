@@ -17,7 +17,8 @@ tab_help <- bslib::nav_panel(
           tags$ul(
             tags$li("Alle Seiten sind in der Navbar oben erreichbar."),
             tags$li("Globale Filter befinden sich links in der Sidebar (Akkordeons)."),
-            tags$li("Inhalte sind in Cards gegliedert; einzelne Bereiche nutzen Tabs oder Akkordeons.")
+            tags$li("Inhalte sind in Cards gegliedert; einzelne Bereiche nutzen Tabs oder Akkordeons."),
+            tags$li("Tooltips sind ueber das kleine ", tags$code("i"), " neben Schaltern/Inputs verfuegbar.")
           ),
           h3("3. Typischer Workflow fuer Nutzer"),
           tags$ol(
@@ -40,42 +41,54 @@ tab_help <- bslib::nav_panel(
             ),
             tags$li(
               strong("Globale Filter setzen:"),
-              " Links in der Sidebar Targets (", code("Target_ID"), ") und Samples auswaehlen."
+              " Links in der Sidebar Targets (", code("Target_ID"), "), Samples und den Schalter ",
+              code("Dateien getrennt anzeigen"), " setzen."
+            ),
+            tags$li(
+              strong("Plate Overview pruefen:"),
+              " Der Tab ", code("Plate Overview"), " zeigt Plattenansichten (96/384) fuer Targets, Samples, Farbstoffe, Quantity und Well Type."
             ),
             tags$li(
               strong("Ergebnisse ansehen & exportieren:"),
-              " Ueber die Tabs ", code("Ct vs Quantity"), ", ", code("Amplifikationskurven"), ", ",
-              code("Ct SD"), ", ", code("Schmelzkurven"), ", ", code("Standardkurven"), " und ",
-              code("Outlier Tests"), " navigieren. ",
+              " Ueber die Tabs ", code("Ct vs Quantity"), ", ", code("Ct vs Sample"), ", ",
+              code("Amplifikationskurven"), ", ", code("Ct SD"), ", ", code("Schmelzkurven"), ", ",
+              code("Standardkurven"), " und ", code("Outlier Tests"), " navigieren. ",
               "PNG-Plots und XLSX-Tabellen koennen in den jeweiligen Cards heruntergeladen werden."
+            ),
+            tags$li(
+              strong("Report Export:"),
+              " Unter jedem Plot/Tabelle kann der Inhalt per Button dem Report hinzugefuegt werden. ",
+              "Im Tab ", code("Report Export"), " kann daraus ein PDF/HTML/Word erstellt werden."
             )
           )
         ),
         bslib::nav_panel(
-          "Technische Details",
-          h3("UI-Theming (fresh)"),
+          "Besonderheiten",
+          h3("Quantity & Ct-Only"),
           tags$ul(
             tags$li(
-              "Die Oberflaeche nutzt ein frisches Theme auf Basis von ",
-              code("fresh"), " und Bootstrap 4."
+              "Wenn Quantity fehlt, wird sie auf 0 gesetzt und es erscheint ein Hinweis. ",
+              "Plots mit Quantity auf der X-Achse koennen dann leer wirken."
             ),
             tags$li(
-              "Karten-Layouts stammen aus ", code("bslib"), " und ersetzen die vorherigen Boxen."
+              "Die Seite ", code("Ct vs Sample"), " erlaubt Ct-only Auswertung (Sample auf der X-Achse)."
             )
           ),
-          h3("Plot-Design (ggthemes)"),
+          h3("CT/CRT Erkennung"),
           tags$ul(
             tags$li(
-              "Alle ggplot2-Grafiken verwenden das Paket ",
-              code("ggthemes"),
-              " mit ",
-              code("theme_gdocs()"),
-              " als Basis-Theme."
+              "QuantStudio Dateien koennen ", code("CT"), " oder ", code("CRT"), " liefern. ",
+              "Die App erkennt beide Varianten automatisch."
             ),
             tags$li(
-              "Zusaetzliche Anpassungen (z. B. gedrehte x-Achsen-Beschriftung) werden ueber ",
-              code("theme(...)"),
-              " ergaenzt."
+              "Outlier-Analyse arbeitet auf Ct pro Well und nutzt die gewaehlte Outlier-Methode."
+            )
+          ),
+          h3("Dateien zusammenfassen"),
+          tags$ul(
+            tags$li(
+              "Wenn ", code("Dateien getrennt anzeigen"), " deaktiviert ist, werden Daten ueber Dateien hinweg ",
+              "zusammengefasst. Dadurch gibt es pro Balken nur einen Errorbar."
             )
           )
         )

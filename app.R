@@ -30,6 +30,7 @@ source("R/ui_tabs/load.R")
 source("R/ui_tabs/ctqty.R")
 source("R/ui_tabs/ctsample.R")
 source("R/ui_tabs/plate_qc.R")
+source("R/ui_tabs/fluorescence.R")
 source("R/ui_tabs/amp.R")
 source("R/ui_tabs/ctsd.R")
 source("R/ui_tabs/melt.R")
@@ -49,6 +50,7 @@ ui <- tagList(
     sidebar = ui_sidebar,
     tab_load,
     tab_plate_qc,
+    tab_fluorescence,
     tab_ctqty,
     tab_ctsample,
     tab_amp,
@@ -74,6 +76,7 @@ server <- function(input, output, session) {
   source("R/server/ctqty.R", local = TRUE)
   source("R/server/ctsample.R", local = TRUE)
   source("R/server/plate_qc.R", local = TRUE)
+  source("R/server/fluorescence.R", local = TRUE)
   source("R/server/amp.R", local = TRUE)
   source("R/server/ctsd.R", local = TRUE)
   source("R/server/melt.R", local = TRUE)

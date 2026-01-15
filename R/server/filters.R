@@ -25,6 +25,33 @@
       df <- df[0, ]
     }
     
+    if (!isTRUE(input$separate_files)) {
+      df <- df %>%
+        group_by(
+          Target_ID,
+          `Target Name_res`,
+          Reporter,
+          `Sample Name`,
+          Quantity
+        ) %>%
+        summarise(
+          n = sum(n, na.rm = TRUE),
+          Ct_mean = sum(Ct_mean * n, na.rm = TRUE) / sum(n, na.rm = TRUE),
+          Ct_sd = {
+            total_n <- sum(n, na.rm = TRUE)
+            mean_c <- sum(Ct_mean * n, na.rm = TRUE) / sum(n, na.rm = TRUE)
+            if (total_n <= 1) {
+              NA_real_
+            } else {
+              pooled_var <- sum((n - 1) * Ct_sd^2, na.rm = TRUE) +
+                sum(n * (Ct_mean - mean_c)^2, na.rm = TRUE)
+              sqrt(pooled_var / (total_n - 1))
+            }
+          },
+          .groups = "drop"
+        )
+    }
+
     df
   })
   
@@ -117,17 +144,26 @@
   ##########################
   
   output$y_axis_ui <- renderUI({
+    label_with_tip <- function(text) {
+      tagList(
+        text,
+        bslib::tooltip(
+          tags$span("i", class = "qpcr-tooltip-icon"),
+          "Waehlt den Signaltyp fuer Amplifikationskurven."
+        )
+      )
+    }
     if (isTRUE(rv$has_delta_rn)) {
       radioButtons(
         inputId  = "y_axis",
-        label    = "Y-Achse (Amplifikationskurven)",
+        label    = label_with_tip("Y-Achse (Amplifikationskurven)"),
         choices  = c("Rn" = "Rn", "Delta Rn" = "DeltaRn"),
         selected = "Rn"
       )
     } else {
       radioButtons(
         inputId  = "y_axis",
-        label    = "Y-Achse (Amplifikationskurven)",
+        label    = label_with_tip("Y-Achse (Amplifikationskurven)"),
         choices  = c("Rn" = "Rn"),
         selected = "Rn"
       )
