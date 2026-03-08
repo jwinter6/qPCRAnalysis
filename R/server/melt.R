@@ -82,11 +82,17 @@
         Derivative >= prev_deriv,
         Derivative >= next_deriv
       ) %>%
-      summarise(
-        peak_temp  = Temperature[which.max(Derivative)],
-        peak_value = max(Derivative, na.rm = TRUE),
-        .groups    = "drop"
-      )
+      filter(!is.na(Temperature)) %>%
+      slice_max(order_by = Derivative, n = 1, with_ties = FALSE) %>%
+      transmute(
+        source_file,
+        Target_ID,
+        `Sample Name`,
+        well_position,
+        peak_temp = Temperature,
+        peak_value = Derivative
+      ) %>%
+      ungroup()
   })
   
   output$melt_peaks_table <- DT::renderDT({

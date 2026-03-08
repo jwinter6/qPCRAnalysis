@@ -1,0 +1,2367 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={test},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{test}
+\author{}
+\date{\vspace{-2.5em}2026-01-07}
+
+\begin{document}
+\maketitle
+
+\subsection{\texorpdfstring{Ct vs Quantity \n\n\#\#\# Ct vs Quantity
+(Plot)
+\n\n}{Ct vs Quantity \#\#\# Ct vs Quantity (Plot) }}\label{ct-vs-quantity-ct-vs-quantity-plot}
+
+attr(,``class'') {[}1{]} ``ggplot2::ggplot'' ``ggplot'' ``ggplot2::gg''
+``S7\_object''\\
+{[}5{]} ``gg''\\
+attr(,``S7\_class'') class @ parent : @ constructor: function(data,
+\ldots, layers, scales, guides, mapping, theme, coordinates, facet,
+layout, labels, meta, plot\_env) \{\ldots\} @ validator : @ properties :
+\$ data : \\
+\$ layers : \\
+\$ scales : S3\\
+\$ guides : S3\\
+\$ mapping : \$ theme : \\
+\$ coordinates: S3\\
+\$ facet : S3\\
+\$ layout : S3\\
+\$ labels : \$ meta : \\
+\$ plot\_env : \\
+attr(,``data'') \# A tibble: 48 x 9 source\_file
+\texttt{Target\ Name\_res} Reporter \texttt{Sample\ Name} Quantity
+Ct\_mean Ct\_sd 1 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 35.9 0.612 2 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.6 0.395 3 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.4
+0.0905 4 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 36.6 0.311 5 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.3 0.148 6 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.3
+0.131 7 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 36.3 0.575 8 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.8 0.0645 9 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.7
+0.0567 10 251222 Verg\textasciitilde{} UBC FAM Neuer 2x
+Mix\textasciitilde{} 10 33.9 0.142 \# i 38 more rows \# i 2 more
+variables: n , Target\_ID attr(,``layers'') attr(,``layers'')\$geom\_col
+geom\_col: na.rm = FALSE, just = 0.5, lineend = butt, linejoin = mitre
+stat\_identity: na.rm = FALSE position\_dodge
+
+attr(,``layers'')\$geom\_errorbar mapping: ymin =
+\textasciitilde Ct\_mean - Ct\_sd, ymax = \textasciitilde Ct\_mean +
+Ct\_sd geom\_errorbar: na.rm = FALSE, orientation = NA, lineend = butt,
+width = 0.3 stat\_identity: na.rm = FALSE position\_dodge
+
+attr(,``scales'') \textless ggproto object: Class ScalesList,
+gg\textgreater{} add: function add\_defaults: function add\_missing:
+function backtransform\_df: function clone: function find: function
+get\_scales: function has\_scale: function input: function map\_df:
+function n: function non\_position\_scales: function scales: list
+set\_palettes: function train\_df: function transform\_df: function
+super: \textless ggproto object: Class ScalesList, gg\textgreater{}
+attr(,``guides'') \textless Guides{[}0{]} ggproto object\textgreater{}
+
+attr(,``mapping'') Aesthetic mapping: * \texttt{x} -\textgreater{}
+\texttt{factor(Quantity)} * \texttt{y} -\textgreater{} \texttt{Ct\_mean}
+* \texttt{fill} -\textgreater{} \texttt{Sample\ Name} attr(,``theme'')
+List of 144 \$ line : ..@ colour : chr ``black'' ..@ linewidth : num 0.5
+..@ linetype : num 1 ..@ lineend : chr ``butt'' ..@ linejoin : chr
+``round'' ..@ arrow : logi FALSE ..@ arrow.fill : chr ``black'' ..@
+inherit.blank: logi TRUE \$ rect : ..@ fill : chr ``white'' ..@ colour :
+chr ``black'' ..@ linewidth : num 0.5 ..@ linetype : num 1 ..@ linejoin
+: chr ``round'' ..@ inherit.blank: logi TRUE \$ text : ..@ family : chr
+``\,'' ..@ face : chr ``plain'' ..@ italic : chr NA ..@ fontweight : num
+NA ..@ fontwidth : num NA ..@ colour : chr ``black'' ..@ size : num 11
+..@ hjust : num 0.5 ..@ vjust : num 0.5 ..@ angle : num 0 ..@ lineheight
+: num 0.9 ..@ margin : num {[}1:4{]} 0 0 0 0 ..@ debug : logi FALSE ..@
+inherit.blank: logi TRUE \$ title : ..@ family : NULL ..@ face : NULL
+..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@
+colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : NULL ..@
+angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ point : ..@ colour : chr ``black'' ..@
+shape : num 19 ..@ size : num 1.5 ..@ fill : chr ``white'' ..@ stroke :
+num 0.5 ..@ inherit.blank: logi TRUE \$ polygon : ..@ fill : chr
+``white'' ..@ colour : chr ``black'' ..@ linewidth : num 0.5 ..@
+linetype : num 1 ..@ linejoin : chr ``round'' ..@ inherit.blank: logi
+TRUE \$ geom : ..@ ink : chr ``black'' ..@ paper : chr ``white'' ..@
+accent : chr ``\#3366FF'' ..@ linewidth : num 0.5 ..@ borderwidth: num
+0.5 ..@ linetype : int 1 ..@ bordertype : int 1 ..@ family : chr ``\,''
+..@ fontsize : num 3.87 ..@ pointsize : num 1.5 ..@ pointshape : num 19
+..@ colour : NULL ..@ fill : NULL \$ spacing : `simpleUnit' num
+5.5points ..- attr(\emph{, ``unit'')= int 8 \$ margins : num {[}1:4{]}
+5.5 5.5 5.5 5.5 \$ aspect.ratio : NULL \$ axis.title : NULL \$
+axis.title.x : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size :
+NULL ..@ hjust : NULL ..@ vjust : num 1 ..@ angle : NULL ..@ lineheight
+: NULL ..@ margin : num {[}1:4{]} 2.75 0 0 0 ..@ debug : NULL ..@
+inherit.blank: logi TRUE \$ axis.title.x.top : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 0 ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]}
+0 0 2.75 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.x.bottom : NULL \$ axis.title.y : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : num 1
+..@ angle : num 90 ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0
+2.75 0 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.y.left : NULL \$ axis.title.y.right : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 1 ..@ angle : num -90 ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.75 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : chr
+``\#4D4D4DFF'' ..@ size : `rel' num 0.8 ..@ hjust : NULL ..@ vjust :
+NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug
+: NULL ..@ inherit.blank: logi TRUE \$ axis.text.x : ..@ family : NULL
+..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 1
+..@ vjust : num 1 ..@ angle : num 45 ..@ lineheight : NULL ..@ margin :
+num {[}1:4{]} 2.2 0 0 0 ..@ debug : NULL ..@ inherit.blank: logi FALSE
+\$ axis.text.x.top : ..@ family : NULL ..@ face : NULL ..@ italic : chr
+NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@
+size : NULL ..@ hjust : NULL ..@ vjust : num 0 ..@ angle : NULL ..@
+lineheight : NULL ..@ margin : num {[}1:4{]} 0 0 2.2 0 ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ axis.text.x.bottom : NULL \$ axis.text.y
+: ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight :
+num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@
+hjust : num 1 ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL
+..@ margin : num {[}1:4{]} 0 2.2 0 0 ..@ debug : NULL ..@ inherit.blank:
+logi TRUE \$ axis.text.y.left : NULL \$ axis.text.y.right : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0
+..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text.theta : NULL \$ axis.text.r : ..@ family : NULL ..@ face :
+NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA
+..@ colour : NULL ..@ size : NULL ..@ hjust : num 0.5 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0 2.2
+0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$ axis.ticks : ..@
+colour : chr ``\#333333FF'' ..@ linewidth : NULL ..@ linetype : NULL ..@
+lineend : NULL ..@ linejoin : NULL ..@ arrow : logi FALSE ..@ arrow.fill
+: chr ``\#333333FF'' ..@ inherit.blank: logi TRUE \$ axis.ticks.x : NULL
+\$ axis.ticks.x.top : NULL \$ axis.ticks.x.bottom : NULL \$ axis.ticks.y
+: NULL \$ axis.ticks.y.left : NULL \$ axis.ticks.y.right : NULL \$
+axis.ticks.theta : NULL \$ axis.ticks.r : NULL \$ axis.minor.ticks.x.top
+: NULL \$ axis.minor.ticks.x.bottom : NULL \$ axis.minor.ticks.y.left :
+NULL \$ axis.minor.ticks.y.right : NULL \$ axis.minor.ticks.theta : NULL
+\$ axis.minor.ticks.r : NULL \$ axis.ticks.length : `rel' num 0.5 \$
+axis.ticks.length.x : NULL \$ axis.ticks.length.x.top : NULL \$
+axis.ticks.length.x.bottom : NULL \$ axis.ticks.length.y : NULL \$
+axis.ticks.length.y.left : NULL \$ axis.ticks.length.y.right : NULL \$
+axis.ticks.length.theta : NULL \$ axis.ticks.length.r : NULL \$
+axis.minor.ticks.length : `rel' num 0.75 \$ axis.minor.ticks.length.x :
+NULL \$ axis.minor.ticks.length.x.top : NULL \$
+axis.minor.ticks.length.x.bottom: NULL \$ axis.minor.ticks.length.y :
+NULL \$ axis.minor.ticks.length.y.left : NULL \$
+axis.minor.ticks.length.y.right : NULL \$ axis.minor.ticks.length.theta
+: NULL \$ axis.minor.ticks.length.r : NULL \$ axis.line : \$ axis.line.x
+: NULL \$ axis.line.x.top : NULL \$ axis.line.x.bottom : NULL \$
+axis.line.y : NULL \$ axis.line.y.left : NULL \$ axis.line.y.right :
+NULL \$ axis.line.theta : NULL \$ axis.line.r : NULL \$
+legend.background : ..@ fill : NULL ..@ colour : logi NA ..@ linewidth :
+NULL ..@ linetype : NULL ..@ linejoin : NULL ..@ inherit.blank: logi
+TRUE \$ legend.margin : NULL \$ legend.spacing : `rel' num 2 \$
+legend.spacing.x : NULL \$ legend.spacing.y : NULL \$ legend.key : NULL
+\$ legend.key.size : `simpleUnit' num 1.2lines ..- attr(}, ``unit'')=
+int 3 \$ legend.key.height : NULL \$ legend.key.width : NULL \$
+legend.key.spacing : NULL \$ legend.key.spacing.x : NULL \$
+legend.key.spacing.y : NULL \$ legend.key.justification : NULL \$
+legend.frame : NULL \$ legend.ticks : NULL \$ legend.ticks.length :
+`rel' num 0.2 \$ legend.axis.line : NULL \$ legend.text : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : `rel' num 0.8 ..@ hjust
+: NULL ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@
+margin : NULL ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+legend.text.position : NULL \$ legend.title : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug :
+NULL ..@ inherit.blank: logi TRUE \$ legend.title.position : NULL \$
+legend.position : chr ``right'' \$ legend.position.inside : NULL \$
+legend.direction : NULL \$ legend.byrow : NULL \$ legend.justification :
+chr ``center'' \$ legend.justification.top : NULL \$
+legend.justification.bottom : NULL \$ legend.justification.left : NULL
+\$ legend.justification.right : NULL \$ legend.justification.inside :
+NULL {[}list output truncated{]} @ complete: logi TRUE @ validate: logi
+TRUE attr(,``coordinates'') \textless ggproto object: Class
+CoordCartesian, Coord, gg\textgreater{} aspect: function
+backtransform\_range: function clip: on default: FALSE distance:
+function draw\_panel: function expand: TRUE is\_free: function
+is\_linear: function labels: function limits: list modify\_scales:
+function range: function ratio: NULL render\_axis\_h: function
+render\_axis\_v: function render\_bg: function render\_fg: function
+reverse: none setup\_data: function setup\_layout: function
+setup\_panel\_guides: function setup\_panel\_params: function
+setup\_params: function train\_panel\_guides: function transform:
+function super: \textless ggproto object: Class CoordCartesian, Coord,
+gg\textgreater{} attr(,``facet'') \textless ggproto object: Class
+FacetWrap, Facet, gg\textgreater{} attach\_axes: function
+attach\_strips: function compute\_layout: function draw\_back: function
+draw\_front: function draw\_labels: function draw\_panel\_content:
+function draw\_panels: function finish\_data: function
+format\_strip\_labels: function init\_gtable: function init\_scales:
+function map\_data: function params: list set\_panel\_size: function
+setup\_data: function setup\_panel\_params: function setup\_params:
+function shrink: TRUE train\_scales: function vars: function super:
+\textless ggproto object: Class FacetWrap, Facet, gg\textgreater{}
+attr(,``layout'') \textless ggproto object: Class Layout,
+gg\textgreater{} coord: NULL coord\_params: list facet: NULL
+facet\_params: list finish\_data: function get\_scales: function layout:
+NULL map\_position: function panel\_params: NULL panel\_scales\_x: NULL
+panel\_scales\_y: NULL render: function render\_labels: function
+reset\_scales: function resolve\_label: function setup: function
+setup\_panel\_guides: function setup\_panel\_params: function
+train\_position: function super: \textless ggproto object: Class Layout,
+gg\textgreater{} attr(,``labels'') List of 4 \$ x : chr ``Quantity'' \$
+y : chr ``Ct (Mean +/- SD)'' \$ fill : chr ``Sample Name'' \$ title: chr
+``Ct (Mean +/- SD) vs.~Quantity je Target'' attr(,``meta'') list()
+attr(,``plot\_env'') \textless environment: 0x9c58b2008\textgreater{}
+\n\#\#\# Ct vs Quantity (Plot) \n\n attr(,``class'') {[}1{]}
+``ggplot2::ggplot'' ``ggplot'' ``ggplot2::gg'' ``S7\_object''\\
+{[}5{]} ``gg''\\
+attr(,``S7\_class'') class @ parent : @ constructor: function(data,
+\ldots, layers, scales, guides, mapping, theme, coordinates, facet,
+layout, labels, meta, plot\_env) \{\ldots\} @ validator : @ properties :
+\$ data : \\
+\$ layers : \\
+\$ scales : S3\\
+\$ guides : S3\\
+\$ mapping : \$ theme : \\
+\$ coordinates: S3\\
+\$ facet : S3\\
+\$ layout : S3\\
+\$ labels : \$ meta : \\
+\$ plot\_env : \\
+attr(,``data'') \# A tibble: 48 x 9 source\_file
+\texttt{Target\ Name\_res} Reporter \texttt{Sample\ Name} Quantity
+Ct\_mean Ct\_sd 1 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 35.9 0.612 2 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.6 0.395 3 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.4
+0.0905 4 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 36.6 0.311 5 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.3 0.148 6 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.3
+0.131 7 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 36.3 0.575 8 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.8 0.0645 9 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.7
+0.0567 10 251222 Verg\textasciitilde{} UBC FAM Neuer 2x
+Mix\textasciitilde{} 10 33.9 0.142 \# i 38 more rows \# i 2 more
+variables: n , Target\_ID attr(,``layers'') attr(,``layers'')\$geom\_col
+geom\_col: na.rm = FALSE, just = 0.5, lineend = butt, linejoin = mitre
+stat\_identity: na.rm = FALSE position\_dodge
+
+attr(,``layers'')\$geom\_errorbar mapping: ymin =
+\textasciitilde Ct\_mean - Ct\_sd, ymax = \textasciitilde Ct\_mean +
+Ct\_sd geom\_errorbar: na.rm = FALSE, orientation = NA, lineend = butt,
+width = 0.3 stat\_identity: na.rm = FALSE position\_dodge
+
+attr(,``scales'') \textless ggproto object: Class ScalesList,
+gg\textgreater{} add: function add\_defaults: function add\_missing:
+function backtransform\_df: function clone: function find: function
+get\_scales: function has\_scale: function input: function map\_df:
+function n: function non\_position\_scales: function scales: list
+set\_palettes: function train\_df: function transform\_df: function
+super: \textless ggproto object: Class ScalesList, gg\textgreater{}
+attr(,``guides'') \textless Guides{[}0{]} ggproto object\textgreater{}
+
+attr(,``mapping'') Aesthetic mapping: * \texttt{x} -\textgreater{}
+\texttt{factor(Quantity)} * \texttt{y} -\textgreater{} \texttt{Ct\_mean}
+* \texttt{fill} -\textgreater{} \texttt{Sample\ Name} attr(,``theme'')
+List of 144 \$ line : ..@ colour : chr ``black'' ..@ linewidth : num 0.5
+..@ linetype : num 1 ..@ lineend : chr ``butt'' ..@ linejoin : chr
+``round'' ..@ arrow : logi FALSE ..@ arrow.fill : chr ``black'' ..@
+inherit.blank: logi TRUE \$ rect : ..@ fill : chr ``white'' ..@ colour :
+chr ``black'' ..@ linewidth : num 0.5 ..@ linetype : num 1 ..@ linejoin
+: chr ``round'' ..@ inherit.blank: logi TRUE \$ text : ..@ family : chr
+``\,'' ..@ face : chr ``plain'' ..@ italic : chr NA ..@ fontweight : num
+NA ..@ fontwidth : num NA ..@ colour : chr ``black'' ..@ size : num 11
+..@ hjust : num 0.5 ..@ vjust : num 0.5 ..@ angle : num 0 ..@ lineheight
+: num 0.9 ..@ margin : num {[}1:4{]} 0 0 0 0 ..@ debug : logi FALSE ..@
+inherit.blank: logi TRUE \$ title : ..@ family : NULL ..@ face : NULL
+..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@
+colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : NULL ..@
+angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ point : ..@ colour : chr ``black'' ..@
+shape : num 19 ..@ size : num 1.5 ..@ fill : chr ``white'' ..@ stroke :
+num 0.5 ..@ inherit.blank: logi TRUE \$ polygon : ..@ fill : chr
+``white'' ..@ colour : chr ``black'' ..@ linewidth : num 0.5 ..@
+linetype : num 1 ..@ linejoin : chr ``round'' ..@ inherit.blank: logi
+TRUE \$ geom : ..@ ink : chr ``black'' ..@ paper : chr ``white'' ..@
+accent : chr ``\#3366FF'' ..@ linewidth : num 0.5 ..@ borderwidth: num
+0.5 ..@ linetype : int 1 ..@ bordertype : int 1 ..@ family : chr ``\,''
+..@ fontsize : num 3.87 ..@ pointsize : num 1.5 ..@ pointshape : num 19
+..@ colour : NULL ..@ fill : NULL \$ spacing : `simpleUnit' num
+5.5points ..- attr(\emph{, ``unit'')= int 8 \$ margins : num {[}1:4{]}
+5.5 5.5 5.5 5.5 \$ aspect.ratio : NULL \$ axis.title : NULL \$
+axis.title.x : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size :
+NULL ..@ hjust : NULL ..@ vjust : num 1 ..@ angle : NULL ..@ lineheight
+: NULL ..@ margin : num {[}1:4{]} 2.75 0 0 0 ..@ debug : NULL ..@
+inherit.blank: logi TRUE \$ axis.title.x.top : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 0 ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]}
+0 0 2.75 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.x.bottom : NULL \$ axis.title.y : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : num 1
+..@ angle : num 90 ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0
+2.75 0 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.y.left : NULL \$ axis.title.y.right : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 1 ..@ angle : num -90 ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.75 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : chr
+``\#4D4D4DFF'' ..@ size : `rel' num 0.8 ..@ hjust : NULL ..@ vjust :
+NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug
+: NULL ..@ inherit.blank: logi TRUE \$ axis.text.x : ..@ family : NULL
+..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 1
+..@ vjust : num 1 ..@ angle : num 45 ..@ lineheight : NULL ..@ margin :
+num {[}1:4{]} 2.2 0 0 0 ..@ debug : NULL ..@ inherit.blank: logi FALSE
+\$ axis.text.x.top : ..@ family : NULL ..@ face : NULL ..@ italic : chr
+NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@
+size : NULL ..@ hjust : NULL ..@ vjust : num 0 ..@ angle : NULL ..@
+lineheight : NULL ..@ margin : num {[}1:4{]} 0 0 2.2 0 ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ axis.text.x.bottom : NULL \$ axis.text.y
+: ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight :
+num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@
+hjust : num 1 ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL
+..@ margin : num {[}1:4{]} 0 2.2 0 0 ..@ debug : NULL ..@ inherit.blank:
+logi TRUE \$ axis.text.y.left : NULL \$ axis.text.y.right : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0
+..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text.theta : NULL \$ axis.text.r : ..@ family : NULL ..@ face :
+NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA
+..@ colour : NULL ..@ size : NULL ..@ hjust : num 0.5 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0 2.2
+0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$ axis.ticks : ..@
+colour : chr ``\#333333FF'' ..@ linewidth : NULL ..@ linetype : NULL ..@
+lineend : NULL ..@ linejoin : NULL ..@ arrow : logi FALSE ..@ arrow.fill
+: chr ``\#333333FF'' ..@ inherit.blank: logi TRUE \$ axis.ticks.x : NULL
+\$ axis.ticks.x.top : NULL \$ axis.ticks.x.bottom : NULL \$ axis.ticks.y
+: NULL \$ axis.ticks.y.left : NULL \$ axis.ticks.y.right : NULL \$
+axis.ticks.theta : NULL \$ axis.ticks.r : NULL \$ axis.minor.ticks.x.top
+: NULL \$ axis.minor.ticks.x.bottom : NULL \$ axis.minor.ticks.y.left :
+NULL \$ axis.minor.ticks.y.right : NULL \$ axis.minor.ticks.theta : NULL
+\$ axis.minor.ticks.r : NULL \$ axis.ticks.length : `rel' num 0.5 \$
+axis.ticks.length.x : NULL \$ axis.ticks.length.x.top : NULL \$
+axis.ticks.length.x.bottom : NULL \$ axis.ticks.length.y : NULL \$
+axis.ticks.length.y.left : NULL \$ axis.ticks.length.y.right : NULL \$
+axis.ticks.length.theta : NULL \$ axis.ticks.length.r : NULL \$
+axis.minor.ticks.length : `rel' num 0.75 \$ axis.minor.ticks.length.x :
+NULL \$ axis.minor.ticks.length.x.top : NULL \$
+axis.minor.ticks.length.x.bottom: NULL \$ axis.minor.ticks.length.y :
+NULL \$ axis.minor.ticks.length.y.left : NULL \$
+axis.minor.ticks.length.y.right : NULL \$ axis.minor.ticks.length.theta
+: NULL \$ axis.minor.ticks.length.r : NULL \$ axis.line : \$ axis.line.x
+: NULL \$ axis.line.x.top : NULL \$ axis.line.x.bottom : NULL \$
+axis.line.y : NULL \$ axis.line.y.left : NULL \$ axis.line.y.right :
+NULL \$ axis.line.theta : NULL \$ axis.line.r : NULL \$
+legend.background : ..@ fill : NULL ..@ colour : logi NA ..@ linewidth :
+NULL ..@ linetype : NULL ..@ linejoin : NULL ..@ inherit.blank: logi
+TRUE \$ legend.margin : NULL \$ legend.spacing : `rel' num 2 \$
+legend.spacing.x : NULL \$ legend.spacing.y : NULL \$ legend.key : NULL
+\$ legend.key.size : `simpleUnit' num 1.2lines ..- attr(}, ``unit'')=
+int 3 \$ legend.key.height : NULL \$ legend.key.width : NULL \$
+legend.key.spacing : NULL \$ legend.key.spacing.x : NULL \$
+legend.key.spacing.y : NULL \$ legend.key.justification : NULL \$
+legend.frame : NULL \$ legend.ticks : NULL \$ legend.ticks.length :
+`rel' num 0.2 \$ legend.axis.line : NULL \$ legend.text : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : `rel' num 0.8 ..@ hjust
+: NULL ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@
+margin : NULL ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+legend.text.position : NULL \$ legend.title : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug :
+NULL ..@ inherit.blank: logi TRUE \$ legend.title.position : NULL \$
+legend.position : chr ``right'' \$ legend.position.inside : NULL \$
+legend.direction : NULL \$ legend.byrow : NULL \$ legend.justification :
+chr ``center'' \$ legend.justification.top : NULL \$
+legend.justification.bottom : NULL \$ legend.justification.left : NULL
+\$ legend.justification.right : NULL \$ legend.justification.inside :
+NULL {[}list output truncated{]} @ complete: logi TRUE @ validate: logi
+TRUE attr(,``coordinates'') \textless ggproto object: Class
+CoordCartesian, Coord, gg\textgreater{} aspect: function
+backtransform\_range: function clip: on default: FALSE distance:
+function draw\_panel: function expand: TRUE is\_free: function
+is\_linear: function labels: function limits: list modify\_scales:
+function range: function ratio: NULL render\_axis\_h: function
+render\_axis\_v: function render\_bg: function render\_fg: function
+reverse: none setup\_data: function setup\_layout: function
+setup\_panel\_guides: function setup\_panel\_params: function
+setup\_params: function train\_panel\_guides: function transform:
+function super: \textless ggproto object: Class CoordCartesian, Coord,
+gg\textgreater{} attr(,``facet'') \textless ggproto object: Class
+FacetWrap, Facet, gg\textgreater{} attach\_axes: function
+attach\_strips: function compute\_layout: function draw\_back: function
+draw\_front: function draw\_labels: function draw\_panel\_content:
+function draw\_panels: function finish\_data: function
+format\_strip\_labels: function init\_gtable: function init\_scales:
+function map\_data: function params: list set\_panel\_size: function
+setup\_data: function setup\_panel\_params: function setup\_params:
+function shrink: TRUE train\_scales: function vars: function super:
+\textless ggproto object: Class FacetWrap, Facet, gg\textgreater{}
+attr(,``layout'') \textless ggproto object: Class Layout,
+gg\textgreater{} coord: NULL coord\_params: list facet: NULL
+facet\_params: list finish\_data: function get\_scales: function layout:
+NULL map\_position: function panel\_params: NULL panel\_scales\_x: NULL
+panel\_scales\_y: NULL render: function render\_labels: function
+reset\_scales: function resolve\_label: function setup: function
+setup\_panel\_guides: function setup\_panel\_params: function
+train\_position: function super: \textless ggproto object: Class Layout,
+gg\textgreater{} attr(,``labels'') List of 4 \$ x : chr ``Quantity'' \$
+y : chr ``Ct (Mean +/- SD)'' \$ fill : chr ``Sample Name'' \$ title: chr
+``Ct (Mean +/- SD) vs.~Quantity je Target'' attr(,``meta'') list()
+attr(,``plot\_env'') \textless environment: 0x9d4a1c4d8\textgreater{}
+\n\#\# Ct vs Sample \n\n\#\#\# Ct vs Sample (Plot) \n\n attr(,``class'')
+{[}1{]} ``ggplot2::ggplot'' ``ggplot'' ``ggplot2::gg'' ``S7\_object''\\
+{[}5{]} ``gg''\\
+attr(,``S7\_class'') class @ parent : @ constructor: function(data,
+\ldots, layers, scales, guides, mapping, theme, coordinates, facet,
+layout, labels, meta, plot\_env) \{\ldots\} @ validator : @ properties :
+\$ data : \\
+\$ layers : \\
+\$ scales : S3\\
+\$ guides : S3\\
+\$ mapping : \$ theme : \\
+\$ coordinates: S3\\
+\$ facet : S3\\
+\$ layout : S3\\
+\$ labels : \$ meta : \\
+\$ plot\_env : \\
+attr(,``data'') \# A tibble: 48 x 9 source\_file
+\texttt{Target\ Name\_res} Reporter \texttt{Sample\ Name} Quantity
+Ct\_mean Ct\_sd 1 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 35.9 0.612 2 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.6 0.395 3 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.4
+0.0905 4 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 36.6 0.311 5 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.3 0.148 6 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.3
+0.131 7 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 36.3 0.575 8 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.8 0.0645 9 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.7
+0.0567 10 251222 Verg\textasciitilde{} UBC FAM Neuer 2x
+Mix\textasciitilde{} 10 33.9 0.142 \# i 38 more rows \# i 2 more
+variables: n , Target\_ID attr(,``layers'') attr(,``layers'')\$geom\_col
+geom\_col: na.rm = FALSE, just = 0.5, lineend = butt, linejoin = mitre
+stat\_identity: na.rm = FALSE position\_dodge
+
+attr(,``layers'')\$geom\_errorbar mapping: ymin =
+\textasciitilde Ct\_mean - Ct\_sd, ymax = \textasciitilde Ct\_mean +
+Ct\_sd geom\_errorbar: na.rm = FALSE, orientation = NA, lineend = butt,
+width = 0.3 stat\_identity: na.rm = FALSE position\_dodge
+
+attr(,``scales'') \textless ggproto object: Class ScalesList,
+gg\textgreater{} add: function add\_defaults: function add\_missing:
+function backtransform\_df: function clone: function find: function
+get\_scales: function has\_scale: function input: function map\_df:
+function n: function non\_position\_scales: function scales: list
+set\_palettes: function train\_df: function transform\_df: function
+super: \textless ggproto object: Class ScalesList, gg\textgreater{}
+attr(,``guides'') \textless Guides{[}0{]} ggproto object\textgreater{}
+
+attr(,``mapping'') Aesthetic mapping: * \texttt{x} -\textgreater{}
+\texttt{Sample\ Name} * \texttt{y} -\textgreater{} \texttt{Ct\_mean} *
+\texttt{fill} -\textgreater{} \texttt{factor(Quantity)} attr(,``theme'')
+List of 144 \$ line : ..@ colour : chr ``black'' ..@ linewidth : num 0.5
+..@ linetype : num 1 ..@ lineend : chr ``butt'' ..@ linejoin : chr
+``round'' ..@ arrow : logi FALSE ..@ arrow.fill : chr ``black'' ..@
+inherit.blank: logi TRUE \$ rect : ..@ fill : chr ``white'' ..@ colour :
+chr ``black'' ..@ linewidth : num 0.5 ..@ linetype : num 1 ..@ linejoin
+: chr ``round'' ..@ inherit.blank: logi TRUE \$ text : ..@ family : chr
+``\,'' ..@ face : chr ``plain'' ..@ italic : chr NA ..@ fontweight : num
+NA ..@ fontwidth : num NA ..@ colour : chr ``black'' ..@ size : num 11
+..@ hjust : num 0.5 ..@ vjust : num 0.5 ..@ angle : num 0 ..@ lineheight
+: num 0.9 ..@ margin : num {[}1:4{]} 0 0 0 0 ..@ debug : logi FALSE ..@
+inherit.blank: logi TRUE \$ title : ..@ family : NULL ..@ face : NULL
+..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@
+colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : NULL ..@
+angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ point : ..@ colour : chr ``black'' ..@
+shape : num 19 ..@ size : num 1.5 ..@ fill : chr ``white'' ..@ stroke :
+num 0.5 ..@ inherit.blank: logi TRUE \$ polygon : ..@ fill : chr
+``white'' ..@ colour : chr ``black'' ..@ linewidth : num 0.5 ..@
+linetype : num 1 ..@ linejoin : chr ``round'' ..@ inherit.blank: logi
+TRUE \$ geom : ..@ ink : chr ``black'' ..@ paper : chr ``white'' ..@
+accent : chr ``\#3366FF'' ..@ linewidth : num 0.5 ..@ borderwidth: num
+0.5 ..@ linetype : int 1 ..@ bordertype : int 1 ..@ family : chr ``\,''
+..@ fontsize : num 3.87 ..@ pointsize : num 1.5 ..@ pointshape : num 19
+..@ colour : NULL ..@ fill : NULL \$ spacing : `simpleUnit' num
+5.5points ..- attr(\emph{, ``unit'')= int 8 \$ margins : num {[}1:4{]}
+5.5 5.5 5.5 5.5 \$ aspect.ratio : NULL \$ axis.title : NULL \$
+axis.title.x : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size :
+NULL ..@ hjust : NULL ..@ vjust : num 1 ..@ angle : NULL ..@ lineheight
+: NULL ..@ margin : num {[}1:4{]} 2.75 0 0 0 ..@ debug : NULL ..@
+inherit.blank: logi TRUE \$ axis.title.x.top : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 0 ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]}
+0 0 2.75 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.x.bottom : NULL \$ axis.title.y : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : num 1
+..@ angle : num 90 ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0
+2.75 0 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.y.left : NULL \$ axis.title.y.right : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 1 ..@ angle : num -90 ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.75 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : chr
+``\#4D4D4DFF'' ..@ size : `rel' num 0.8 ..@ hjust : NULL ..@ vjust :
+NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug
+: NULL ..@ inherit.blank: logi TRUE \$ axis.text.x : ..@ family : NULL
+..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 1
+..@ vjust : num 1 ..@ angle : num 45 ..@ lineheight : NULL ..@ margin :
+num {[}1:4{]} 2.2 0 0 0 ..@ debug : NULL ..@ inherit.blank: logi FALSE
+\$ axis.text.x.top : ..@ family : NULL ..@ face : NULL ..@ italic : chr
+NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@
+size : NULL ..@ hjust : NULL ..@ vjust : num 0 ..@ angle : NULL ..@
+lineheight : NULL ..@ margin : num {[}1:4{]} 0 0 2.2 0 ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ axis.text.x.bottom : NULL \$ axis.text.y
+: ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight :
+num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@
+hjust : num 1 ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL
+..@ margin : num {[}1:4{]} 0 2.2 0 0 ..@ debug : NULL ..@ inherit.blank:
+logi TRUE \$ axis.text.y.left : NULL \$ axis.text.y.right : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0
+..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text.theta : NULL \$ axis.text.r : ..@ family : NULL ..@ face :
+NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA
+..@ colour : NULL ..@ size : NULL ..@ hjust : num 0.5 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0 2.2
+0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$ axis.ticks : ..@
+colour : chr ``\#333333FF'' ..@ linewidth : NULL ..@ linetype : NULL ..@
+lineend : NULL ..@ linejoin : NULL ..@ arrow : logi FALSE ..@ arrow.fill
+: chr ``\#333333FF'' ..@ inherit.blank: logi TRUE \$ axis.ticks.x : NULL
+\$ axis.ticks.x.top : NULL \$ axis.ticks.x.bottom : NULL \$ axis.ticks.y
+: NULL \$ axis.ticks.y.left : NULL \$ axis.ticks.y.right : NULL \$
+axis.ticks.theta : NULL \$ axis.ticks.r : NULL \$ axis.minor.ticks.x.top
+: NULL \$ axis.minor.ticks.x.bottom : NULL \$ axis.minor.ticks.y.left :
+NULL \$ axis.minor.ticks.y.right : NULL \$ axis.minor.ticks.theta : NULL
+\$ axis.minor.ticks.r : NULL \$ axis.ticks.length : `rel' num 0.5 \$
+axis.ticks.length.x : NULL \$ axis.ticks.length.x.top : NULL \$
+axis.ticks.length.x.bottom : NULL \$ axis.ticks.length.y : NULL \$
+axis.ticks.length.y.left : NULL \$ axis.ticks.length.y.right : NULL \$
+axis.ticks.length.theta : NULL \$ axis.ticks.length.r : NULL \$
+axis.minor.ticks.length : `rel' num 0.75 \$ axis.minor.ticks.length.x :
+NULL \$ axis.minor.ticks.length.x.top : NULL \$
+axis.minor.ticks.length.x.bottom: NULL \$ axis.minor.ticks.length.y :
+NULL \$ axis.minor.ticks.length.y.left : NULL \$
+axis.minor.ticks.length.y.right : NULL \$ axis.minor.ticks.length.theta
+: NULL \$ axis.minor.ticks.length.r : NULL \$ axis.line : \$ axis.line.x
+: NULL \$ axis.line.x.top : NULL \$ axis.line.x.bottom : NULL \$
+axis.line.y : NULL \$ axis.line.y.left : NULL \$ axis.line.y.right :
+NULL \$ axis.line.theta : NULL \$ axis.line.r : NULL \$
+legend.background : ..@ fill : NULL ..@ colour : logi NA ..@ linewidth :
+NULL ..@ linetype : NULL ..@ linejoin : NULL ..@ inherit.blank: logi
+TRUE \$ legend.margin : NULL \$ legend.spacing : `rel' num 2 \$
+legend.spacing.x : NULL \$ legend.spacing.y : NULL \$ legend.key : NULL
+\$ legend.key.size : `simpleUnit' num 1.2lines ..- attr(}, ``unit'')=
+int 3 \$ legend.key.height : NULL \$ legend.key.width : NULL \$
+legend.key.spacing : NULL \$ legend.key.spacing.x : NULL \$
+legend.key.spacing.y : NULL \$ legend.key.justification : NULL \$
+legend.frame : NULL \$ legend.ticks : NULL \$ legend.ticks.length :
+`rel' num 0.2 \$ legend.axis.line : NULL \$ legend.text : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : `rel' num 0.8 ..@ hjust
+: NULL ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@
+margin : NULL ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+legend.text.position : NULL \$ legend.title : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug :
+NULL ..@ inherit.blank: logi TRUE \$ legend.title.position : NULL \$
+legend.position : chr ``right'' \$ legend.position.inside : NULL \$
+legend.direction : NULL \$ legend.byrow : NULL \$ legend.justification :
+chr ``center'' \$ legend.justification.top : NULL \$
+legend.justification.bottom : NULL \$ legend.justification.left : NULL
+\$ legend.justification.right : NULL \$ legend.justification.inside :
+NULL {[}list output truncated{]} @ complete: logi TRUE @ validate: logi
+TRUE attr(,``coordinates'') \textless ggproto object: Class
+CoordCartesian, Coord, gg\textgreater{} aspect: function
+backtransform\_range: function clip: on default: FALSE distance:
+function draw\_panel: function expand: TRUE is\_free: function
+is\_linear: function labels: function limits: list modify\_scales:
+function range: function ratio: NULL render\_axis\_h: function
+render\_axis\_v: function render\_bg: function render\_fg: function
+reverse: none setup\_data: function setup\_layout: function
+setup\_panel\_guides: function setup\_panel\_params: function
+setup\_params: function train\_panel\_guides: function transform:
+function super: \textless ggproto object: Class CoordCartesian, Coord,
+gg\textgreater{} attr(,``facet'') \textless ggproto object: Class
+FacetWrap, Facet, gg\textgreater{} attach\_axes: function
+attach\_strips: function compute\_layout: function draw\_back: function
+draw\_front: function draw\_labels: function draw\_panel\_content:
+function draw\_panels: function finish\_data: function
+format\_strip\_labels: function init\_gtable: function init\_scales:
+function map\_data: function params: list set\_panel\_size: function
+setup\_data: function setup\_panel\_params: function setup\_params:
+function shrink: TRUE train\_scales: function vars: function super:
+\textless ggproto object: Class FacetWrap, Facet, gg\textgreater{}
+attr(,``layout'') \textless ggproto object: Class Layout,
+gg\textgreater{} coord: NULL coord\_params: list facet: NULL
+facet\_params: list finish\_data: function get\_scales: function layout:
+NULL map\_position: function panel\_params: NULL panel\_scales\_x: NULL
+panel\_scales\_y: NULL render: function render\_labels: function
+reset\_scales: function resolve\_label: function setup: function
+setup\_panel\_guides: function setup\_panel\_params: function
+train\_position: function super: \textless ggproto object: Class Layout,
+gg\textgreater{} attr(,``labels'') List of 4 \$ x : chr ``Sample Name''
+\$ y : chr ``Ct (Mean +/- SD)'' \$ fill : chr ``Quantity'' \$ title: chr
+``Ct (Mean +/- SD) vs.~Sample je Target'' attr(,``meta'') list()
+attr(,``plot\_env'') \textless environment: 0x9c7eec938\textgreater{}
+\n\#\#\# Ct vs Sample (Plot) \n\n attr(,``class'') {[}1{]}
+``ggplot2::ggplot'' ``ggplot'' ``ggplot2::gg'' ``S7\_object''\\
+{[}5{]} ``gg''\\
+attr(,``S7\_class'') class @ parent : @ constructor: function(data,
+\ldots, layers, scales, guides, mapping, theme, coordinates, facet,
+layout, labels, meta, plot\_env) \{\ldots\} @ validator : @ properties :
+\$ data : \\
+\$ layers : \\
+\$ scales : S3\\
+\$ guides : S3\\
+\$ mapping : \$ theme : \\
+\$ coordinates: S3\\
+\$ facet : S3\\
+\$ layout : S3\\
+\$ labels : \$ meta : \\
+\$ plot\_env : \\
+attr(,``data'') \# A tibble: 48 x 9 source\_file
+\texttt{Target\ Name\_res} Reporter \texttt{Sample\ Name} Quantity
+Ct\_mean Ct\_sd 1 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 35.9 0.612 2 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.6 0.395 3 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.4
+0.0905 4 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 36.6 0.311 5 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.3 0.148 6 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.3
+0.131 7 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 36.3 0.575 8 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.8 0.0645 9 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.7
+0.0567 10 251222 Verg\textasciitilde{} UBC FAM Neuer 2x
+Mix\textasciitilde{} 10 33.9 0.142 \# i 38 more rows \# i 2 more
+variables: n , Target\_ID attr(,``layers'') attr(,``layers'')\$geom\_col
+geom\_col: na.rm = FALSE, just = 0.5, lineend = butt, linejoin = mitre
+stat\_identity: na.rm = FALSE position\_dodge
+
+attr(,``layers'')\$geom\_errorbar mapping: ymin =
+\textasciitilde Ct\_mean - Ct\_sd, ymax = \textasciitilde Ct\_mean +
+Ct\_sd geom\_errorbar: na.rm = FALSE, orientation = NA, lineend = butt,
+width = 0.3 stat\_identity: na.rm = FALSE position\_dodge
+
+attr(,``scales'') \textless ggproto object: Class ScalesList,
+gg\textgreater{} add: function add\_defaults: function add\_missing:
+function backtransform\_df: function clone: function find: function
+get\_scales: function has\_scale: function input: function map\_df:
+function n: function non\_position\_scales: function scales: list
+set\_palettes: function train\_df: function transform\_df: function
+super: \textless ggproto object: Class ScalesList, gg\textgreater{}
+attr(,``guides'') \textless Guides{[}0{]} ggproto object\textgreater{}
+
+attr(,``mapping'') Aesthetic mapping: * \texttt{x} -\textgreater{}
+\texttt{Sample\ Name} * \texttt{y} -\textgreater{} \texttt{Ct\_mean} *
+\texttt{fill} -\textgreater{} \texttt{factor(Quantity)} attr(,``theme'')
+List of 144 \$ line : ..@ colour : chr ``black'' ..@ linewidth : num 0.5
+..@ linetype : num 1 ..@ lineend : chr ``butt'' ..@ linejoin : chr
+``round'' ..@ arrow : logi FALSE ..@ arrow.fill : chr ``black'' ..@
+inherit.blank: logi TRUE \$ rect : ..@ fill : chr ``white'' ..@ colour :
+chr ``black'' ..@ linewidth : num 0.5 ..@ linetype : num 1 ..@ linejoin
+: chr ``round'' ..@ inherit.blank: logi TRUE \$ text : ..@ family : chr
+``\,'' ..@ face : chr ``plain'' ..@ italic : chr NA ..@ fontweight : num
+NA ..@ fontwidth : num NA ..@ colour : chr ``black'' ..@ size : num 11
+..@ hjust : num 0.5 ..@ vjust : num 0.5 ..@ angle : num 0 ..@ lineheight
+: num 0.9 ..@ margin : num {[}1:4{]} 0 0 0 0 ..@ debug : logi FALSE ..@
+inherit.blank: logi TRUE \$ title : ..@ family : NULL ..@ face : NULL
+..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@
+colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : NULL ..@
+angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ point : ..@ colour : chr ``black'' ..@
+shape : num 19 ..@ size : num 1.5 ..@ fill : chr ``white'' ..@ stroke :
+num 0.5 ..@ inherit.blank: logi TRUE \$ polygon : ..@ fill : chr
+``white'' ..@ colour : chr ``black'' ..@ linewidth : num 0.5 ..@
+linetype : num 1 ..@ linejoin : chr ``round'' ..@ inherit.blank: logi
+TRUE \$ geom : ..@ ink : chr ``black'' ..@ paper : chr ``white'' ..@
+accent : chr ``\#3366FF'' ..@ linewidth : num 0.5 ..@ borderwidth: num
+0.5 ..@ linetype : int 1 ..@ bordertype : int 1 ..@ family : chr ``\,''
+..@ fontsize : num 3.87 ..@ pointsize : num 1.5 ..@ pointshape : num 19
+..@ colour : NULL ..@ fill : NULL \$ spacing : `simpleUnit' num
+5.5points ..- attr(\emph{, ``unit'')= int 8 \$ margins : num {[}1:4{]}
+5.5 5.5 5.5 5.5 \$ aspect.ratio : NULL \$ axis.title : NULL \$
+axis.title.x : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size :
+NULL ..@ hjust : NULL ..@ vjust : num 1 ..@ angle : NULL ..@ lineheight
+: NULL ..@ margin : num {[}1:4{]} 2.75 0 0 0 ..@ debug : NULL ..@
+inherit.blank: logi TRUE \$ axis.title.x.top : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 0 ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]}
+0 0 2.75 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.x.bottom : NULL \$ axis.title.y : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : num 1
+..@ angle : num 90 ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0
+2.75 0 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.y.left : NULL \$ axis.title.y.right : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 1 ..@ angle : num -90 ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.75 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : chr
+``\#4D4D4DFF'' ..@ size : `rel' num 0.8 ..@ hjust : NULL ..@ vjust :
+NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug
+: NULL ..@ inherit.blank: logi TRUE \$ axis.text.x : ..@ family : NULL
+..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 1
+..@ vjust : num 1 ..@ angle : num 45 ..@ lineheight : NULL ..@ margin :
+num {[}1:4{]} 2.2 0 0 0 ..@ debug : NULL ..@ inherit.blank: logi FALSE
+\$ axis.text.x.top : ..@ family : NULL ..@ face : NULL ..@ italic : chr
+NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@
+size : NULL ..@ hjust : NULL ..@ vjust : num 0 ..@ angle : NULL ..@
+lineheight : NULL ..@ margin : num {[}1:4{]} 0 0 2.2 0 ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ axis.text.x.bottom : NULL \$ axis.text.y
+: ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight :
+num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@
+hjust : num 1 ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL
+..@ margin : num {[}1:4{]} 0 2.2 0 0 ..@ debug : NULL ..@ inherit.blank:
+logi TRUE \$ axis.text.y.left : NULL \$ axis.text.y.right : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0
+..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text.theta : NULL \$ axis.text.r : ..@ family : NULL ..@ face :
+NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA
+..@ colour : NULL ..@ size : NULL ..@ hjust : num 0.5 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0 2.2
+0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$ axis.ticks : ..@
+colour : chr ``\#333333FF'' ..@ linewidth : NULL ..@ linetype : NULL ..@
+lineend : NULL ..@ linejoin : NULL ..@ arrow : logi FALSE ..@ arrow.fill
+: chr ``\#333333FF'' ..@ inherit.blank: logi TRUE \$ axis.ticks.x : NULL
+\$ axis.ticks.x.top : NULL \$ axis.ticks.x.bottom : NULL \$ axis.ticks.y
+: NULL \$ axis.ticks.y.left : NULL \$ axis.ticks.y.right : NULL \$
+axis.ticks.theta : NULL \$ axis.ticks.r : NULL \$ axis.minor.ticks.x.top
+: NULL \$ axis.minor.ticks.x.bottom : NULL \$ axis.minor.ticks.y.left :
+NULL \$ axis.minor.ticks.y.right : NULL \$ axis.minor.ticks.theta : NULL
+\$ axis.minor.ticks.r : NULL \$ axis.ticks.length : `rel' num 0.5 \$
+axis.ticks.length.x : NULL \$ axis.ticks.length.x.top : NULL \$
+axis.ticks.length.x.bottom : NULL \$ axis.ticks.length.y : NULL \$
+axis.ticks.length.y.left : NULL \$ axis.ticks.length.y.right : NULL \$
+axis.ticks.length.theta : NULL \$ axis.ticks.length.r : NULL \$
+axis.minor.ticks.length : `rel' num 0.75 \$ axis.minor.ticks.length.x :
+NULL \$ axis.minor.ticks.length.x.top : NULL \$
+axis.minor.ticks.length.x.bottom: NULL \$ axis.minor.ticks.length.y :
+NULL \$ axis.minor.ticks.length.y.left : NULL \$
+axis.minor.ticks.length.y.right : NULL \$ axis.minor.ticks.length.theta
+: NULL \$ axis.minor.ticks.length.r : NULL \$ axis.line : \$ axis.line.x
+: NULL \$ axis.line.x.top : NULL \$ axis.line.x.bottom : NULL \$
+axis.line.y : NULL \$ axis.line.y.left : NULL \$ axis.line.y.right :
+NULL \$ axis.line.theta : NULL \$ axis.line.r : NULL \$
+legend.background : ..@ fill : NULL ..@ colour : logi NA ..@ linewidth :
+NULL ..@ linetype : NULL ..@ linejoin : NULL ..@ inherit.blank: logi
+TRUE \$ legend.margin : NULL \$ legend.spacing : `rel' num 2 \$
+legend.spacing.x : NULL \$ legend.spacing.y : NULL \$ legend.key : NULL
+\$ legend.key.size : `simpleUnit' num 1.2lines ..- attr(}, ``unit'')=
+int 3 \$ legend.key.height : NULL \$ legend.key.width : NULL \$
+legend.key.spacing : NULL \$ legend.key.spacing.x : NULL \$
+legend.key.spacing.y : NULL \$ legend.key.justification : NULL \$
+legend.frame : NULL \$ legend.ticks : NULL \$ legend.ticks.length :
+`rel' num 0.2 \$ legend.axis.line : NULL \$ legend.text : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : `rel' num 0.8 ..@ hjust
+: NULL ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@
+margin : NULL ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+legend.text.position : NULL \$ legend.title : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug :
+NULL ..@ inherit.blank: logi TRUE \$ legend.title.position : NULL \$
+legend.position : chr ``right'' \$ legend.position.inside : NULL \$
+legend.direction : NULL \$ legend.byrow : NULL \$ legend.justification :
+chr ``center'' \$ legend.justification.top : NULL \$
+legend.justification.bottom : NULL \$ legend.justification.left : NULL
+\$ legend.justification.right : NULL \$ legend.justification.inside :
+NULL {[}list output truncated{]} @ complete: logi TRUE @ validate: logi
+TRUE attr(,``coordinates'') \textless ggproto object: Class
+CoordCartesian, Coord, gg\textgreater{} aspect: function
+backtransform\_range: function clip: on default: FALSE distance:
+function draw\_panel: function expand: TRUE is\_free: function
+is\_linear: function labels: function limits: list modify\_scales:
+function range: function ratio: NULL render\_axis\_h: function
+render\_axis\_v: function render\_bg: function render\_fg: function
+reverse: none setup\_data: function setup\_layout: function
+setup\_panel\_guides: function setup\_panel\_params: function
+setup\_params: function train\_panel\_guides: function transform:
+function super: \textless ggproto object: Class CoordCartesian, Coord,
+gg\textgreater{} attr(,``facet'') \textless ggproto object: Class
+FacetWrap, Facet, gg\textgreater{} attach\_axes: function
+attach\_strips: function compute\_layout: function draw\_back: function
+draw\_front: function draw\_labels: function draw\_panel\_content:
+function draw\_panels: function finish\_data: function
+format\_strip\_labels: function init\_gtable: function init\_scales:
+function map\_data: function params: list set\_panel\_size: function
+setup\_data: function setup\_panel\_params: function setup\_params:
+function shrink: TRUE train\_scales: function vars: function super:
+\textless ggproto object: Class FacetWrap, Facet, gg\textgreater{}
+attr(,``layout'') \textless ggproto object: Class Layout,
+gg\textgreater{} coord: NULL coord\_params: list facet: NULL
+facet\_params: list finish\_data: function get\_scales: function layout:
+NULL map\_position: function panel\_params: NULL panel\_scales\_x: NULL
+panel\_scales\_y: NULL render: function render\_labels: function
+reset\_scales: function resolve\_label: function setup: function
+setup\_panel\_guides: function setup\_panel\_params: function
+train\_position: function super: \textless ggproto object: Class Layout,
+gg\textgreater{} attr(,``labels'') List of 4 \$ x : chr ``Sample Name''
+\$ y : chr ``Ct (Mean +/- SD)'' \$ fill : chr ``Quantity'' \$ title: chr
+``Ct (Mean +/- SD) vs.~Sample je Target'' attr(,``meta'') list()
+attr(,``plot\_env'') \textless environment: 0x9d1a211c0\textgreater{}
+\n\#\# Amplifikationskurven \n\n\#\#\# Amplifikationskurven \n\n
+attr(,``class'') {[}1{]} ``ggplot2::ggplot'' ``ggplot'' ``ggplot2::gg''
+``S7\_object''\\
+{[}5{]} ``gg''\\
+attr(,``S7\_class'') class @ parent : @ constructor: function(data,
+\ldots, layers, scales, guides, mapping, theme, coordinates, facet,
+layout, labels, meta, plot\_env) \{\ldots\} @ validator : @ properties :
+\$ data : \\
+\$ layers : \\
+\$ scales : S3\\
+\$ guides : S3\\
+\$ mapping : \$ theme : \\
+\$ coordinates: S3\\
+\$ facet : S3\\
+\$ layout : S3\\
+\$ labels : \$ meta : \\
+\$ plot\_env : \\
+attr(,``data'') \# A tibble: 8,640 x 42 Well\_res well\_position Omit
+\texttt{Sample\ Name} \texttt{Target\ Name\_res} Task Reporter \\
+1 13 B1 false Neuer 2x Mix A\textasciitilde{} UBC NTC FAM\\
+2 13 B1 false Neuer 2x Mix A\textasciitilde{} UBC NTC FAM\\
+3 13 B1 false Neuer 2x Mix A\textasciitilde{} UBC NTC FAM\\
+4 13 B1 false Neuer 2x Mix A\textasciitilde{} UBC NTC FAM\\
+5 13 B1 false Neuer 2x Mix A\textasciitilde{} UBC NTC FAM\\
+6 13 B1 false Neuer 2x Mix A\textasciitilde{} UBC NTC FAM\\
+7 13 B1 false Neuer 2x Mix A\textasciitilde{} UBC NTC FAM\\
+8 13 B1 false Neuer 2x Mix A\textasciitilde{} UBC NTC FAM\\
+9 13 B1 false Neuer 2x Mix A\textasciitilde{} UBC NTC FAM\\
+10 13 B1 false Neuer 2x Mix A\textasciitilde{} UBC NTC FAM\\
+\# i 8,630 more rows \# i 35 more variables: Quencher , CRT ,
+\texttt{Ct\ Mean} , \# \texttt{Ct\ SD} , Quantity ,
+\texttt{Quantity\ Mean} , \texttt{Quantity\ SD} , \#
+\texttt{Y-Intercept} , \texttt{R(superscript\ 2)} , Slope , \#
+Efficiency , \texttt{Automatic\ Ct\ Threshold} , \texttt{Ct\ Threshold}
+, \# \texttt{Automatic\ Baseline} , \texttt{Baseline\ Start} ,
+\texttt{Baseline\ End} , \# \texttt{Amp\ Status} , Comments ,
+\texttt{Cq\ Conf} , CQCONF , \ldots{} attr(,``layers'')
+attr(,``layers'')\$geom\_line geom\_line: na.rm = FALSE, orientation =
+NA, arrow = NULL, arrow.fill = NULL, lineend = butt, linejoin = round,
+linemitre = 10 stat\_identity: na.rm = FALSE position\_identity
+
+attr(,``scales'') \textless ggproto object: Class ScalesList,
+gg\textgreater{} add: function add\_defaults: function add\_missing:
+function backtransform\_df: function clone: function find: function
+get\_scales: function has\_scale: function input: function map\_df:
+function n: function non\_position\_scales: function scales: list
+set\_palettes: function train\_df: function transform\_df: function
+super: \textless ggproto object: Class ScalesList, gg\textgreater{}
+attr(,``guides'') \textless Guides{[}0{]} ggproto object\textgreater{}
+
+attr(,``mapping'') Aesthetic mapping: * \texttt{x} -\textgreater{}
+\texttt{Cycle} * \texttt{y} -\textgreater{}
+\texttt{if\ (y\_axis\ ==\ "Rn")\ Rn\ else\ DeltaRn} * \texttt{colour}
+-\textgreater{} \texttt{Sample\ Name} * \texttt{group} -\textgreater{}
+\texttt{interaction(source\_file,\ well\_position)} attr(,``theme'')
+List of 144 \$ line : ..@ colour : chr ``black'' ..@ linewidth : num 0.5
+..@ linetype : num 1 ..@ lineend : chr ``butt'' ..@ linejoin : chr
+``round'' ..@ arrow : logi FALSE ..@ arrow.fill : chr ``black'' ..@
+inherit.blank: logi TRUE \$ rect : ..@ fill : chr ``white'' ..@ colour :
+chr ``black'' ..@ linewidth : num 0.5 ..@ linetype : num 1 ..@ linejoin
+: chr ``round'' ..@ inherit.blank: logi TRUE \$ text : ..@ family : chr
+``\,'' ..@ face : chr ``plain'' ..@ italic : chr NA ..@ fontweight : num
+NA ..@ fontwidth : num NA ..@ colour : chr ``black'' ..@ size : num 11
+..@ hjust : num 0.5 ..@ vjust : num 0.5 ..@ angle : num 0 ..@ lineheight
+: num 0.9 ..@ margin : num {[}1:4{]} 0 0 0 0 ..@ debug : logi FALSE ..@
+inherit.blank: logi TRUE \$ title : ..@ family : NULL ..@ face : NULL
+..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@
+colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : NULL ..@
+angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ point : ..@ colour : chr ``black'' ..@
+shape : num 19 ..@ size : num 1.5 ..@ fill : chr ``white'' ..@ stroke :
+num 0.5 ..@ inherit.blank: logi TRUE \$ polygon : ..@ fill : chr
+``white'' ..@ colour : chr ``black'' ..@ linewidth : num 0.5 ..@
+linetype : num 1 ..@ linejoin : chr ``round'' ..@ inherit.blank: logi
+TRUE \$ geom : ..@ ink : chr ``black'' ..@ paper : chr ``white'' ..@
+accent : chr ``\#3366FF'' ..@ linewidth : num 0.5 ..@ borderwidth: num
+0.5 ..@ linetype : int 1 ..@ bordertype : int 1 ..@ family : chr ``\,''
+..@ fontsize : num 3.87 ..@ pointsize : num 1.5 ..@ pointshape : num 19
+..@ colour : NULL ..@ fill : NULL \$ spacing : `simpleUnit' num
+5.5points ..- attr(\emph{, ``unit'')= int 8 \$ margins : num {[}1:4{]}
+5.5 5.5 5.5 5.5 \$ aspect.ratio : NULL \$ axis.title : NULL \$
+axis.title.x : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size :
+NULL ..@ hjust : NULL ..@ vjust : num 1 ..@ angle : NULL ..@ lineheight
+: NULL ..@ margin : num {[}1:4{]} 2.75 0 0 0 ..@ debug : NULL ..@
+inherit.blank: logi TRUE \$ axis.title.x.top : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 0 ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]}
+0 0 2.75 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.x.bottom : NULL \$ axis.title.y : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : num 1
+..@ angle : num 90 ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0
+2.75 0 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.y.left : NULL \$ axis.title.y.right : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 1 ..@ angle : num -90 ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.75 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : chr
+``\#4D4D4DFF'' ..@ size : `rel' num 0.8 ..@ hjust : NULL ..@ vjust :
+NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug
+: NULL ..@ inherit.blank: logi TRUE \$ axis.text.x : ..@ family : NULL
+..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL
+..@ vjust : num 1 ..@ angle : NULL ..@ lineheight : NULL ..@ margin :
+num {[}1:4{]} 2.2 0 0 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text.x.top : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA
+..@ fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@
+size : NULL ..@ hjust : NULL ..@ vjust : num 0 ..@ angle : NULL ..@
+lineheight : NULL ..@ margin : num {[}1:4{]} 0 0 2.2 0 ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ axis.text.x.bottom : NULL \$ axis.text.y
+: ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight :
+num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@
+hjust : num 1 ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL
+..@ margin : num {[}1:4{]} 0 2.2 0 0 ..@ debug : NULL ..@ inherit.blank:
+logi TRUE \$ axis.text.y.left : NULL \$ axis.text.y.right : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0
+..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text.theta : NULL \$ axis.text.r : ..@ family : NULL ..@ face :
+NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA
+..@ colour : NULL ..@ size : NULL ..@ hjust : num 0.5 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0 2.2
+0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$ axis.ticks : ..@
+colour : chr ``\#333333FF'' ..@ linewidth : NULL ..@ linetype : NULL ..@
+lineend : NULL ..@ linejoin : NULL ..@ arrow : logi FALSE ..@ arrow.fill
+: chr ``\#333333FF'' ..@ inherit.blank: logi TRUE \$ axis.ticks.x : NULL
+\$ axis.ticks.x.top : NULL \$ axis.ticks.x.bottom : NULL \$ axis.ticks.y
+: NULL \$ axis.ticks.y.left : NULL \$ axis.ticks.y.right : NULL \$
+axis.ticks.theta : NULL \$ axis.ticks.r : NULL \$ axis.minor.ticks.x.top
+: NULL \$ axis.minor.ticks.x.bottom : NULL \$ axis.minor.ticks.y.left :
+NULL \$ axis.minor.ticks.y.right : NULL \$ axis.minor.ticks.theta : NULL
+\$ axis.minor.ticks.r : NULL \$ axis.ticks.length : `rel' num 0.5 \$
+axis.ticks.length.x : NULL \$ axis.ticks.length.x.top : NULL \$
+axis.ticks.length.x.bottom : NULL \$ axis.ticks.length.y : NULL \$
+axis.ticks.length.y.left : NULL \$ axis.ticks.length.y.right : NULL \$
+axis.ticks.length.theta : NULL \$ axis.ticks.length.r : NULL \$
+axis.minor.ticks.length : `rel' num 0.75 \$ axis.minor.ticks.length.x :
+NULL \$ axis.minor.ticks.length.x.top : NULL \$
+axis.minor.ticks.length.x.bottom: NULL \$ axis.minor.ticks.length.y :
+NULL \$ axis.minor.ticks.length.y.left : NULL \$
+axis.minor.ticks.length.y.right : NULL \$ axis.minor.ticks.length.theta
+: NULL \$ axis.minor.ticks.length.r : NULL \$ axis.line : \$ axis.line.x
+: NULL \$ axis.line.x.top : NULL \$ axis.line.x.bottom : NULL \$
+axis.line.y : NULL \$ axis.line.y.left : NULL \$ axis.line.y.right :
+NULL \$ axis.line.theta : NULL \$ axis.line.r : NULL \$
+legend.background : ..@ fill : NULL ..@ colour : logi NA ..@ linewidth :
+NULL ..@ linetype : NULL ..@ linejoin : NULL ..@ inherit.blank: logi
+TRUE \$ legend.margin : NULL \$ legend.spacing : `rel' num 2 \$
+legend.spacing.x : NULL \$ legend.spacing.y : NULL \$ legend.key : NULL
+\$ legend.key.size : `simpleUnit' num 1.2lines ..- attr(}, ``unit'')=
+int 3 \$ legend.key.height : NULL \$ legend.key.width : NULL \$
+legend.key.spacing : NULL \$ legend.key.spacing.x : NULL \$
+legend.key.spacing.y : NULL \$ legend.key.justification : NULL \$
+legend.frame : NULL \$ legend.ticks : NULL \$ legend.ticks.length :
+`rel' num 0.2 \$ legend.axis.line : NULL \$ legend.text : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : `rel' num 0.8 ..@ hjust
+: NULL ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@
+margin : NULL ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+legend.text.position : NULL \$ legend.title : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug :
+NULL ..@ inherit.blank: logi TRUE \$ legend.title.position : NULL \$
+legend.position : chr ``right'' \$ legend.position.inside : NULL \$
+legend.direction : NULL \$ legend.byrow : NULL \$ legend.justification :
+chr ``center'' \$ legend.justification.top : NULL \$
+legend.justification.bottom : NULL \$ legend.justification.left : NULL
+\$ legend.justification.right : NULL \$ legend.justification.inside :
+NULL {[}list output truncated{]} @ complete: logi TRUE @ validate: logi
+TRUE attr(,``coordinates'') \textless ggproto object: Class
+CoordCartesian, Coord, gg\textgreater{} aspect: function
+backtransform\_range: function clip: on default: TRUE distance: function
+draw\_panel: function expand: TRUE is\_free: function is\_linear:
+function labels: function limits: list modify\_scales: function range:
+function ratio: NULL render\_axis\_h: function render\_axis\_v: function
+render\_bg: function render\_fg: function reverse: none setup\_data:
+function setup\_layout: function setup\_panel\_guides: function
+setup\_panel\_params: function setup\_params: function
+train\_panel\_guides: function transform: function super:
+\textless ggproto object: Class CoordCartesian, Coord, gg\textgreater{}
+attr(,``facet'') \textless ggproto object: Class FacetWrap, Facet,
+gg\textgreater{} attach\_axes: function attach\_strips: function
+compute\_layout: function draw\_back: function draw\_front: function
+draw\_labels: function draw\_panel\_content: function draw\_panels:
+function finish\_data: function format\_strip\_labels: function
+init\_gtable: function init\_scales: function map\_data: function
+params: list set\_panel\_size: function setup\_data: function
+setup\_panel\_params: function setup\_params: function shrink: TRUE
+train\_scales: function vars: function super: \textless ggproto object:
+Class FacetWrap, Facet, gg\textgreater{} attr(,``layout'')
+\textless ggproto object: Class Layout, gg\textgreater{} coord: NULL
+coord\_params: list facet: NULL facet\_params: list finish\_data:
+function get\_scales: function layout: NULL map\_position: function
+panel\_params: NULL panel\_scales\_x: NULL panel\_scales\_y: NULL
+render: function render\_labels: function reset\_scales: function
+resolve\_label: function setup: function setup\_panel\_guides: function
+setup\_panel\_params: function train\_position: function super:
+\textless ggproto object: Class Layout, gg\textgreater{}
+attr(,``labels'') List of 4 \$ x : chr ``Cycle'' \$ y : chr ``Delta Rn''
+\$ colour: chr ``Sample Name'' \$ title : chr ``Amplifikationskurven (Y:
+Delta Rn )'' attr(,``meta'') list() attr(,``plot\_env'')
+\textless environment: 0x9cd339540\textgreater{} \n\#\# Ct SD \n\n\#\#\#
+Ct SD vs Quantity (Plot) \n\n attr(,``class'') {[}1{]}
+``ggplot2::ggplot'' ``ggplot'' ``ggplot2::gg'' ``S7\_object''\\
+{[}5{]} ``gg''\\
+attr(,``S7\_class'') class @ parent : @ constructor: function(data,
+\ldots, layers, scales, guides, mapping, theme, coordinates, facet,
+layout, labels, meta, plot\_env) \{\ldots\} @ validator : @ properties :
+\$ data : \\
+\$ layers : \\
+\$ scales : S3\\
+\$ guides : S3\\
+\$ mapping : \$ theme : \\
+\$ coordinates: S3\\
+\$ facet : S3\\
+\$ layout : S3\\
+\$ labels : \$ meta : \\
+\$ plot\_env : \\
+attr(,``data'') \# A tibble: 48 x 9 source\_file
+\texttt{Target\ Name\_res} Reporter \texttt{Sample\ Name} Quantity
+Ct\_mean Ct\_sd 1 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 35.9 0.612 2 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.6 0.395 3 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.4
+0.0905 4 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 36.6 0.311 5 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.3 0.148 6 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.3
+0.131 7 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 36.3 0.575 8 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.8 0.0645 9 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.7
+0.0567 10 251222 Verg\textasciitilde{} UBC FAM Neuer 2x
+Mix\textasciitilde{} 10 33.9 0.142 \# i 38 more rows \# i 2 more
+variables: n , Target\_ID attr(,``layers'')
+attr(,``layers'')\$geom\_point geom\_point: na.rm = FALSE
+stat\_identity: na.rm = FALSE position\_identity
+
+attr(,``layers'')\$geom\_line geom\_line: na.rm = FALSE, orientation =
+NA, arrow = NULL, arrow.fill = NULL, lineend = butt, linejoin = round,
+linemitre = 10 stat\_identity: na.rm = FALSE position\_identity
+
+attr(,``scales'') \textless ggproto object: Class ScalesList,
+gg\textgreater{} add: function add\_defaults: function add\_missing:
+function backtransform\_df: function clone: function find: function
+get\_scales: function has\_scale: function input: function map\_df:
+function n: function non\_position\_scales: function scales: list
+set\_palettes: function train\_df: function transform\_df: function
+super: \textless ggproto object: Class ScalesList, gg\textgreater{}
+attr(,``guides'') \textless Guides{[}0{]} ggproto object\textgreater{}
+
+attr(,``mapping'') Aesthetic mapping: * \texttt{x} -\textgreater{}
+\texttt{factor(Quantity)} * \texttt{y} -\textgreater{} \texttt{Ct\_sd} *
+\texttt{colour} -\textgreater{} \texttt{Sample\ Name} * \texttt{group}
+-\textgreater{} \texttt{Sample\ Name} attr(,``theme'') List of 144 \$
+line : ..@ colour : chr ``black'' ..@ linewidth : num 0.5 ..@ linetype :
+num 1 ..@ lineend : chr ``butt'' ..@ linejoin : chr ``round'' ..@ arrow
+: logi FALSE ..@ arrow.fill : chr ``black'' ..@ inherit.blank: logi TRUE
+\$ rect : ..@ fill : chr ``white'' ..@ colour : chr ``black'' ..@
+linewidth : num 0.5 ..@ linetype : num 1 ..@ linejoin : chr ``round''
+..@ inherit.blank: logi TRUE \$ text : ..@ family : chr ``\,'' ..@ face
+: chr ``plain'' ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : chr ``black'' ..@ size : num 11 ..@
+hjust : num 0.5 ..@ vjust : num 0.5 ..@ angle : num 0 ..@ lineheight :
+num 0.9 ..@ margin : num {[}1:4{]} 0 0 0 0 ..@ debug : logi FALSE ..@
+inherit.blank: logi TRUE \$ title : ..@ family : NULL ..@ face : NULL
+..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@
+colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : NULL ..@
+angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ point : ..@ colour : chr ``black'' ..@
+shape : num 19 ..@ size : num 1.5 ..@ fill : chr ``white'' ..@ stroke :
+num 0.5 ..@ inherit.blank: logi TRUE \$ polygon : ..@ fill : chr
+``white'' ..@ colour : chr ``black'' ..@ linewidth : num 0.5 ..@
+linetype : num 1 ..@ linejoin : chr ``round'' ..@ inherit.blank: logi
+TRUE \$ geom : ..@ ink : chr ``black'' ..@ paper : chr ``white'' ..@
+accent : chr ``\#3366FF'' ..@ linewidth : num 0.5 ..@ borderwidth: num
+0.5 ..@ linetype : int 1 ..@ bordertype : int 1 ..@ family : chr ``\,''
+..@ fontsize : num 3.87 ..@ pointsize : num 1.5 ..@ pointshape : num 19
+..@ colour : NULL ..@ fill : NULL \$ spacing : `simpleUnit' num
+5.5points ..- attr(\emph{, ``unit'')= int 8 \$ margins : num {[}1:4{]}
+5.5 5.5 5.5 5.5 \$ aspect.ratio : NULL \$ axis.title : NULL \$
+axis.title.x : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size :
+NULL ..@ hjust : NULL ..@ vjust : num 1 ..@ angle : NULL ..@ lineheight
+: NULL ..@ margin : num {[}1:4{]} 2.75 0 0 0 ..@ debug : NULL ..@
+inherit.blank: logi TRUE \$ axis.title.x.top : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 0 ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]}
+0 0 2.75 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.x.bottom : NULL \$ axis.title.y : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : num 1
+..@ angle : num 90 ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0
+2.75 0 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.y.left : NULL \$ axis.title.y.right : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 1 ..@ angle : num -90 ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.75 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : chr
+``\#4D4D4DFF'' ..@ size : `rel' num 0.8 ..@ hjust : NULL ..@ vjust :
+NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug
+: NULL ..@ inherit.blank: logi TRUE \$ axis.text.x : ..@ family : NULL
+..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 1
+..@ vjust : num 1 ..@ angle : num 45 ..@ lineheight : NULL ..@ margin :
+num {[}1:4{]} 2.2 0 0 0 ..@ debug : NULL ..@ inherit.blank: logi FALSE
+\$ axis.text.x.top : ..@ family : NULL ..@ face : NULL ..@ italic : chr
+NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@
+size : NULL ..@ hjust : NULL ..@ vjust : num 0 ..@ angle : NULL ..@
+lineheight : NULL ..@ margin : num {[}1:4{]} 0 0 2.2 0 ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ axis.text.x.bottom : NULL \$ axis.text.y
+: ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight :
+num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@
+hjust : num 1 ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL
+..@ margin : num {[}1:4{]} 0 2.2 0 0 ..@ debug : NULL ..@ inherit.blank:
+logi TRUE \$ axis.text.y.left : NULL \$ axis.text.y.right : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0
+..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text.theta : NULL \$ axis.text.r : ..@ family : NULL ..@ face :
+NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA
+..@ colour : NULL ..@ size : NULL ..@ hjust : num 0.5 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0 2.2
+0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$ axis.ticks : ..@
+colour : chr ``\#333333FF'' ..@ linewidth : NULL ..@ linetype : NULL ..@
+lineend : NULL ..@ linejoin : NULL ..@ arrow : logi FALSE ..@ arrow.fill
+: chr ``\#333333FF'' ..@ inherit.blank: logi TRUE \$ axis.ticks.x : NULL
+\$ axis.ticks.x.top : NULL \$ axis.ticks.x.bottom : NULL \$ axis.ticks.y
+: NULL \$ axis.ticks.y.left : NULL \$ axis.ticks.y.right : NULL \$
+axis.ticks.theta : NULL \$ axis.ticks.r : NULL \$ axis.minor.ticks.x.top
+: NULL \$ axis.minor.ticks.x.bottom : NULL \$ axis.minor.ticks.y.left :
+NULL \$ axis.minor.ticks.y.right : NULL \$ axis.minor.ticks.theta : NULL
+\$ axis.minor.ticks.r : NULL \$ axis.ticks.length : `rel' num 0.5 \$
+axis.ticks.length.x : NULL \$ axis.ticks.length.x.top : NULL \$
+axis.ticks.length.x.bottom : NULL \$ axis.ticks.length.y : NULL \$
+axis.ticks.length.y.left : NULL \$ axis.ticks.length.y.right : NULL \$
+axis.ticks.length.theta : NULL \$ axis.ticks.length.r : NULL \$
+axis.minor.ticks.length : `rel' num 0.75 \$ axis.minor.ticks.length.x :
+NULL \$ axis.minor.ticks.length.x.top : NULL \$
+axis.minor.ticks.length.x.bottom: NULL \$ axis.minor.ticks.length.y :
+NULL \$ axis.minor.ticks.length.y.left : NULL \$
+axis.minor.ticks.length.y.right : NULL \$ axis.minor.ticks.length.theta
+: NULL \$ axis.minor.ticks.length.r : NULL \$ axis.line : \$ axis.line.x
+: NULL \$ axis.line.x.top : NULL \$ axis.line.x.bottom : NULL \$
+axis.line.y : NULL \$ axis.line.y.left : NULL \$ axis.line.y.right :
+NULL \$ axis.line.theta : NULL \$ axis.line.r : NULL \$
+legend.background : ..@ fill : NULL ..@ colour : logi NA ..@ linewidth :
+NULL ..@ linetype : NULL ..@ linejoin : NULL ..@ inherit.blank: logi
+TRUE \$ legend.margin : NULL \$ legend.spacing : `rel' num 2 \$
+legend.spacing.x : NULL \$ legend.spacing.y : NULL \$ legend.key : NULL
+\$ legend.key.size : `simpleUnit' num 1.2lines ..- attr(}, ``unit'')=
+int 3 \$ legend.key.height : NULL \$ legend.key.width : NULL \$
+legend.key.spacing : NULL \$ legend.key.spacing.x : NULL \$
+legend.key.spacing.y : NULL \$ legend.key.justification : NULL \$
+legend.frame : NULL \$ legend.ticks : NULL \$ legend.ticks.length :
+`rel' num 0.2 \$ legend.axis.line : NULL \$ legend.text : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : `rel' num 0.8 ..@ hjust
+: NULL ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@
+margin : NULL ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+legend.text.position : NULL \$ legend.title : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug :
+NULL ..@ inherit.blank: logi TRUE \$ legend.title.position : NULL \$
+legend.position : chr ``right'' \$ legend.position.inside : NULL \$
+legend.direction : NULL \$ legend.byrow : NULL \$ legend.justification :
+chr ``center'' \$ legend.justification.top : NULL \$
+legend.justification.bottom : NULL \$ legend.justification.left : NULL
+\$ legend.justification.right : NULL \$ legend.justification.inside :
+NULL {[}list output truncated{]} @ complete: logi TRUE @ validate: logi
+TRUE attr(,``coordinates'') \textless ggproto object: Class
+CoordCartesian, Coord, gg\textgreater{} aspect: function
+backtransform\_range: function clip: on default: TRUE distance: function
+draw\_panel: function expand: TRUE is\_free: function is\_linear:
+function labels: function limits: list modify\_scales: function range:
+function ratio: NULL render\_axis\_h: function render\_axis\_v: function
+render\_bg: function render\_fg: function reverse: none setup\_data:
+function setup\_layout: function setup\_panel\_guides: function
+setup\_panel\_params: function setup\_params: function
+train\_panel\_guides: function transform: function super:
+\textless ggproto object: Class CoordCartesian, Coord, gg\textgreater{}
+attr(,``facet'') \textless ggproto object: Class FacetWrap, Facet,
+gg\textgreater{} attach\_axes: function attach\_strips: function
+compute\_layout: function draw\_back: function draw\_front: function
+draw\_labels: function draw\_panel\_content: function draw\_panels:
+function finish\_data: function format\_strip\_labels: function
+init\_gtable: function init\_scales: function map\_data: function
+params: list set\_panel\_size: function setup\_data: function
+setup\_panel\_params: function setup\_params: function shrink: TRUE
+train\_scales: function vars: function super: \textless ggproto object:
+Class FacetWrap, Facet, gg\textgreater{} attr(,``layout'')
+\textless ggproto object: Class Layout, gg\textgreater{} coord: NULL
+coord\_params: list facet: NULL facet\_params: list finish\_data:
+function get\_scales: function layout: NULL map\_position: function
+panel\_params: NULL panel\_scales\_x: NULL panel\_scales\_y: NULL
+render: function render\_labels: function reset\_scales: function
+resolve\_label: function setup: function setup\_panel\_guides: function
+setup\_panel\_params: function train\_position: function super:
+\textless ggproto object: Class Layout, gg\textgreater{}
+attr(,``labels'') List of 4 \$ x : chr ``Quantity'' \$ y : chr ``Ct SD''
+\$ colour: chr ``Sample Name'' \$ title : chr ``Ct SD vs Quantity''
+attr(,``meta'') list() attr(,``plot\_env'') \textless environment:
+0x9d7d2f310\textgreater{} \n\#\# Standardkurven \n\n\#\#\#
+Standardkurven Effizienz \n\n attr(,``class'') {[}1{]}
+``ggplot2::ggplot'' ``ggplot'' ``ggplot2::gg'' ``S7\_object''\\
+{[}5{]} ``gg''\\
+attr(,``S7\_class'') class @ parent : @ constructor: function(data,
+\ldots, layers, scales, guides, mapping, theme, coordinates, facet,
+layout, labels, meta, plot\_env) \{\ldots\} @ validator : @ properties :
+\$ data : \\
+\$ layers : \\
+\$ scales : S3\\
+\$ guides : S3\\
+\$ mapping : \$ theme : \\
+\$ coordinates: S3\\
+\$ facet : S3\\
+\$ layout : S3\\
+\$ labels : \$ meta : \\
+\$ plot\_env : \\
+attr(,``data'') \# A tibble: 16 x 14 source\_file Target\_ID
+\texttt{Target\ Name\_res} Reporter \texttt{Sample\ Name} logQ\_min 1
+251222 Vergleich\textasciitilde{} RNaseP {[}\textasciitilde{} RNaseP CY5
+Neuer 2x Mix\textasciitilde{} 1 2 251222 Vergleich\textasciitilde{}
+RNaseP {[}\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1 3
+251222 Vergleich\textasciitilde{} RNaseP {[}\textasciitilde{} RNaseP CY5
+Neuer 2x Mix\textasciitilde{} 1 4 251222 Vergleich\textasciitilde{} UBC
+{[}FAM{]} UBC FAM Neuer 2x Mix\textasciitilde{} 1 5 251222
+Vergleich\textasciitilde{} UBC {[}FAM{]} UBC FAM Neuer 2x
+Mix\textasciitilde{} 1 6 251222 Vergleich\textasciitilde{} UBC {[}FAM{]}
+UBC FAM Neuer 2x Mix\textasciitilde{} 1 7 260501
+Vergleich\textasciitilde{} RNaseP {[}\textasciitilde{} RNaseP CY5 Neuer
+2x Mix\textasciitilde{} 1 8 260501 Vergleich\textasciitilde{} RNaseP
+{[}\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1 9 260501
+Vergleich\textasciitilde{} RNaseP {[}\textasciitilde{} RNaseP CY5 Neuer
+2x Mix\textasciitilde{} 1 10 260501 Vergleich\textasciitilde{} UBC
+{[}FAM{]} UBC FAM Neuer 2x Mix\textasciitilde{} 1 11 260501
+Vergleich\textasciitilde{} UBC {[}FAM{]} UBC FAM Neuer 2x
+Mix\textasciitilde{} 1 12 260501 Vergleich\textasciitilde{} UBC
+{[}FAM{]} UBC FAM Neuer 2x Mix\textasciitilde{} 1 13 260501
+Vergleich\textasciitilde{} RNaseP {[}\textasciitilde{} RNaseP CY5 Neuer
+2x Mix\textasciitilde{} 1 14 260501 Vergleich\textasciitilde{} RNaseP
+{[}\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1 15
+260501 Vergleich\textasciitilde{} UBC {[}FAM{]} UBC FAM Neuer 2x
+Mix\textasciitilde{} 1 16 260501 Vergleich\textasciitilde{} UBC
+{[}FAM{]} UBC FAM Neuer 2x Mix\textasciitilde{} 1 \# i 8 more variables:
+logQ\_max , Q\_min , Q\_max , n\_points , \# slope , intercept , r2 ,
+efficiency attr(,``layers'') attr(,``layers'')\$geom\_col geom\_col:
+na.rm = FALSE, just = 0.5, lineend = butt, linejoin = mitre
+stat\_identity: na.rm = FALSE position\_stack
+
+attr(,``scales'') \textless ggproto object: Class ScalesList,
+gg\textgreater{} add: function add\_defaults: function add\_missing:
+function backtransform\_df: function clone: function find: function
+get\_scales: function has\_scale: function input: function map\_df:
+function n: function non\_position\_scales: function scales: list
+set\_palettes: function train\_df: function transform\_df: function
+super: \textless ggproto object: Class ScalesList, gg\textgreater{}
+attr(,``guides'') \textless Guides{[}0{]} ggproto object\textgreater{}
+
+attr(,``mapping'') Aesthetic mapping: * \texttt{x} -\textgreater{}
+\texttt{Sample\ Name} * \texttt{y} -\textgreater{} \texttt{efficiency} *
+\texttt{fill} -\textgreater{} \texttt{Sample\ Name} attr(,``theme'')
+List of 144 \$ line : ..@ colour : chr ``black'' ..@ linewidth : num 0.5
+..@ linetype : num 1 ..@ lineend : chr ``butt'' ..@ linejoin : chr
+``round'' ..@ arrow : logi FALSE ..@ arrow.fill : chr ``black'' ..@
+inherit.blank: logi TRUE \$ rect : ..@ fill : chr ``white'' ..@ colour :
+chr ``black'' ..@ linewidth : num 0.5 ..@ linetype : num 1 ..@ linejoin
+: chr ``round'' ..@ inherit.blank: logi TRUE \$ text : ..@ family : chr
+``\,'' ..@ face : chr ``plain'' ..@ italic : chr NA ..@ fontweight : num
+NA ..@ fontwidth : num NA ..@ colour : chr ``black'' ..@ size : num 11
+..@ hjust : num 0.5 ..@ vjust : num 0.5 ..@ angle : num 0 ..@ lineheight
+: num 0.9 ..@ margin : num {[}1:4{]} 0 0 0 0 ..@ debug : logi FALSE ..@
+inherit.blank: logi TRUE \$ title : ..@ family : NULL ..@ face : NULL
+..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@
+colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : NULL ..@
+angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ point : ..@ colour : chr ``black'' ..@
+shape : num 19 ..@ size : num 1.5 ..@ fill : chr ``white'' ..@ stroke :
+num 0.5 ..@ inherit.blank: logi TRUE \$ polygon : ..@ fill : chr
+``white'' ..@ colour : chr ``black'' ..@ linewidth : num 0.5 ..@
+linetype : num 1 ..@ linejoin : chr ``round'' ..@ inherit.blank: logi
+TRUE \$ geom : ..@ ink : chr ``black'' ..@ paper : chr ``white'' ..@
+accent : chr ``\#3366FF'' ..@ linewidth : num 0.5 ..@ borderwidth: num
+0.5 ..@ linetype : int 1 ..@ bordertype : int 1 ..@ family : chr ``\,''
+..@ fontsize : num 3.87 ..@ pointsize : num 1.5 ..@ pointshape : num 19
+..@ colour : NULL ..@ fill : NULL \$ spacing : `simpleUnit' num
+5.5points ..- attr(\emph{, ``unit'')= int 8 \$ margins : num {[}1:4{]}
+5.5 5.5 5.5 5.5 \$ aspect.ratio : NULL \$ axis.title : NULL \$
+axis.title.x : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size :
+NULL ..@ hjust : NULL ..@ vjust : num 1 ..@ angle : NULL ..@ lineheight
+: NULL ..@ margin : num {[}1:4{]} 2.75 0 0 0 ..@ debug : NULL ..@
+inherit.blank: logi TRUE \$ axis.title.x.top : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 0 ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]}
+0 0 2.75 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.x.bottom : NULL \$ axis.title.y : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : num 1
+..@ angle : num 90 ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0
+2.75 0 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.y.left : NULL \$ axis.title.y.right : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 1 ..@ angle : num -90 ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.75 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : chr
+``\#4D4D4DFF'' ..@ size : `rel' num 0.8 ..@ hjust : NULL ..@ vjust :
+NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug
+: NULL ..@ inherit.blank: logi TRUE \$ axis.text.x : ..@ family : NULL
+..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 1
+..@ vjust : num 1 ..@ angle : num 45 ..@ lineheight : NULL ..@ margin :
+num {[}1:4{]} 2.2 0 0 0 ..@ debug : NULL ..@ inherit.blank: logi FALSE
+\$ axis.text.x.top : ..@ family : NULL ..@ face : NULL ..@ italic : chr
+NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@
+size : NULL ..@ hjust : NULL ..@ vjust : num 0 ..@ angle : NULL ..@
+lineheight : NULL ..@ margin : num {[}1:4{]} 0 0 2.2 0 ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ axis.text.x.bottom : NULL \$ axis.text.y
+: ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight :
+num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@
+hjust : num 1 ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL
+..@ margin : num {[}1:4{]} 0 2.2 0 0 ..@ debug : NULL ..@ inherit.blank:
+logi TRUE \$ axis.text.y.left : NULL \$ axis.text.y.right : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0
+..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text.theta : NULL \$ axis.text.r : ..@ family : NULL ..@ face :
+NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA
+..@ colour : NULL ..@ size : NULL ..@ hjust : num 0.5 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0 2.2
+0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$ axis.ticks : ..@
+colour : chr ``\#333333FF'' ..@ linewidth : NULL ..@ linetype : NULL ..@
+lineend : NULL ..@ linejoin : NULL ..@ arrow : logi FALSE ..@ arrow.fill
+: chr ``\#333333FF'' ..@ inherit.blank: logi TRUE \$ axis.ticks.x : NULL
+\$ axis.ticks.x.top : NULL \$ axis.ticks.x.bottom : NULL \$ axis.ticks.y
+: NULL \$ axis.ticks.y.left : NULL \$ axis.ticks.y.right : NULL \$
+axis.ticks.theta : NULL \$ axis.ticks.r : NULL \$ axis.minor.ticks.x.top
+: NULL \$ axis.minor.ticks.x.bottom : NULL \$ axis.minor.ticks.y.left :
+NULL \$ axis.minor.ticks.y.right : NULL \$ axis.minor.ticks.theta : NULL
+\$ axis.minor.ticks.r : NULL \$ axis.ticks.length : `rel' num 0.5 \$
+axis.ticks.length.x : NULL \$ axis.ticks.length.x.top : NULL \$
+axis.ticks.length.x.bottom : NULL \$ axis.ticks.length.y : NULL \$
+axis.ticks.length.y.left : NULL \$ axis.ticks.length.y.right : NULL \$
+axis.ticks.length.theta : NULL \$ axis.ticks.length.r : NULL \$
+axis.minor.ticks.length : `rel' num 0.75 \$ axis.minor.ticks.length.x :
+NULL \$ axis.minor.ticks.length.x.top : NULL \$
+axis.minor.ticks.length.x.bottom: NULL \$ axis.minor.ticks.length.y :
+NULL \$ axis.minor.ticks.length.y.left : NULL \$
+axis.minor.ticks.length.y.right : NULL \$ axis.minor.ticks.length.theta
+: NULL \$ axis.minor.ticks.length.r : NULL \$ axis.line : \$ axis.line.x
+: NULL \$ axis.line.x.top : NULL \$ axis.line.x.bottom : NULL \$
+axis.line.y : NULL \$ axis.line.y.left : NULL \$ axis.line.y.right :
+NULL \$ axis.line.theta : NULL \$ axis.line.r : NULL \$
+legend.background : ..@ fill : NULL ..@ colour : logi NA ..@ linewidth :
+NULL ..@ linetype : NULL ..@ linejoin : NULL ..@ inherit.blank: logi
+TRUE \$ legend.margin : NULL \$ legend.spacing : `rel' num 2 \$
+legend.spacing.x : NULL \$ legend.spacing.y : NULL \$ legend.key : NULL
+\$ legend.key.size : `simpleUnit' num 1.2lines ..- attr(}, ``unit'')=
+int 3 \$ legend.key.height : NULL \$ legend.key.width : NULL \$
+legend.key.spacing : NULL \$ legend.key.spacing.x : NULL \$
+legend.key.spacing.y : NULL \$ legend.key.justification : NULL \$
+legend.frame : NULL \$ legend.ticks : NULL \$ legend.ticks.length :
+`rel' num 0.2 \$ legend.axis.line : NULL \$ legend.text : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : `rel' num 0.8 ..@ hjust
+: NULL ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@
+margin : NULL ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+legend.text.position : NULL \$ legend.title : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug :
+NULL ..@ inherit.blank: logi TRUE \$ legend.title.position : NULL \$
+legend.position : chr ``right'' \$ legend.position.inside : NULL \$
+legend.direction : NULL \$ legend.byrow : NULL \$ legend.justification :
+chr ``center'' \$ legend.justification.top : NULL \$
+legend.justification.bottom : NULL \$ legend.justification.left : NULL
+\$ legend.justification.right : NULL \$ legend.justification.inside :
+NULL {[}list output truncated{]} @ complete: logi TRUE @ validate: logi
+TRUE attr(,``coordinates'') \textless ggproto object: Class
+CoordCartesian, Coord, gg\textgreater{} aspect: function
+backtransform\_range: function clip: on default: TRUE distance: function
+draw\_panel: function expand: TRUE is\_free: function is\_linear:
+function labels: function limits: list modify\_scales: function range:
+function ratio: NULL render\_axis\_h: function render\_axis\_v: function
+render\_bg: function render\_fg: function reverse: none setup\_data:
+function setup\_layout: function setup\_panel\_guides: function
+setup\_panel\_params: function setup\_params: function
+train\_panel\_guides: function transform: function super:
+\textless ggproto object: Class CoordCartesian, Coord, gg\textgreater{}
+attr(,``facet'') \textless ggproto object: Class FacetWrap, Facet,
+gg\textgreater{} attach\_axes: function attach\_strips: function
+compute\_layout: function draw\_back: function draw\_front: function
+draw\_labels: function draw\_panel\_content: function draw\_panels:
+function finish\_data: function format\_strip\_labels: function
+init\_gtable: function init\_scales: function map\_data: function
+params: list set\_panel\_size: function setup\_data: function
+setup\_panel\_params: function setup\_params: function shrink: TRUE
+train\_scales: function vars: function super: \textless ggproto object:
+Class FacetWrap, Facet, gg\textgreater{} attr(,``layout'')
+\textless ggproto object: Class Layout, gg\textgreater{} coord: NULL
+coord\_params: list facet: NULL facet\_params: list finish\_data:
+function get\_scales: function layout: NULL map\_position: function
+panel\_params: NULL panel\_scales\_x: NULL panel\_scales\_y: NULL
+render: function render\_labels: function reset\_scales: function
+resolve\_label: function setup: function setup\_panel\_guides: function
+setup\_panel\_params: function train\_position: function super:
+\textless ggproto object: Class Layout, gg\textgreater{}
+attr(,``labels'') List of 4 \$ x : chr ``Sample'' \$ y : chr ``Effizienz
+(\%)'' \$ fill : chr ``Sample'' \$ title: chr ``PCR-Effizienz je
+Sample/Target'' attr(,``meta'') list() attr(,``plot\_env'')
+\textless environment: 0x9db430a50\textgreater{} \n\#\#\# Standardkurven
+Slope \n\n attr(,``class'') {[}1{]} ``ggplot2::ggplot'' ``ggplot''
+``ggplot2::gg'' ``S7\_object''\\
+{[}5{]} ``gg''\\
+attr(,``S7\_class'') class @ parent : @ constructor: function(data,
+\ldots, layers, scales, guides, mapping, theme, coordinates, facet,
+layout, labels, meta, plot\_env) \{\ldots\} @ validator : @ properties :
+\$ data : \\
+\$ layers : \\
+\$ scales : S3\\
+\$ guides : S3\\
+\$ mapping : \$ theme : \\
+\$ coordinates: S3\\
+\$ facet : S3\\
+\$ layout : S3\\
+\$ labels : \$ meta : \\
+\$ plot\_env : \\
+attr(,``data'') \# A tibble: 16 x 14 source\_file Target\_ID
+\texttt{Target\ Name\_res} Reporter \texttt{Sample\ Name} logQ\_min 1
+251222 Vergleich\textasciitilde{} RNaseP {[}\textasciitilde{} RNaseP CY5
+Neuer 2x Mix\textasciitilde{} 1 2 251222 Vergleich\textasciitilde{}
+RNaseP {[}\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1 3
+251222 Vergleich\textasciitilde{} RNaseP {[}\textasciitilde{} RNaseP CY5
+Neuer 2x Mix\textasciitilde{} 1 4 251222 Vergleich\textasciitilde{} UBC
+{[}FAM{]} UBC FAM Neuer 2x Mix\textasciitilde{} 1 5 251222
+Vergleich\textasciitilde{} UBC {[}FAM{]} UBC FAM Neuer 2x
+Mix\textasciitilde{} 1 6 251222 Vergleich\textasciitilde{} UBC {[}FAM{]}
+UBC FAM Neuer 2x Mix\textasciitilde{} 1 7 260501
+Vergleich\textasciitilde{} RNaseP {[}\textasciitilde{} RNaseP CY5 Neuer
+2x Mix\textasciitilde{} 1 8 260501 Vergleich\textasciitilde{} RNaseP
+{[}\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1 9 260501
+Vergleich\textasciitilde{} RNaseP {[}\textasciitilde{} RNaseP CY5 Neuer
+2x Mix\textasciitilde{} 1 10 260501 Vergleich\textasciitilde{} UBC
+{[}FAM{]} UBC FAM Neuer 2x Mix\textasciitilde{} 1 11 260501
+Vergleich\textasciitilde{} UBC {[}FAM{]} UBC FAM Neuer 2x
+Mix\textasciitilde{} 1 12 260501 Vergleich\textasciitilde{} UBC
+{[}FAM{]} UBC FAM Neuer 2x Mix\textasciitilde{} 1 13 260501
+Vergleich\textasciitilde{} RNaseP {[}\textasciitilde{} RNaseP CY5 Neuer
+2x Mix\textasciitilde{} 1 14 260501 Vergleich\textasciitilde{} RNaseP
+{[}\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1 15
+260501 Vergleich\textasciitilde{} UBC {[}FAM{]} UBC FAM Neuer 2x
+Mix\textasciitilde{} 1 16 260501 Vergleich\textasciitilde{} UBC
+{[}FAM{]} UBC FAM Neuer 2x Mix\textasciitilde{} 1 \# i 8 more variables:
+logQ\_max , Q\_min , Q\_max , n\_points , \# slope , intercept , r2 ,
+efficiency attr(,``layers'') attr(,``layers'')\$geom\_col geom\_col:
+na.rm = FALSE, just = 0.5, lineend = butt, linejoin = mitre
+stat\_identity: na.rm = FALSE position\_stack
+
+attr(,``scales'') \textless ggproto object: Class ScalesList,
+gg\textgreater{} add: function add\_defaults: function add\_missing:
+function backtransform\_df: function clone: function find: function
+get\_scales: function has\_scale: function input: function map\_df:
+function n: function non\_position\_scales: function scales: list
+set\_palettes: function train\_df: function transform\_df: function
+super: \textless ggproto object: Class ScalesList, gg\textgreater{}
+attr(,``guides'') \textless Guides{[}0{]} ggproto object\textgreater{}
+
+attr(,``mapping'') Aesthetic mapping: * \texttt{x} -\textgreater{}
+\texttt{Sample\ Name} * \texttt{y} -\textgreater{} \texttt{slope} *
+\texttt{fill} -\textgreater{} \texttt{Sample\ Name} attr(,``theme'')
+List of 144 \$ line : ..@ colour : chr ``black'' ..@ linewidth : num 0.5
+..@ linetype : num 1 ..@ lineend : chr ``butt'' ..@ linejoin : chr
+``round'' ..@ arrow : logi FALSE ..@ arrow.fill : chr ``black'' ..@
+inherit.blank: logi TRUE \$ rect : ..@ fill : chr ``white'' ..@ colour :
+chr ``black'' ..@ linewidth : num 0.5 ..@ linetype : num 1 ..@ linejoin
+: chr ``round'' ..@ inherit.blank: logi TRUE \$ text : ..@ family : chr
+``\,'' ..@ face : chr ``plain'' ..@ italic : chr NA ..@ fontweight : num
+NA ..@ fontwidth : num NA ..@ colour : chr ``black'' ..@ size : num 11
+..@ hjust : num 0.5 ..@ vjust : num 0.5 ..@ angle : num 0 ..@ lineheight
+: num 0.9 ..@ margin : num {[}1:4{]} 0 0 0 0 ..@ debug : logi FALSE ..@
+inherit.blank: logi TRUE \$ title : ..@ family : NULL ..@ face : NULL
+..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@
+colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : NULL ..@
+angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ point : ..@ colour : chr ``black'' ..@
+shape : num 19 ..@ size : num 1.5 ..@ fill : chr ``white'' ..@ stroke :
+num 0.5 ..@ inherit.blank: logi TRUE \$ polygon : ..@ fill : chr
+``white'' ..@ colour : chr ``black'' ..@ linewidth : num 0.5 ..@
+linetype : num 1 ..@ linejoin : chr ``round'' ..@ inherit.blank: logi
+TRUE \$ geom : ..@ ink : chr ``black'' ..@ paper : chr ``white'' ..@
+accent : chr ``\#3366FF'' ..@ linewidth : num 0.5 ..@ borderwidth: num
+0.5 ..@ linetype : int 1 ..@ bordertype : int 1 ..@ family : chr ``\,''
+..@ fontsize : num 3.87 ..@ pointsize : num 1.5 ..@ pointshape : num 19
+..@ colour : NULL ..@ fill : NULL \$ spacing : `simpleUnit' num
+5.5points ..- attr(\emph{, ``unit'')= int 8 \$ margins : num {[}1:4{]}
+5.5 5.5 5.5 5.5 \$ aspect.ratio : NULL \$ axis.title : NULL \$
+axis.title.x : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size :
+NULL ..@ hjust : NULL ..@ vjust : num 1 ..@ angle : NULL ..@ lineheight
+: NULL ..@ margin : num {[}1:4{]} 2.75 0 0 0 ..@ debug : NULL ..@
+inherit.blank: logi TRUE \$ axis.title.x.top : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 0 ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]}
+0 0 2.75 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.x.bottom : NULL \$ axis.title.y : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : num 1
+..@ angle : num 90 ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0
+2.75 0 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.y.left : NULL \$ axis.title.y.right : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 1 ..@ angle : num -90 ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.75 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : chr
+``\#4D4D4DFF'' ..@ size : `rel' num 0.8 ..@ hjust : NULL ..@ vjust :
+NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug
+: NULL ..@ inherit.blank: logi TRUE \$ axis.text.x : ..@ family : NULL
+..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 1
+..@ vjust : num 1 ..@ angle : num 45 ..@ lineheight : NULL ..@ margin :
+num {[}1:4{]} 2.2 0 0 0 ..@ debug : NULL ..@ inherit.blank: logi FALSE
+\$ axis.text.x.top : ..@ family : NULL ..@ face : NULL ..@ italic : chr
+NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@
+size : NULL ..@ hjust : NULL ..@ vjust : num 0 ..@ angle : NULL ..@
+lineheight : NULL ..@ margin : num {[}1:4{]} 0 0 2.2 0 ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ axis.text.x.bottom : NULL \$ axis.text.y
+: ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight :
+num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@
+hjust : num 1 ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL
+..@ margin : num {[}1:4{]} 0 2.2 0 0 ..@ debug : NULL ..@ inherit.blank:
+logi TRUE \$ axis.text.y.left : NULL \$ axis.text.y.right : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0
+..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text.theta : NULL \$ axis.text.r : ..@ family : NULL ..@ face :
+NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA
+..@ colour : NULL ..@ size : NULL ..@ hjust : num 0.5 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0 2.2
+0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$ axis.ticks : ..@
+colour : chr ``\#333333FF'' ..@ linewidth : NULL ..@ linetype : NULL ..@
+lineend : NULL ..@ linejoin : NULL ..@ arrow : logi FALSE ..@ arrow.fill
+: chr ``\#333333FF'' ..@ inherit.blank: logi TRUE \$ axis.ticks.x : NULL
+\$ axis.ticks.x.top : NULL \$ axis.ticks.x.bottom : NULL \$ axis.ticks.y
+: NULL \$ axis.ticks.y.left : NULL \$ axis.ticks.y.right : NULL \$
+axis.ticks.theta : NULL \$ axis.ticks.r : NULL \$ axis.minor.ticks.x.top
+: NULL \$ axis.minor.ticks.x.bottom : NULL \$ axis.minor.ticks.y.left :
+NULL \$ axis.minor.ticks.y.right : NULL \$ axis.minor.ticks.theta : NULL
+\$ axis.minor.ticks.r : NULL \$ axis.ticks.length : `rel' num 0.5 \$
+axis.ticks.length.x : NULL \$ axis.ticks.length.x.top : NULL \$
+axis.ticks.length.x.bottom : NULL \$ axis.ticks.length.y : NULL \$
+axis.ticks.length.y.left : NULL \$ axis.ticks.length.y.right : NULL \$
+axis.ticks.length.theta : NULL \$ axis.ticks.length.r : NULL \$
+axis.minor.ticks.length : `rel' num 0.75 \$ axis.minor.ticks.length.x :
+NULL \$ axis.minor.ticks.length.x.top : NULL \$
+axis.minor.ticks.length.x.bottom: NULL \$ axis.minor.ticks.length.y :
+NULL \$ axis.minor.ticks.length.y.left : NULL \$
+axis.minor.ticks.length.y.right : NULL \$ axis.minor.ticks.length.theta
+: NULL \$ axis.minor.ticks.length.r : NULL \$ axis.line : \$ axis.line.x
+: NULL \$ axis.line.x.top : NULL \$ axis.line.x.bottom : NULL \$
+axis.line.y : NULL \$ axis.line.y.left : NULL \$ axis.line.y.right :
+NULL \$ axis.line.theta : NULL \$ axis.line.r : NULL \$
+legend.background : ..@ fill : NULL ..@ colour : logi NA ..@ linewidth :
+NULL ..@ linetype : NULL ..@ linejoin : NULL ..@ inherit.blank: logi
+TRUE \$ legend.margin : NULL \$ legend.spacing : `rel' num 2 \$
+legend.spacing.x : NULL \$ legend.spacing.y : NULL \$ legend.key : NULL
+\$ legend.key.size : `simpleUnit' num 1.2lines ..- attr(}, ``unit'')=
+int 3 \$ legend.key.height : NULL \$ legend.key.width : NULL \$
+legend.key.spacing : NULL \$ legend.key.spacing.x : NULL \$
+legend.key.spacing.y : NULL \$ legend.key.justification : NULL \$
+legend.frame : NULL \$ legend.ticks : NULL \$ legend.ticks.length :
+`rel' num 0.2 \$ legend.axis.line : NULL \$ legend.text : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : `rel' num 0.8 ..@ hjust
+: NULL ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@
+margin : NULL ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+legend.text.position : NULL \$ legend.title : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug :
+NULL ..@ inherit.blank: logi TRUE \$ legend.title.position : NULL \$
+legend.position : chr ``right'' \$ legend.position.inside : NULL \$
+legend.direction : NULL \$ legend.byrow : NULL \$ legend.justification :
+chr ``center'' \$ legend.justification.top : NULL \$
+legend.justification.bottom : NULL \$ legend.justification.left : NULL
+\$ legend.justification.right : NULL \$ legend.justification.inside :
+NULL {[}list output truncated{]} @ complete: logi TRUE @ validate: logi
+TRUE attr(,``coordinates'') \textless ggproto object: Class
+CoordCartesian, Coord, gg\textgreater{} aspect: function
+backtransform\_range: function clip: on default: TRUE distance: function
+draw\_panel: function expand: TRUE is\_free: function is\_linear:
+function labels: function limits: list modify\_scales: function range:
+function ratio: NULL render\_axis\_h: function render\_axis\_v: function
+render\_bg: function render\_fg: function reverse: none setup\_data:
+function setup\_layout: function setup\_panel\_guides: function
+setup\_panel\_params: function setup\_params: function
+train\_panel\_guides: function transform: function super:
+\textless ggproto object: Class CoordCartesian, Coord, gg\textgreater{}
+attr(,``facet'') \textless ggproto object: Class FacetWrap, Facet,
+gg\textgreater{} attach\_axes: function attach\_strips: function
+compute\_layout: function draw\_back: function draw\_front: function
+draw\_labels: function draw\_panel\_content: function draw\_panels:
+function finish\_data: function format\_strip\_labels: function
+init\_gtable: function init\_scales: function map\_data: function
+params: list set\_panel\_size: function setup\_data: function
+setup\_panel\_params: function setup\_params: function shrink: TRUE
+train\_scales: function vars: function super: \textless ggproto object:
+Class FacetWrap, Facet, gg\textgreater{} attr(,``layout'')
+\textless ggproto object: Class Layout, gg\textgreater{} coord: NULL
+coord\_params: list facet: NULL facet\_params: list finish\_data:
+function get\_scales: function layout: NULL map\_position: function
+panel\_params: NULL panel\_scales\_x: NULL panel\_scales\_y: NULL
+render: function render\_labels: function reset\_scales: function
+resolve\_label: function setup: function setup\_panel\_guides: function
+setup\_panel\_params: function train\_position: function super:
+\textless ggproto object: Class Layout, gg\textgreater{}
+attr(,``labels'') List of 4 \$ x : chr ``Sample'' \$ y : chr ``Slope''
+\$ fill : chr ``Sample'' \$ title: chr ``Steigungen der Standardkurven''
+attr(,``meta'') list() attr(,``plot\_env'') \textless environment:
+0x9deab07e8\textgreater{} \n\#\#\# Standardkurven Scatterplot \n\n
+attr(,``class'') {[}1{]} ``ggplot2::ggplot'' ``ggplot'' ``ggplot2::gg''
+``S7\_object''\\
+{[}5{]} ``gg''\\
+attr(,``S7\_class'') class @ parent : @ constructor: function(data,
+\ldots, layers, scales, guides, mapping, theme, coordinates, facet,
+layout, labels, meta, plot\_env) \{\ldots\} @ validator : @ properties :
+\$ data : \\
+\$ layers : \\
+\$ scales : S3\\
+\$ guides : S3\\
+\$ mapping : \$ theme : \\
+\$ coordinates: S3\\
+\$ facet : S3\\
+\$ layout : S3\\
+\$ labels : \$ meta : \\
+\$ plot\_env : \\
+attr(,``data'') \# A tibble: 24 x 10 source\_file
+\texttt{Target\ Name\_res} Reporter \texttt{Sample\ Name} Quantity
+Ct\_mean Ct\_sd 1 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 35.9 0.612 2 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.6 0.395 3 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.4
+0.0905 4 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 36.6 0.311 5 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.3 0.148 6 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.3
+0.131 7 251222 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 36.3 0.575 8 251222 Verg\textasciitilde{} RNaseP
+CY5 Neuer 2x Mix\textasciitilde{} 100 32.8 0.0645 9 251222
+Verg\textasciitilde{} RNaseP CY5 Neuer 2x Mix\textasciitilde{} 1000 29.7
+0.0567 10 260501 Verg\textasciitilde{} RNaseP CY5 Neuer 2x
+Mix\textasciitilde{} 10 36.5 0.765 \# i 14 more rows \# i 3 more
+variables: n , Target\_ID , logQ attr(,``layers'')
+attr(,``layers'')\$geom\_point geom\_point: na.rm = FALSE
+stat\_identity: na.rm = FALSE position\_identity
+
+attr(,``layers'')\$geom\_smooth geom\_smooth: na.rm = FALSE, orientation
+= NA, se = FALSE stat\_smooth: na.rm = FALSE, orientation = NA, se =
+FALSE, method = lm position\_identity
+
+attr(,``layers'')\$geom\_segment mapping: xend = \textasciitilde logQ,
+yend = \textasciitilde predict(lm(Ct\_mean \textasciitilde{} logQ, data
+= df)) geom\_segment: na.rm = FALSE, arrow = NULL, arrow.fill = NULL,
+lineend = butt, linejoin = round stat\_identity: na.rm = FALSE
+position\_identity
+
+attr(,``scales'') \textless ggproto object: Class ScalesList,
+gg\textgreater{} add: function add\_defaults: function add\_missing:
+function backtransform\_df: function clone: function find: function
+get\_scales: function has\_scale: function input: function map\_df:
+function n: function non\_position\_scales: function scales: list
+set\_palettes: function train\_df: function transform\_df: function
+super: \textless ggproto object: Class ScalesList, gg\textgreater{}
+attr(,``guides'') \textless Guides{[}0{]} ggproto object\textgreater{}
+
+attr(,``mapping'') Aesthetic mapping: * \texttt{x} -\textgreater{}
+\texttt{logQ} * \texttt{y} -\textgreater{} \texttt{Ct\_mean} *
+\texttt{colour} -\textgreater{} \texttt{Sample\ Name} attr(,``theme'')
+List of 144 \$ line : ..@ colour : chr ``black'' ..@ linewidth : num 0.5
+..@ linetype : num 1 ..@ lineend : chr ``butt'' ..@ linejoin : chr
+``round'' ..@ arrow : logi FALSE ..@ arrow.fill : chr ``black'' ..@
+inherit.blank: logi TRUE \$ rect : ..@ fill : chr ``white'' ..@ colour :
+chr ``black'' ..@ linewidth : num 0.5 ..@ linetype : num 1 ..@ linejoin
+: chr ``round'' ..@ inherit.blank: logi TRUE \$ text : ..@ family : chr
+``\,'' ..@ face : chr ``plain'' ..@ italic : chr NA ..@ fontweight : num
+NA ..@ fontwidth : num NA ..@ colour : chr ``black'' ..@ size : num 11
+..@ hjust : num 0.5 ..@ vjust : num 0.5 ..@ angle : num 0 ..@ lineheight
+: num 0.9 ..@ margin : num {[}1:4{]} 0 0 0 0 ..@ debug : logi FALSE ..@
+inherit.blank: logi TRUE \$ title : ..@ family : NULL ..@ face : NULL
+..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@
+colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : NULL ..@
+angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ point : ..@ colour : chr ``black'' ..@
+shape : num 19 ..@ size : num 1.5 ..@ fill : chr ``white'' ..@ stroke :
+num 0.5 ..@ inherit.blank: logi TRUE \$ polygon : ..@ fill : chr
+``white'' ..@ colour : chr ``black'' ..@ linewidth : num 0.5 ..@
+linetype : num 1 ..@ linejoin : chr ``round'' ..@ inherit.blank: logi
+TRUE \$ geom : ..@ ink : chr ``black'' ..@ paper : chr ``white'' ..@
+accent : chr ``\#3366FF'' ..@ linewidth : num 0.5 ..@ borderwidth: num
+0.5 ..@ linetype : int 1 ..@ bordertype : int 1 ..@ family : chr ``\,''
+..@ fontsize : num 3.87 ..@ pointsize : num 1.5 ..@ pointshape : num 19
+..@ colour : NULL ..@ fill : NULL \$ spacing : `simpleUnit' num
+5.5points ..- attr(\emph{, ``unit'')= int 8 \$ margins : num {[}1:4{]}
+5.5 5.5 5.5 5.5 \$ aspect.ratio : NULL \$ axis.title : NULL \$
+axis.title.x : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size :
+NULL ..@ hjust : NULL ..@ vjust : num 1 ..@ angle : NULL ..@ lineheight
+: NULL ..@ margin : num {[}1:4{]} 2.75 0 0 0 ..@ debug : NULL ..@
+inherit.blank: logi TRUE \$ axis.title.x.top : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 0 ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]}
+0 0 2.75 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.x.bottom : NULL \$ axis.title.y : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : num 1
+..@ angle : num 90 ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0
+2.75 0 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.y.left : NULL \$ axis.title.y.right : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 1 ..@ angle : num -90 ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.75 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : chr
+``\#4D4D4DFF'' ..@ size : `rel' num 0.8 ..@ hjust : NULL ..@ vjust :
+NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug
+: NULL ..@ inherit.blank: logi TRUE \$ axis.text.x : ..@ family : NULL
+..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL
+..@ vjust : num 1 ..@ angle : NULL ..@ lineheight : NULL ..@ margin :
+num {[}1:4{]} 2.2 0 0 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text.x.top : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA
+..@ fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@
+size : NULL ..@ hjust : NULL ..@ vjust : num 0 ..@ angle : NULL ..@
+lineheight : NULL ..@ margin : num {[}1:4{]} 0 0 2.2 0 ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ axis.text.x.bottom : NULL \$ axis.text.y
+: ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight :
+num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@
+hjust : num 1 ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL
+..@ margin : num {[}1:4{]} 0 2.2 0 0 ..@ debug : NULL ..@ inherit.blank:
+logi TRUE \$ axis.text.y.left : NULL \$ axis.text.y.right : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0
+..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text.theta : NULL \$ axis.text.r : ..@ family : NULL ..@ face :
+NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA
+..@ colour : NULL ..@ size : NULL ..@ hjust : num 0.5 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0 2.2
+0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$ axis.ticks : ..@
+colour : chr ``\#333333FF'' ..@ linewidth : NULL ..@ linetype : NULL ..@
+lineend : NULL ..@ linejoin : NULL ..@ arrow : logi FALSE ..@ arrow.fill
+: chr ``\#333333FF'' ..@ inherit.blank: logi TRUE \$ axis.ticks.x : NULL
+\$ axis.ticks.x.top : NULL \$ axis.ticks.x.bottom : NULL \$ axis.ticks.y
+: NULL \$ axis.ticks.y.left : NULL \$ axis.ticks.y.right : NULL \$
+axis.ticks.theta : NULL \$ axis.ticks.r : NULL \$ axis.minor.ticks.x.top
+: NULL \$ axis.minor.ticks.x.bottom : NULL \$ axis.minor.ticks.y.left :
+NULL \$ axis.minor.ticks.y.right : NULL \$ axis.minor.ticks.theta : NULL
+\$ axis.minor.ticks.r : NULL \$ axis.ticks.length : `rel' num 0.5 \$
+axis.ticks.length.x : NULL \$ axis.ticks.length.x.top : NULL \$
+axis.ticks.length.x.bottom : NULL \$ axis.ticks.length.y : NULL \$
+axis.ticks.length.y.left : NULL \$ axis.ticks.length.y.right : NULL \$
+axis.ticks.length.theta : NULL \$ axis.ticks.length.r : NULL \$
+axis.minor.ticks.length : `rel' num 0.75 \$ axis.minor.ticks.length.x :
+NULL \$ axis.minor.ticks.length.x.top : NULL \$
+axis.minor.ticks.length.x.bottom: NULL \$ axis.minor.ticks.length.y :
+NULL \$ axis.minor.ticks.length.y.left : NULL \$
+axis.minor.ticks.length.y.right : NULL \$ axis.minor.ticks.length.theta
+: NULL \$ axis.minor.ticks.length.r : NULL \$ axis.line : \$ axis.line.x
+: NULL \$ axis.line.x.top : NULL \$ axis.line.x.bottom : NULL \$
+axis.line.y : NULL \$ axis.line.y.left : NULL \$ axis.line.y.right :
+NULL \$ axis.line.theta : NULL \$ axis.line.r : NULL \$
+legend.background : ..@ fill : NULL ..@ colour : logi NA ..@ linewidth :
+NULL ..@ linetype : NULL ..@ linejoin : NULL ..@ inherit.blank: logi
+TRUE \$ legend.margin : NULL \$ legend.spacing : `rel' num 2 \$
+legend.spacing.x : NULL \$ legend.spacing.y : NULL \$ legend.key : NULL
+\$ legend.key.size : `simpleUnit' num 1.2lines ..- attr(}, ``unit'')=
+int 3 \$ legend.key.height : NULL \$ legend.key.width : NULL \$
+legend.key.spacing : NULL \$ legend.key.spacing.x : NULL \$
+legend.key.spacing.y : NULL \$ legend.key.justification : NULL \$
+legend.frame : NULL \$ legend.ticks : NULL \$ legend.ticks.length :
+`rel' num 0.2 \$ legend.axis.line : NULL \$ legend.text : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : `rel' num 0.8 ..@ hjust
+: NULL ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@
+margin : NULL ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+legend.text.position : NULL \$ legend.title : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug :
+NULL ..@ inherit.blank: logi TRUE \$ legend.title.position : NULL \$
+legend.position : chr ``right'' \$ legend.position.inside : NULL \$
+legend.direction : NULL \$ legend.byrow : NULL \$ legend.justification :
+chr ``center'' \$ legend.justification.top : NULL \$
+legend.justification.bottom : NULL \$ legend.justification.left : NULL
+\$ legend.justification.right : NULL \$ legend.justification.inside :
+NULL {[}list output truncated{]} @ complete: logi TRUE @ validate: logi
+TRUE attr(,``coordinates'') \textless ggproto object: Class
+CoordCartesian, Coord, gg\textgreater{} aspect: function
+backtransform\_range: function clip: on default: TRUE distance: function
+draw\_panel: function expand: TRUE is\_free: function is\_linear:
+function labels: function limits: list modify\_scales: function range:
+function ratio: NULL render\_axis\_h: function render\_axis\_v: function
+render\_bg: function render\_fg: function reverse: none setup\_data:
+function setup\_layout: function setup\_panel\_guides: function
+setup\_panel\_params: function setup\_params: function
+train\_panel\_guides: function transform: function super:
+\textless ggproto object: Class CoordCartesian, Coord, gg\textgreater{}
+attr(,``facet'') \textless ggproto object: Class FacetNull, Facet,
+gg\textgreater{} attach\_axes: function attach\_strips: function
+compute\_layout: function draw\_back: function draw\_front: function
+draw\_labels: function draw\_panel\_content: function draw\_panels:
+function finish\_data: function format\_strip\_labels: function
+init\_gtable: function init\_scales: function map\_data: function
+params: list set\_panel\_size: function setup\_data: function
+setup\_panel\_params: function setup\_params: function shrink: TRUE
+train\_scales: function vars: function super: \textless ggproto object:
+Class FacetNull, Facet, gg\textgreater{} attr(,``layout'')
+\textless ggproto object: Class Layout, gg\textgreater{} coord: NULL
+coord\_params: list facet: NULL facet\_params: list finish\_data:
+function get\_scales: function layout: NULL map\_position: function
+panel\_params: NULL panel\_scales\_x: NULL panel\_scales\_y: NULL
+render: function render\_labels: function reset\_scales: function
+resolve\_label: function setup: function setup\_panel\_guides: function
+setup\_panel\_params: function train\_position: function super:
+\textless ggproto object: Class Layout, gg\textgreater{}
+attr(,``labels'') List of 4 \$ x : chr ``log10(Quantity)'' \$ y : chr
+``Ct (Mean)'' \$ colour: chr ``Sample Name'' \$ title : chr
+``Standardkurven Scatterplot - RNaseP {[}CY5{]}'' attr(,``meta'') list()
+attr(,``plot\_env'') \textless environment: 0x9e2140350\textgreater{}
+\n\#\#\# Standardkurven Scatterplot \n\n attr(,``class'') {[}1{]}
+``ggplot2::ggplot'' ``ggplot'' ``ggplot2::gg'' ``S7\_object''\\
+{[}5{]} ``gg''\\
+attr(,``S7\_class'') class @ parent : @ constructor: function(data,
+\ldots, layers, scales, guides, mapping, theme, coordinates, facet,
+layout, labels, meta, plot\_env) \{\ldots\} @ validator : @ properties :
+\$ data : \\
+\$ layers : \\
+\$ scales : S3\\
+\$ guides : S3\\
+\$ mapping : \$ theme : \\
+\$ coordinates: S3\\
+\$ facet : S3\\
+\$ layout : S3\\
+\$ labels : \$ meta : \\
+\$ plot\_env : \\
+attr(,``data'') \# A tibble: 24 x 10 source\_file
+\texttt{Target\ Name\_res} Reporter \texttt{Sample\ Name} Quantity
+Ct\_mean Ct\_sd 1 251222 Verg\textasciitilde{} UBC FAM Neuer 2x
+Mix\textasciitilde{} 10 33.9 0.142 2 251222 Verg\textasciitilde{} UBC
+FAM Neuer 2x Mix\textasciitilde{} 100 30.6 0.0864 3 251222
+Verg\textasciitilde{} UBC FAM Neuer 2x Mix\textasciitilde{} 1000 27.3
+0.0425 4 251222 Verg\textasciitilde{} UBC FAM Neuer 2x
+Mix\textasciitilde{} 10 33.9 0.0525 5 251222 Verg\textasciitilde{} UBC
+FAM Neuer 2x Mix\textasciitilde{} 100 30.7 0.0174 6 251222
+Verg\textasciitilde{} UBC FAM Neuer 2x Mix\textasciitilde{} 1000 27.2
+0.0112 7 251222 Verg\textasciitilde{} UBC FAM Neuer 2x
+Mix\textasciitilde{} 10 33.9 0.0424 8 251222 Verg\textasciitilde{} UBC
+FAM Neuer 2x Mix\textasciitilde{} 100 30.7 0.0417 9 251222
+Verg\textasciitilde{} UBC FAM Neuer 2x Mix\textasciitilde{} 1000 27.3
+0.0226 10 260501 Verg\textasciitilde{} UBC FAM Neuer 2x
+Mix\textasciitilde{} 10 33.1 0.140 \# i 14 more rows \# i 3 more
+variables: n , Target\_ID , logQ attr(,``layers'')
+attr(,``layers'')\$geom\_point geom\_point: na.rm = FALSE
+stat\_identity: na.rm = FALSE position\_identity
+
+attr(,``layers'')\$geom\_smooth geom\_smooth: na.rm = FALSE, orientation
+= NA, se = FALSE stat\_smooth: na.rm = FALSE, orientation = NA, se =
+FALSE, method = lm position\_identity
+
+attr(,``layers'')\$geom\_segment mapping: xend = \textasciitilde logQ,
+yend = \textasciitilde predict(lm(Ct\_mean \textasciitilde{} logQ, data
+= df)) geom\_segment: na.rm = FALSE, arrow = NULL, arrow.fill = NULL,
+lineend = butt, linejoin = round stat\_identity: na.rm = FALSE
+position\_identity
+
+attr(,``scales'') \textless ggproto object: Class ScalesList,
+gg\textgreater{} add: function add\_defaults: function add\_missing:
+function backtransform\_df: function clone: function find: function
+get\_scales: function has\_scale: function input: function map\_df:
+function n: function non\_position\_scales: function scales: list
+set\_palettes: function train\_df: function transform\_df: function
+super: \textless ggproto object: Class ScalesList, gg\textgreater{}
+attr(,``guides'') \textless Guides{[}0{]} ggproto object\textgreater{}
+
+attr(,``mapping'') Aesthetic mapping: * \texttt{x} -\textgreater{}
+\texttt{logQ} * \texttt{y} -\textgreater{} \texttt{Ct\_mean} *
+\texttt{colour} -\textgreater{} \texttt{Sample\ Name} attr(,``theme'')
+List of 144 \$ line : ..@ colour : chr ``black'' ..@ linewidth : num 0.5
+..@ linetype : num 1 ..@ lineend : chr ``butt'' ..@ linejoin : chr
+``round'' ..@ arrow : logi FALSE ..@ arrow.fill : chr ``black'' ..@
+inherit.blank: logi TRUE \$ rect : ..@ fill : chr ``white'' ..@ colour :
+chr ``black'' ..@ linewidth : num 0.5 ..@ linetype : num 1 ..@ linejoin
+: chr ``round'' ..@ inherit.blank: logi TRUE \$ text : ..@ family : chr
+``\,'' ..@ face : chr ``plain'' ..@ italic : chr NA ..@ fontweight : num
+NA ..@ fontwidth : num NA ..@ colour : chr ``black'' ..@ size : num 11
+..@ hjust : num 0.5 ..@ vjust : num 0.5 ..@ angle : num 0 ..@ lineheight
+: num 0.9 ..@ margin : num {[}1:4{]} 0 0 0 0 ..@ debug : logi FALSE ..@
+inherit.blank: logi TRUE \$ title : ..@ family : NULL ..@ face : NULL
+..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@
+colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : NULL ..@
+angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ point : ..@ colour : chr ``black'' ..@
+shape : num 19 ..@ size : num 1.5 ..@ fill : chr ``white'' ..@ stroke :
+num 0.5 ..@ inherit.blank: logi TRUE \$ polygon : ..@ fill : chr
+``white'' ..@ colour : chr ``black'' ..@ linewidth : num 0.5 ..@
+linetype : num 1 ..@ linejoin : chr ``round'' ..@ inherit.blank: logi
+TRUE \$ geom : ..@ ink : chr ``black'' ..@ paper : chr ``white'' ..@
+accent : chr ``\#3366FF'' ..@ linewidth : num 0.5 ..@ borderwidth: num
+0.5 ..@ linetype : int 1 ..@ bordertype : int 1 ..@ family : chr ``\,''
+..@ fontsize : num 3.87 ..@ pointsize : num 1.5 ..@ pointshape : num 19
+..@ colour : NULL ..@ fill : NULL \$ spacing : `simpleUnit' num
+5.5points ..- attr(\emph{, ``unit'')= int 8 \$ margins : num {[}1:4{]}
+5.5 5.5 5.5 5.5 \$ aspect.ratio : NULL \$ axis.title : NULL \$
+axis.title.x : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size :
+NULL ..@ hjust : NULL ..@ vjust : num 1 ..@ angle : NULL ..@ lineheight
+: NULL ..@ margin : num {[}1:4{]} 2.75 0 0 0 ..@ debug : NULL ..@
+inherit.blank: logi TRUE \$ axis.title.x.top : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 0 ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]}
+0 0 2.75 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.x.bottom : NULL \$ axis.title.y : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : num 1
+..@ angle : num 90 ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0
+2.75 0 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.y.left : NULL \$ axis.title.y.right : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 1 ..@ angle : num -90 ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.75 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : chr
+``\#4D4D4DFF'' ..@ size : `rel' num 0.8 ..@ hjust : NULL ..@ vjust :
+NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug
+: NULL ..@ inherit.blank: logi TRUE \$ axis.text.x : ..@ family : NULL
+..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL
+..@ vjust : num 1 ..@ angle : NULL ..@ lineheight : NULL ..@ margin :
+num {[}1:4{]} 2.2 0 0 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text.x.top : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA
+..@ fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@
+size : NULL ..@ hjust : NULL ..@ vjust : num 0 ..@ angle : NULL ..@
+lineheight : NULL ..@ margin : num {[}1:4{]} 0 0 2.2 0 ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ axis.text.x.bottom : NULL \$ axis.text.y
+: ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight :
+num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@
+hjust : num 1 ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL
+..@ margin : num {[}1:4{]} 0 2.2 0 0 ..@ debug : NULL ..@ inherit.blank:
+logi TRUE \$ axis.text.y.left : NULL \$ axis.text.y.right : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0
+..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text.theta : NULL \$ axis.text.r : ..@ family : NULL ..@ face :
+NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA
+..@ colour : NULL ..@ size : NULL ..@ hjust : num 0.5 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0 2.2
+0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$ axis.ticks : ..@
+colour : chr ``\#333333FF'' ..@ linewidth : NULL ..@ linetype : NULL ..@
+lineend : NULL ..@ linejoin : NULL ..@ arrow : logi FALSE ..@ arrow.fill
+: chr ``\#333333FF'' ..@ inherit.blank: logi TRUE \$ axis.ticks.x : NULL
+\$ axis.ticks.x.top : NULL \$ axis.ticks.x.bottom : NULL \$ axis.ticks.y
+: NULL \$ axis.ticks.y.left : NULL \$ axis.ticks.y.right : NULL \$
+axis.ticks.theta : NULL \$ axis.ticks.r : NULL \$ axis.minor.ticks.x.top
+: NULL \$ axis.minor.ticks.x.bottom : NULL \$ axis.minor.ticks.y.left :
+NULL \$ axis.minor.ticks.y.right : NULL \$ axis.minor.ticks.theta : NULL
+\$ axis.minor.ticks.r : NULL \$ axis.ticks.length : `rel' num 0.5 \$
+axis.ticks.length.x : NULL \$ axis.ticks.length.x.top : NULL \$
+axis.ticks.length.x.bottom : NULL \$ axis.ticks.length.y : NULL \$
+axis.ticks.length.y.left : NULL \$ axis.ticks.length.y.right : NULL \$
+axis.ticks.length.theta : NULL \$ axis.ticks.length.r : NULL \$
+axis.minor.ticks.length : `rel' num 0.75 \$ axis.minor.ticks.length.x :
+NULL \$ axis.minor.ticks.length.x.top : NULL \$
+axis.minor.ticks.length.x.bottom: NULL \$ axis.minor.ticks.length.y :
+NULL \$ axis.minor.ticks.length.y.left : NULL \$
+axis.minor.ticks.length.y.right : NULL \$ axis.minor.ticks.length.theta
+: NULL \$ axis.minor.ticks.length.r : NULL \$ axis.line : \$ axis.line.x
+: NULL \$ axis.line.x.top : NULL \$ axis.line.x.bottom : NULL \$
+axis.line.y : NULL \$ axis.line.y.left : NULL \$ axis.line.y.right :
+NULL \$ axis.line.theta : NULL \$ axis.line.r : NULL \$
+legend.background : ..@ fill : NULL ..@ colour : logi NA ..@ linewidth :
+NULL ..@ linetype : NULL ..@ linejoin : NULL ..@ inherit.blank: logi
+TRUE \$ legend.margin : NULL \$ legend.spacing : `rel' num 2 \$
+legend.spacing.x : NULL \$ legend.spacing.y : NULL \$ legend.key : NULL
+\$ legend.key.size : `simpleUnit' num 1.2lines ..- attr(}, ``unit'')=
+int 3 \$ legend.key.height : NULL \$ legend.key.width : NULL \$
+legend.key.spacing : NULL \$ legend.key.spacing.x : NULL \$
+legend.key.spacing.y : NULL \$ legend.key.justification : NULL \$
+legend.frame : NULL \$ legend.ticks : NULL \$ legend.ticks.length :
+`rel' num 0.2 \$ legend.axis.line : NULL \$ legend.text : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : `rel' num 0.8 ..@ hjust
+: NULL ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@
+margin : NULL ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+legend.text.position : NULL \$ legend.title : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug :
+NULL ..@ inherit.blank: logi TRUE \$ legend.title.position : NULL \$
+legend.position : chr ``right'' \$ legend.position.inside : NULL \$
+legend.direction : NULL \$ legend.byrow : NULL \$ legend.justification :
+chr ``center'' \$ legend.justification.top : NULL \$
+legend.justification.bottom : NULL \$ legend.justification.left : NULL
+\$ legend.justification.right : NULL \$ legend.justification.inside :
+NULL {[}list output truncated{]} @ complete: logi TRUE @ validate: logi
+TRUE attr(,``coordinates'') \textless ggproto object: Class
+CoordCartesian, Coord, gg\textgreater{} aspect: function
+backtransform\_range: function clip: on default: TRUE distance: function
+draw\_panel: function expand: TRUE is\_free: function is\_linear:
+function labels: function limits: list modify\_scales: function range:
+function ratio: NULL render\_axis\_h: function render\_axis\_v: function
+render\_bg: function render\_fg: function reverse: none setup\_data:
+function setup\_layout: function setup\_panel\_guides: function
+setup\_panel\_params: function setup\_params: function
+train\_panel\_guides: function transform: function super:
+\textless ggproto object: Class CoordCartesian, Coord, gg\textgreater{}
+attr(,``facet'') \textless ggproto object: Class FacetNull, Facet,
+gg\textgreater{} attach\_axes: function attach\_strips: function
+compute\_layout: function draw\_back: function draw\_front: function
+draw\_labels: function draw\_panel\_content: function draw\_panels:
+function finish\_data: function format\_strip\_labels: function
+init\_gtable: function init\_scales: function map\_data: function
+params: list set\_panel\_size: function setup\_data: function
+setup\_panel\_params: function setup\_params: function shrink: TRUE
+train\_scales: function vars: function super: \textless ggproto object:
+Class FacetNull, Facet, gg\textgreater{} attr(,``layout'')
+\textless ggproto object: Class Layout, gg\textgreater{} coord: NULL
+coord\_params: list facet: NULL facet\_params: list finish\_data:
+function get\_scales: function layout: NULL map\_position: function
+panel\_params: NULL panel\_scales\_x: NULL panel\_scales\_y: NULL
+render: function render\_labels: function reset\_scales: function
+resolve\_label: function setup: function setup\_panel\_guides: function
+setup\_panel\_params: function train\_position: function super:
+\textless ggproto object: Class Layout, gg\textgreater{}
+attr(,``labels'') List of 4 \$ x : chr ``log10(Quantity)'' \$ y : chr
+``Ct (Mean)'' \$ colour: chr ``Sample Name'' \$ title : chr
+``Standardkurven Scatterplot - UBC {[}FAM{]}'' attr(,``meta'') list()
+attr(,``plot\_env'') \textless environment: 0x9e48311c0\textgreater{}
+\n\#\# Outlier Tests \n\n\#\#\# Outlier Residuenplot \n\n
+attr(,``class'') {[}1{]} ``ggplot2::ggplot'' ``ggplot'' ``ggplot2::gg''
+``S7\_object''\\
+{[}5{]} ``gg''\\
+attr(,``S7\_class'') class @ parent : @ constructor: function(data,
+\ldots, layers, scales, guides, mapping, theme, coordinates, facet,
+layout, labels, meta, plot\_env) \{\ldots\} @ validator : @ properties :
+\$ data : \\
+\$ layers : \\
+\$ scales : S3\\
+\$ guides : S3\\
+\$ mapping : \$ theme : \\
+\$ coordinates: S3\\
+\$ facet : S3\\
+\$ layout : S3\\
+\$ labels : \$ meta : \\
+\$ plot\_env : \\
+attr(,``data'') \# A tibble: 9 x 10 source\_file Target\_ID
+\texttt{Sample\ Name} Quantity well\_position Ct logQ 1 251222 Vergleich
+5\textasciitilde{} RNaseP {[}\textasciitilde{} 251201MM-NLR 10 A4 36.5 1
+2 251222 Vergleich 5\textasciitilde{} RNaseP {[}\textasciitilde{}
+251201MM-NLR 10 A5 36.4 1 3 251222 Vergleich 5\textasciitilde{} RNaseP
+{[}\textasciitilde{} 251201MM-NLR 10 A6 35.8 1 4 251222 Vergleich
+5\textasciitilde{} RNaseP {[}\textasciitilde{} 251201MM-NLR 100 A7 32.9
+2 5 251222 Vergleich 5\textasciitilde{} RNaseP {[}\textasciitilde{}
+251201MM-NLR 100 A8 33.3 2 6 251222 Vergleich 5\textasciitilde{} RNaseP
+{[}\textasciitilde{} 251201MM-NLR 100 A9 32.8 2 7 251222 Vergleich
+5\textasciitilde{} RNaseP {[}\textasciitilde{} 251201MM-NLR 1000 A10
+29.7 3 8 251222 Vergleich 5\textasciitilde{} RNaseP {[}\textasciitilde{}
+251201MM-NLR 1000 A11 30.9 3 9 251222 Vergleich 5\textasciitilde{}
+RNaseP {[}\textasciitilde{} 251201MM-NLR 1000 A12 29.5 3 \# i 3 more
+variables: fit\_value , resid , is\_outlier attr(,``layers'')
+attr(,``layers'')\$geom\_hline mapping: yintercept =
+\textasciitilde yintercept geom\_hline: na.rm = FALSE stat\_identity:
+na.rm = FALSE position\_identity
+
+attr(,``layers'')\$geom\_point geom\_point: na.rm = FALSE
+stat\_identity: na.rm = FALSE position\_identity
+
+attr(,``scales'') \textless ggproto object: Class ScalesList,
+gg\textgreater{} add: function add\_defaults: function add\_missing:
+function backtransform\_df: function clone: function find: function
+get\_scales: function has\_scale: function input: function map\_df:
+function n: function non\_position\_scales: function scales: list
+set\_palettes: function train\_df: function transform\_df: function
+super: \textless ggproto object: Class ScalesList, gg\textgreater{}
+attr(,``guides'') \textless Guides{[}0{]} ggproto object\textgreater{}
+
+attr(,``mapping'') Aesthetic mapping: * \texttt{x} -\textgreater{}
+\texttt{logQ} * \texttt{y} -\textgreater{} \texttt{resid} *
+\texttt{colour} -\textgreater{} \texttt{is\_outlier} attr(,``theme'')
+List of 144 \$ line : ..@ colour : chr ``black'' ..@ linewidth : num 0.5
+..@ linetype : num 1 ..@ lineend : chr ``butt'' ..@ linejoin : chr
+``round'' ..@ arrow : logi FALSE ..@ arrow.fill : chr ``black'' ..@
+inherit.blank: logi TRUE \$ rect : ..@ fill : chr ``white'' ..@ colour :
+chr ``black'' ..@ linewidth : num 0.5 ..@ linetype : num 1 ..@ linejoin
+: chr ``round'' ..@ inherit.blank: logi TRUE \$ text : ..@ family : chr
+``\,'' ..@ face : chr ``plain'' ..@ italic : chr NA ..@ fontweight : num
+NA ..@ fontwidth : num NA ..@ colour : chr ``black'' ..@ size : num 11
+..@ hjust : num 0.5 ..@ vjust : num 0.5 ..@ angle : num 0 ..@ lineheight
+: num 0.9 ..@ margin : num {[}1:4{]} 0 0 0 0 ..@ debug : logi FALSE ..@
+inherit.blank: logi TRUE \$ title : ..@ family : NULL ..@ face : NULL
+..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA ..@
+colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : NULL ..@
+angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ point : ..@ colour : chr ``black'' ..@
+shape : num 19 ..@ size : num 1.5 ..@ fill : chr ``white'' ..@ stroke :
+num 0.5 ..@ inherit.blank: logi TRUE \$ polygon : ..@ fill : chr
+``white'' ..@ colour : chr ``black'' ..@ linewidth : num 0.5 ..@
+linetype : num 1 ..@ linejoin : chr ``round'' ..@ inherit.blank: logi
+TRUE \$ geom : ..@ ink : chr ``black'' ..@ paper : chr ``white'' ..@
+accent : chr ``\#3366FF'' ..@ linewidth : num 0.5 ..@ borderwidth: num
+0.5 ..@ linetype : int 1 ..@ bordertype : int 1 ..@ family : chr ``\,''
+..@ fontsize : num 3.87 ..@ pointsize : num 1.5 ..@ pointshape : num 19
+..@ colour : NULL ..@ fill : NULL \$ spacing : `simpleUnit' num
+5.5points ..- attr(\emph{, ``unit'')= int 8 \$ margins : num {[}1:4{]}
+5.5 5.5 5.5 5.5 \$ aspect.ratio : NULL \$ axis.title : NULL \$
+axis.title.x : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size :
+NULL ..@ hjust : NULL ..@ vjust : num 1 ..@ angle : NULL ..@ lineheight
+: NULL ..@ margin : num {[}1:4{]} 2.75 0 0 0 ..@ debug : NULL ..@
+inherit.blank: logi TRUE \$ axis.title.x.top : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 0 ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]}
+0 0 2.75 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.x.bottom : NULL \$ axis.title.y : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust : num 1
+..@ angle : num 90 ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0
+2.75 0 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.title.y.left : NULL \$ axis.title.y.right : ..@ family : NULL ..@
+face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth :
+num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL ..@ vjust :
+num 1 ..@ angle : num -90 ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.75 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@
+fontweight : num NA ..@ fontwidth : num NA ..@ colour : chr
+``\#4D4D4DFF'' ..@ size : `rel' num 0.8 ..@ hjust : NULL ..@ vjust :
+NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug
+: NULL ..@ inherit.blank: logi TRUE \$ axis.text.x : ..@ family : NULL
+..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : NULL
+..@ vjust : num 1 ..@ angle : NULL ..@ lineheight : NULL ..@ margin :
+num {[}1:4{]} 2.2 0 0 0 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text.x.top : ..@ family : NULL ..@ face : NULL ..@ italic : chr NA
+..@ fontweight : num NA ..@ fontwidth : num NA ..@ colour : NULL ..@
+size : NULL ..@ hjust : NULL ..@ vjust : num 0 ..@ angle : NULL ..@
+lineheight : NULL ..@ margin : num {[}1:4{]} 0 0 2.2 0 ..@ debug : NULL
+..@ inherit.blank: logi TRUE \$ axis.text.x.bottom : NULL \$ axis.text.y
+: ..@ family : NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight :
+num NA ..@ fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@
+hjust : num 1 ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL
+..@ margin : num {[}1:4{]} 0 2.2 0 0 ..@ debug : NULL ..@ inherit.blank:
+logi TRUE \$ axis.text.y.left : NULL \$ axis.text.y.right : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0
+..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@ margin : num
+{[}1:4{]} 0 0 0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+axis.text.theta : NULL \$ axis.text.r : ..@ family : NULL ..@ face :
+NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num NA
+..@ colour : NULL ..@ size : NULL ..@ hjust : num 0.5 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : num {[}1:4{]} 0 2.2
+0 2.2 ..@ debug : NULL ..@ inherit.blank: logi TRUE \$ axis.ticks : ..@
+colour : chr ``\#333333FF'' ..@ linewidth : NULL ..@ linetype : NULL ..@
+lineend : NULL ..@ linejoin : NULL ..@ arrow : logi FALSE ..@ arrow.fill
+: chr ``\#333333FF'' ..@ inherit.blank: logi TRUE \$ axis.ticks.x : NULL
+\$ axis.ticks.x.top : NULL \$ axis.ticks.x.bottom : NULL \$ axis.ticks.y
+: NULL \$ axis.ticks.y.left : NULL \$ axis.ticks.y.right : NULL \$
+axis.ticks.theta : NULL \$ axis.ticks.r : NULL \$ axis.minor.ticks.x.top
+: NULL \$ axis.minor.ticks.x.bottom : NULL \$ axis.minor.ticks.y.left :
+NULL \$ axis.minor.ticks.y.right : NULL \$ axis.minor.ticks.theta : NULL
+\$ axis.minor.ticks.r : NULL \$ axis.ticks.length : `rel' num 0.5 \$
+axis.ticks.length.x : NULL \$ axis.ticks.length.x.top : NULL \$
+axis.ticks.length.x.bottom : NULL \$ axis.ticks.length.y : NULL \$
+axis.ticks.length.y.left : NULL \$ axis.ticks.length.y.right : NULL \$
+axis.ticks.length.theta : NULL \$ axis.ticks.length.r : NULL \$
+axis.minor.ticks.length : `rel' num 0.75 \$ axis.minor.ticks.length.x :
+NULL \$ axis.minor.ticks.length.x.top : NULL \$
+axis.minor.ticks.length.x.bottom: NULL \$ axis.minor.ticks.length.y :
+NULL \$ axis.minor.ticks.length.y.left : NULL \$
+axis.minor.ticks.length.y.right : NULL \$ axis.minor.ticks.length.theta
+: NULL \$ axis.minor.ticks.length.r : NULL \$ axis.line : \$ axis.line.x
+: NULL \$ axis.line.x.top : NULL \$ axis.line.x.bottom : NULL \$
+axis.line.y : NULL \$ axis.line.y.left : NULL \$ axis.line.y.right :
+NULL \$ axis.line.theta : NULL \$ axis.line.r : NULL \$
+legend.background : ..@ fill : NULL ..@ colour : logi NA ..@ linewidth :
+NULL ..@ linetype : NULL ..@ linejoin : NULL ..@ inherit.blank: logi
+TRUE \$ legend.margin : NULL \$ legend.spacing : `rel' num 2 \$
+legend.spacing.x : NULL \$ legend.spacing.y : NULL \$ legend.key : NULL
+\$ legend.key.size : `simpleUnit' num 1.2lines ..- attr(}, ``unit'')=
+int 3 \$ legend.key.height : NULL \$ legend.key.width : NULL \$
+legend.key.spacing : NULL \$ legend.key.spacing.x : NULL \$
+legend.key.spacing.y : NULL \$ legend.key.justification : NULL \$
+legend.frame : NULL \$ legend.ticks : NULL \$ legend.ticks.length :
+`rel' num 0.2 \$ legend.axis.line : NULL \$ legend.text : ..@ family :
+NULL ..@ face : NULL ..@ italic : chr NA ..@ fontweight : num NA ..@
+fontwidth : num NA ..@ colour : NULL ..@ size : `rel' num 0.8 ..@ hjust
+: NULL ..@ vjust : NULL ..@ angle : NULL ..@ lineheight : NULL ..@
+margin : NULL ..@ debug : NULL ..@ inherit.blank: logi TRUE \$
+legend.text.position : NULL \$ legend.title : ..@ family : NULL ..@ face
+: NULL ..@ italic : chr NA ..@ fontweight : num NA ..@ fontwidth : num
+NA ..@ colour : NULL ..@ size : NULL ..@ hjust : num 0 ..@ vjust : NULL
+..@ angle : NULL ..@ lineheight : NULL ..@ margin : NULL ..@ debug :
+NULL ..@ inherit.blank: logi TRUE \$ legend.title.position : NULL \$
+legend.position : chr ``right'' \$ legend.position.inside : NULL \$
+legend.direction : NULL \$ legend.byrow : NULL \$ legend.justification :
+chr ``center'' \$ legend.justification.top : NULL \$
+legend.justification.bottom : NULL \$ legend.justification.left : NULL
+\$ legend.justification.right : NULL \$ legend.justification.inside :
+NULL {[}list output truncated{]} @ complete: logi TRUE @ validate: logi
+TRUE attr(,``coordinates'') \textless ggproto object: Class
+CoordCartesian, Coord, gg\textgreater{} aspect: function
+backtransform\_range: function clip: on default: TRUE distance: function
+draw\_panel: function expand: TRUE is\_free: function is\_linear:
+function labels: function limits: list modify\_scales: function range:
+function ratio: NULL render\_axis\_h: function render\_axis\_v: function
+render\_bg: function render\_fg: function reverse: none setup\_data:
+function setup\_layout: function setup\_panel\_guides: function
+setup\_panel\_params: function setup\_params: function
+train\_panel\_guides: function transform: function super:
+\textless ggproto object: Class CoordCartesian, Coord, gg\textgreater{}
+attr(,``facet'') \textless ggproto object: Class FacetNull, Facet,
+gg\textgreater{} attach\_axes: function attach\_strips: function
+compute\_layout: function draw\_back: function draw\_front: function
+draw\_labels: function draw\_panel\_content: function draw\_panels:
+function finish\_data: function format\_strip\_labels: function
+init\_gtable: function init\_scales: function map\_data: function
+params: list set\_panel\_size: function setup\_data: function
+setup\_panel\_params: function setup\_params: function shrink: TRUE
+train\_scales: function vars: function super: \textless ggproto object:
+Class FacetNull, Facet, gg\textgreater{} attr(,``layout'')
+\textless ggproto object: Class Layout, gg\textgreater{} coord: NULL
+coord\_params: list facet: NULL facet\_params: list finish\_data:
+function get\_scales: function layout: NULL map\_position: function
+panel\_params: NULL panel\_scales\_x: NULL panel\_scales\_y: NULL
+render: function render\_labels: function reset\_scales: function
+resolve\_label: function setup: function setup\_panel\_guides: function
+setup\_panel\_params: function train\_position: function super:
+\textless ggproto object: Class Layout, gg\textgreater{}
+attr(,``labels'') List of 4 \$ x : chr ``log10(Quantity)'' \$ y : chr
+``Residual (Ct - Fit)'' \$ colour: chr ``Outlier'' \$ title : chr
+``Residuenplot -- RNaseP {[}CY5{]} / 251201MM-NLR ( Grubbs )''
+attr(,``meta'') list() attr(,``plot\_env'') \textless environment:
+0x9e773b850\textgreater{} \n
+
+\end{document}

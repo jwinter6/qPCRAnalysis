@@ -143,6 +143,57 @@
       raw_qpcr_melt <- dplyr::bind_rows(all_melts)
     }
     
+    melt_counts <- if (nrow(raw_qpcr_melt) > 0) {
+      raw_qpcr_melt %>%
+        count(source_file, name = "n_melt_points")
+    } else {
+      tibble(source_file = character(), n_melt_points = integer())
+    }
+
+    run_quantity_status <- raw_qpcr_all %>%
+      mutate(
+        run_id_norm = if ("run_id" %in% names(raw_qpcr_all)) {
+          dplyr::if_else(
+            !is.na(run_id) & nzchar(as.character(run_id)),
+            as.character(run_id),
+            NA_character_
+          )
+        } else {
+          NA_character_
+        },
+        experiment_id_norm = if ("experiment_id" %in% names(raw_qpcr_all)) {
+          dplyr::if_else(
+            !is.na(experiment_id) & nzchar(as.character(experiment_id)),
+            as.character(experiment_id),
+            NA_character_
+          )
+        } else {
+          NA_character_
+        },
+        run_key = dplyr::case_when(
+          !is.na(run_id_norm) & !is.na(experiment_id_norm) ~ paste0(experiment_id_norm, "::", run_id_norm),
+          !is.na(run_id_norm) ~ run_id_norm,
+          TRUE ~ "(Datei-Run)"
+        ),
+        quantity_num = suppressWarnings(as.numeric(Quantity))
+      ) %>%
+      group_by(source_file, run_key) %>%
+      summarise(
+        has_quantity = any(!is.na(quantity_num)),
+        .groups = "drop"
+      ) %>%
+      group_by(source_file) %>%
+      summarise(
+        n_runs = n(),
+        n_runs_without_quantity = sum(!has_quantity),
+        runs_without_quantity = if_else(
+          n_runs_without_quantity > 0,
+          paste(sort(run_key[!has_quantity]), collapse = ", "),
+          "-"
+        ),
+        .groups = "drop"
+      )
+
     # Datei-Übersicht (Targets / Samples / Quantities) pro Datei
     file_overview <- raw_qpcr_all %>%
       group_by(source_file) %>%
@@ -151,9 +202,45 @@
         targets      = paste(sort(unique(`Target Name_res`)), collapse = ", "),
         n_samples    = dplyr::n_distinct(`Sample Name`),
         samples      = paste(sort(unique(`Sample Name`)), collapse = ", "),
-        n_quantities = dplyr::n_distinct(Quantity),
-        quantities   = paste(sort(unique(Quantity)), collapse = ", "),
+        n_quantities = dplyr::n_distinct(suppressWarnings(as.numeric(Quantity)), na.rm = TRUE),
+        quantities   = {
+          q <- suppressWarnings(as.numeric(Quantity))
+          q <- sort(unique(q[!is.na(q)]))
+          if (length(q) == 0) "-" else paste(q, collapse = ", ")
+        },
         .groups      = "drop"
+      ) %>%
+      mutate(
+        file_type = case_when(
+          grepl("\\.rdml$", tolower(source_file)) ~ "RDML",
+          grepl("\\.xml$", tolower(source_file))  ~ "RDML",
+          grepl("\\.xlsx$", tolower(source_file)) ~ "XLSX",
+          TRUE ~ "Unbekannt"
+        )
+      ) %>%
+      left_join(melt_counts, by = "source_file") %>%
+      left_join(run_quantity_status, by = "source_file") %>%
+      mutate(
+        n_melt_points = tidyr::replace_na(n_melt_points, 0L),
+        n_runs = tidyr::replace_na(n_runs, 1L),
+        n_runs_without_quantity = tidyr::replace_na(n_runs_without_quantity, 0L),
+        runs_without_quantity = tidyr::replace_na(runs_without_quantity, "-"),
+        rdml_melt_status = case_when(
+          file_type == "RDML" & n_melt_points > 0 ~ "vorhanden",
+          file_type == "RDML" ~ "nicht vorhanden",
+          TRUE ~ "n/a"
+        ),
+        quantity_run_status = case_when(
+          n_runs_without_quantity > 0 ~ paste0(
+            "Quantity fehlt in ",
+            n_runs_without_quantity,
+            "/",
+            n_runs,
+            " Run(s): ",
+            runs_without_quantity
+          ),
+          TRUE ~ paste0("Quantity in allen ", n_runs, " Run(s) vorhanden")
+        )
       )
     
     available_files <- sort(unique(raw_qpcr_all$source_file))
@@ -182,9 +269,38 @@
     )
     
     output$load_info <- renderUI({
+      fo <- file_overview
       tagList(
         h4("Geladene Dateien"),
-        tags$ul(lapply(available_files, function(fn) tags$li(fn)))
+        tags$ul(lapply(available_files, function(fn) {
+          row <- fo %>%
+            dplyr::filter(source_file == fn) %>%
+            dplyr::slice(1)
+
+          if (nrow(row) == 0) {
+            return(tags$li(fn))
+          }
+
+          quantity_text <- row$quantity_run_status[[1]]
+
+          if (identical(row$file_type[[1]], "RDML")) {
+            return(
+              tags$li(
+                paste0(
+                  fn,
+                  " [RDML] - Melt-Daten: ",
+                  row$rdml_melt_status[[1]],
+                  " (",
+                  row$n_melt_points[[1]],
+                  " Punkte); ",
+                  quantity_text
+                )
+              )
+            )
+          }
+
+          tags$li(paste0(fn, " [", row$file_type[[1]], "] - ", quantity_text))
+        }))
       )
     })
     
@@ -264,11 +380,10 @@
       rep(NA_real_, nrow(qpcr_all))
     }
     
-    # 5) Quantity normalisieren (fehlende Werte -> 0) + Hinweis
+    # 5) Quantity normalisieren (fehlende Werte bleiben NA) + Hinweis
     quantity_vec <- suppressWarnings(as.numeric(qpcr_all$Quantity))
     quantity_missing_any <- any(is.na(quantity_vec))
     quantity_missing_all <- all(is.na(quantity_vec))
-    quantity_vec[is.na(quantity_vec)] <- 0
     
     if (isTRUE(quantity_missing_all)) {
       showModal(
@@ -281,8 +396,8 @@
               "Eine Vergleichbarkeit mit Daten, die eine Quantity besitzen, ist daher nicht gegeben."
             ),
             tags$p(
-              "Die Quantity wurde fuer diese Analyse auf 0 gesetzt. ",
-              "Plots mit Quantity auf der X-Achse koennen dadurch leer wirken oder verfremdet sein."
+              "Fehlende Quantity-Werte bleiben leer und werden in quantity-basierten Auswertungen ausgeschlossen ",
+              "(z. B. Ct vs Quantity, Ct SD vs Quantity, Standardkurven, Outlier)."
             )
           ),
           easyClose = TRUE,

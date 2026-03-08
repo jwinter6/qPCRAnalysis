@@ -37,7 +37,6 @@
       mutate(
         well_position = as.character(well_position),
         Quantity = suppressWarnings(as.numeric(Quantity)),
-        Quantity = if_else(is.na(Quantity), 0, Quantity),
         Reporter = if ("Reporter" %in% names(.)) as.character(Reporter) else NA_character_,
         Well_Type = if (!is.na(well_type_source)) as.character(.data[[well_type_source]]) else NA_character_
       )
@@ -48,7 +47,10 @@
         Sample   = paste(sort(unique(na.omit(`Sample Name`))), collapse = "/"),
         Target   = paste(sort(unique(na.omit(`Target Name_res`))), collapse = "/"),
         Dye      = paste(sort(unique(na.omit(Reporter))), collapse = "/"),
-        Quantity = paste(sort(unique(Quantity)), collapse = "/"),
+        Quantity = {
+          q <- sort(unique(Quantity[!is.na(Quantity)]))
+          if (length(q) == 0) "-" else paste(q, collapse = "/")
+        },
         Well_Type = paste(sort(unique(na.omit(Well_Type))), collapse = "/"),
         .groups  = "drop"
       )
@@ -120,7 +122,16 @@
           dye = cell$Dye[1],
           quantity = cell$Quantity[1]
         )
-        bg <- if (!is.null(color_map$colors[[cell_value]])) color_map$colors[[cell_value]] else NA_character_
+        bg <- if (
+          !is.na(cell_value) &&
+          nzchar(as.character(cell_value)) &&
+          !is.null(color_map$colors) &&
+          (as.character(cell_value) %in% names(color_map$colors))
+        ) {
+          unname(color_map$colors[[as.character(cell_value)]])
+        } else {
+          NA_character_
+        }
         style <- if (!is.na(bg)) paste0("background-color:", bg, ";") else NULL
         
         tags$td(

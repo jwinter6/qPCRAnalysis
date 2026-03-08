@@ -1,12 +1,21 @@
   ##########################
   # Ct SD vs Quantity & Heatmap
   ##########################
+
+  ctsd_quantity_data <- reactive({
+    df <- filtered_summary() %>%
+      dplyr::filter(!is.na(Quantity))
+    validate(
+      need(
+        nrow(df) > 0,
+        "Keine Daten mit Quantity fuer Ct SD vs Quantity verfuegbar (fehlende Quantity-Werte sind ausgeschlossen)."
+      )
+    )
+    df
+  })
   
   ctsd_plot_gg <- reactive({
-    df <- filtered_summary()
-    validate(
-      need(nrow(df) > 0, "Keine Daten fuer Ct SD Plot.")
-    )
+    df <- ctsd_quantity_data()
     
     ggplot(
       df,
@@ -43,7 +52,7 @@
     content = function(file) {
       withProgress(message = "Download vorbereiten: Ct SD Plot (PNG)", value = 0, {
         incProgress(0.3, detail = "Daten filtern")
-        df <- filtered_summary()
+        ctsd_quantity_data()
         
         incProgress(0.4, detail = "Plot erstellen")
         p <- ctsd_plot_gg()

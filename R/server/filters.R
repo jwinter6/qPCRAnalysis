@@ -117,8 +117,9 @@
       class = "alert alert-warning",
       tags$strong("Hinweis: Quantity fehlt."),
       tags$span(
-        " Fehlende Quantity-Werte wurden auf 0 gesetzt. ",
-        "Plots mit Quantity auf der X-Achse koennen dadurch leer wirken oder irrefuehrend sein."
+        " Fehlende Quantity-Werte bleiben leer. ",
+        "Quantity-basierte Auswertungen (z. B. Ct vs Quantity, Ct SD vs Quantity, Standardkurven, Outlier) ",
+        "schliessen diese Werte automatisch aus."
       )
     )
   }

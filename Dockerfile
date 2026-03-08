@@ -5,12 +5,13 @@ FROM rocker/shiny-verse
 RUN apt-get update && apt-get install --no-install-recommends -y \
     pandoc \
     libcairo2-dev \
+    libxml2-dev \
     libxt-dev \
     && rm -rf /var/lib/apt/lists/*
 
 
 # install R
-RUN R -e "install.packages(c('shinydashboard', 'DT', 'DBI', 'RSQLite', 'digest', 'readxl', 'readr', 'shinyFiles', 'tools', 'lubridate', 'ggplot2', 'plotly', 'shinydashboardPlus', 'ggthemes', 'writexl', 'outliers', 'EnvStats', 'pool', 'bslib', 'fresh', 'rmarkdown', 'knitr', 'tinytex'))"
+RUN R -e "install.packages(c('shinydashboard', 'DT', 'DBI', 'RSQLite', 'digest', 'readxl', 'xml2', 'readr', 'shinyFiles', 'tools', 'lubridate', 'ggplot2', 'plotly', 'shinydashboardPlus', 'ggthemes', 'writexl', 'outliers', 'EnvStats', 'pool', 'bslib', 'fresh', 'rmarkdown', 'knitr', 'tinytex', 'testthat'))"
 
 # Install TinyTeX for PDF report export
 RUN R -e "tinytex::install_tinytex()"

@@ -1,13 +1,24 @@
   ##########################
   # Ct vs Quantity - Plot
   ##########################
+
+  ctqty_quantity_data <- reactive({
+    df <- filtered_summary() %>%
+      dplyr::filter(!is.na(Quantity))
+    validate(
+      need(
+        nrow(df) > 0,
+        "Keine Daten mit Quantity fuer Ct-vs-Quantity verfuegbar (fehlende Quantity-Werte sind ausgeschlossen)."
+      )
+    )
+    df
+  })
   
   ctqty_plot_gg <- reactive({
     validate(
       need(rv$data_loaded, "Bitte zunaechst auf der Seite 'Daten laden' qPCR-Dateien laden.")
     )
-    df <- filtered_summary()
-    req(nrow(df) > 0)
+    df <- ctqty_quantity_data()
     req(!is.null(input$ct_y_min), !is.null(input$ct_y_max))
     req(input$ct_y_min < input$ct_y_max)
     
@@ -53,8 +64,7 @@
     content = function(file) {
       withProgress(message = "Download vorbereiten: Ct-Plot (PNG)", value = 0, {
         incProgress(0.3, detail = "Daten filtern")
-        df <- filtered_summary()
-        facet_scales <- input$y_scale_mode
+        ctqty_quantity_data()
         
         incProgress(0.4, detail = "Plot erstellen")
         p <- ctqty_plot_gg()
@@ -76,10 +86,7 @@
     validate(
       need(rv$data_loaded, "Bitte im Tab 'Daten laden' Dateien laden und dann 'Analyse starten' klicken.")
     )
-    df <- filtered_summary()
-    validate(
-      need(nrow(df) > 0, "Keine Daten fuer die aktuelle Auswahl von Targets / Samples.")
-    )
+    df <- ctqty_quantity_data()
     
     # Ausgabe: eine Zeile pro Kombination aus Sample, Target, Reporter, Quantity
     df %>%
