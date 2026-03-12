@@ -16,6 +16,10 @@ Tabellen sowie Exportfunktionen.
 - UI-Theming mit `fresh` (Bootstrap 4)
 - Ct vs Quantity (Mittelwert + SD) als Plot und Tabelle
 - Ct vs Sample (Ct-Only Auswertung)
+- Cluster-Scatterplot (ggplot2 + plotly) mit lokalem Sample-/Target-Filter (unabhaengig von globalen Filtern)
+- Cluster-Pairing umschaltbar: nur innerhalb gleicher Datei/Run oder datei-/run-uebergreifend auf Sample-Ebene
+- Cluster-Darstellungsmodus: aggregiert pro Sample oder als Einzelpunkte pro Well
+- Cluster-Cycle-Info zeigt letzte Cycles und markiert Unterschiede zwischen X/Y sichtbar
 - Amplifikationskurven (Rn / Delta Rn)
 - Ct SD Plots und Heatmap
 - Schmelzkurven inkl. Peak-Analyse
@@ -103,6 +107,7 @@ testthat::test_dir("tests/testthat", reporter = "summary")
   - Run-weiser Quantity-Status in der Datei-Uebersicht
   - Sicherstellung, dass fehlende Quantity als `NA` bleibt (nicht `0`)
   - Sicherstellung, dass quantity-basierte Auswertungen nur Datensaetze mit Quantity verwenden
+  - Cluster-Tab: lokale Sample-Auswahl funktioniert unabhaengig vom globalen Sample-Filter
   - Validierungsfehler fuer Ct-vs-Quantity/Ct-SD-vs-Quantity, wenn komplett keine Quantity vorliegt
 
 ### Testdaten
@@ -131,14 +136,16 @@ docker run --rm -p 3838:3838 qpcranalysis
 2. Datei-Uebersicht pruefen (inkl. Melt-Status bei RDML und Quantity-Status pro Run).
 3. In "Dateien fuer Analyse auswaehlen" die gewuenschten Dateien markieren und "Analyse starten".
 4. In der Sidebar globale Filter setzen (Targets, Samples, Achsen, Dateien getrennt/zusammen).
-5. Ergebnisse in den Tabs ansehen und bei Bedarf als PNG/XLSX exportieren.
-6. Plate Overview pruefen (Plattenansichten nach Target/Sample/Farbstoff/Quantity).
-7. Inhalte per Button zum Report hinzufuegen und im Tab "Report Export" als PDF/HTML/Word exportieren.
+5. Im Tab "Cluster" lokale Samples und X-/Y-Targets fuer einen unabhaengigen Scatterplot waehlen.
+6. Ergebnisse in den Tabs ansehen und bei Bedarf als PNG/XLSX exportieren.
+7. Plate Overview pruefen (Plattenansichten nach Target/Sample/Farbstoff/Quantity).
+8. Inhalte per Button zum Report hinzufuegen und im Tab "Report Export" als PDF/HTML/Word exportieren.
 
 ## Ergebnisse & Exporte
 
 - Ct vs Quantity: Plot + Tabelle
 - Ct vs Sample: Plot + Tabelle
+- Cluster: Scatterplot (ggplot2/plotly) + Datentabelle (gleiche Datengrundlage)
 - Amplifikationskurven: Plot (Rn / Delta Rn)
 - Ct SD: Plot + Heatmap + Tabelle
 - Schmelzkurven: Plot + Peak-Tabellen

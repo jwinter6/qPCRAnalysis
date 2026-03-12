@@ -150,6 +150,116 @@ if (!exists("create_rdml_fixture")) {
   }
 }
 
+if (!exists("create_rdml_cluster_fixture")) {
+  create_rdml_cluster_fixture <- function(path) {
+    xml_txt <- paste0(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+      "<rdml version=\"1.1\">",
+      "<dye id=\"FAM\"><description>FAM</description></dye>",
+      "<dye id=\"HEX\"><description>HEX</description></dye>",
+      "<target id=\"GeneA\"><dyeId id=\"FAM\"/></target>",
+      "<target id=\"GeneB\"><dyeId id=\"HEX\"/></target>",
+      "<sample id=\"Sample_A\"><quantity><value>1.00E03</value></quantity></sample>",
+      "<sample id=\"Sample_B\"><quantity><value>1.00E02</value></quantity></sample>",
+      "<experiment id=\"exp_cluster\">",
+      "<run id=\"run_cluster\">",
+      "<pcrFormat><rows>8</rows><columns>12</columns><rowLabel>ABC</rowLabel><columnLabel>123</columnLabel></pcrFormat>",
+      "<react id=\"1\"><sample id=\"Sample_A\"/><data><tar id=\"GeneA\"/><cq>20.1</cq>",
+      "<adp><cyc>1</cyc><fluor>0.10</fluor></adp><adp><cyc>2</cyc><fluor>0.40</fluor></adp>",
+      "</data></react>",
+      "<react id=\"2\"><sample id=\"Sample_A\"/><data><tar id=\"GeneB\"/><cq>22.5</cq>",
+      "<adp><cyc>1</cyc><fluor>0.13</fluor></adp><adp><cyc>2</cyc><fluor>0.36</fluor></adp>",
+      "</data></react>",
+      "<react id=\"3\"><sample id=\"Sample_B\"/><data><tar id=\"GeneA\"/><cq>21.6</cq>",
+      "<adp><cyc>1</cyc><fluor>0.12</fluor></adp><adp><cyc>2</cyc><fluor>0.28</fluor></adp>",
+      "</data></react>",
+      "<react id=\"4\"><sample id=\"Sample_B\"/><data><tar id=\"GeneB\"/><cq>24.0</cq>",
+      "<adp><cyc>1</cyc><fluor>0.18</fluor></adp><adp><cyc>2</cyc><fluor>0.31</fluor></adp>",
+      "</data></react>",
+      "</run>",
+      "</experiment>",
+      "</rdml>"
+    )
+
+    writeLines(xml_txt, con = path, useBytes = TRUE)
+    path
+  }
+}
+
+if (!exists("create_rdml_cluster_crossrun_fixture")) {
+  create_rdml_cluster_crossrun_fixture <- function(path) {
+    xml_txt <- paste0(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+      "<rdml version=\"1.1\">",
+      "<dye id=\"FAM\"><description>FAM</description></dye>",
+      "<dye id=\"HEX\"><description>HEX</description></dye>",
+      "<target id=\"GeneA\"><dyeId id=\"FAM\"/></target>",
+      "<target id=\"GeneB\"><dyeId id=\"HEX\"/></target>",
+      "<sample id=\"Sample_X\"><quantity><value>1.00E03</value></quantity></sample>",
+      "<sample id=\"Sample_Y\"><quantity><value>1.00E02</value></quantity></sample>",
+      "<experiment id=\"exp_crossrun\">",
+      "<run id=\"run_A\">",
+      "<pcrFormat><rows>8</rows><columns>12</columns><rowLabel>ABC</rowLabel><columnLabel>123</columnLabel></pcrFormat>",
+      "<react id=\"1\"><sample id=\"Sample_X\"/><data><tar id=\"GeneA\"/><cq>20.2</cq>",
+      "<adp><cyc>1</cyc><fluor>0.10</fluor></adp><adp><cyc>2</cyc><fluor>0.50</fluor></adp>",
+      "</data></react>",
+      "<react id=\"2\"><sample id=\"Sample_Y\"/><data><tar id=\"GeneA\"/><cq>22.1</cq>",
+      "<adp><cyc>1</cyc><fluor>0.09</fluor></adp><adp><cyc>2</cyc><fluor>0.30</fluor></adp>",
+      "</data></react>",
+      "</run>",
+      "<run id=\"run_B\">",
+      "<pcrFormat><rows>8</rows><columns>12</columns><rowLabel>ABC</rowLabel><columnLabel>123</columnLabel></pcrFormat>",
+      "<react id=\"3\"><sample id=\"Sample_X\"/><data><tar id=\"GeneB\"/><cq>24.8</cq>",
+      "<adp><cyc>1</cyc><fluor>0.13</fluor></adp><adp><cyc>2</cyc><fluor>0.35</fluor></adp>",
+      "</data></react>",
+      "<react id=\"4\"><sample id=\"Sample_Y\"/><data><tar id=\"GeneB\"/><cq>25.5</cq>",
+      "<adp><cyc>1</cyc><fluor>0.11</fluor></adp><adp><cyc>2</cyc><fluor>0.26</fluor></adp>",
+      "</data></react>",
+      "</run>",
+      "</experiment>",
+      "</rdml>"
+    )
+
+    writeLines(xml_txt, con = path, useBytes = TRUE)
+    path
+  }
+}
+
+if (!exists("create_rdml_cluster_well_fixture")) {
+  create_rdml_cluster_well_fixture <- function(path) {
+    xml_txt <- paste0(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+      "<rdml version=\"1.1\">",
+      "<dye id=\"FAM\"><description>FAM</description></dye>",
+      "<dye id=\"HEX\"><description>HEX</description></dye>",
+      "<target id=\"GeneA\"><dyeId id=\"FAM\"/></target>",
+      "<target id=\"GeneB\"><dyeId id=\"HEX\"/></target>",
+      "<sample id=\"Sample_A\"><quantity><value>1.00E03</value></quantity></sample>",
+      "<experiment id=\"exp_well\">",
+      "<run id=\"run_well\">",
+      "<pcrFormat><rows>8</rows><columns>12</columns><rowLabel>ABC</rowLabel><columnLabel>123</columnLabel></pcrFormat>",
+      "<react id=\"1\"><sample id=\"Sample_A\"/><data><tar id=\"GeneA\"/><cq>20.0</cq>",
+      "<adp><cyc>1</cyc><fluor>0.10</fluor></adp><adp><cyc>2</cyc><fluor>0.40</fluor></adp>",
+      "</data></react>",
+      "<react id=\"2\"><sample id=\"Sample_A\"/><data><tar id=\"GeneA\"/><cq>20.4</cq>",
+      "<adp><cyc>1</cyc><fluor>0.12</fluor></adp><adp><cyc>2</cyc><fluor>0.44</fluor></adp>",
+      "</data></react>",
+      "<react id=\"3\"><sample id=\"Sample_A\"/><data><tar id=\"GeneB\"/><cq>23.1</cq>",
+      "<adp><cyc>1</cyc><fluor>0.16</fluor></adp><adp><cyc>2</cyc><fluor>0.35</fluor></adp>",
+      "</data></react>",
+      "<react id=\"4\"><sample id=\"Sample_A\"/><data><tar id=\"GeneB\"/><cq>23.6</cq>",
+      "<adp><cyc>1</cyc><fluor>0.18</fluor></adp><adp><cyc>2</cyc><fluor>0.39</fluor></adp>",
+      "</data></react>",
+      "</run>",
+      "</experiment>",
+      "</rdml>"
+    )
+
+    writeLines(xml_txt, con = path, useBytes = TRUE)
+    path
+  }
+}
+
 if (!exists("create_rdml_zip_fixture")) {
   create_rdml_zip_fixture <- function(path) {
     zip_bin <- Sys.which("zip")

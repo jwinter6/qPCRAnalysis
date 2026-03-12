@@ -32,7 +32,7 @@ tab_help <- bslib::nav_panel(
             ),
             tags$li(
               strong("Analyse-Tabs durchgehen."),
-              " Ct-, Fluoreszenz-, Amplifikations-, SD-, Melt-, Standardkurven- und Outlier-Auswertung."
+              " Cluster-, Ct-, Fluoreszenz-, Amplifikations-, SD-, Melt-, Standardkurven- und Outlier-Auswertung."
             ),
             tags$li(
               strong("Ergebnisse exportieren."),
@@ -47,7 +47,8 @@ tab_help <- bslib::nav_panel(
           tags$ul(
             tags$li("Upload und Analyse sind getrennt: Laden erstellt Rohdaten, Analyse erzeugt Kennzahlen und Filteroptionen."),
             tags$li("Quantity-basierte Auswertungen ignorieren fehlende Quantity-Werte (kein Ersatz durch 0)."),
-            tags$li("Die meisten Plots/Tables reagieren sofort auf globale Sidebar-Filter.")
+            tags$li("Die meisten Plots/Tables reagieren sofort auf globale Sidebar-Filter."),
+            tags$li("Der Tab Cluster nutzt eigene lokale Samples/Targets und ist absichtlich unabhaengig von globalen Target-/Sample-Filtern.")
           )
         ),
         bslib::nav_panel(
@@ -103,6 +104,18 @@ tab_help <- bslib::nav_panel(
               ": Sichtfenster fuer Ct-Plots. Regel: ",
               code("Y-Min < Y-Max"),
               "."
+            ),
+            tags$li(
+              strong("Cluster-Filter (lokal)"),
+              ": ",
+              code("Samples (lokal)"),
+              ", ",
+              code("Target fuer X-Achse"),
+              " und ",
+              code("Target fuer Y-Achse"),
+              " gelten nur im Tab ",
+              code("Cluster"),
+              " und werden nicht von der Sidebar ueberschrieben."
             )
           ),
           h3("Empfohlene Einstellungen"),
@@ -206,6 +219,28 @@ tab_help <- bslib::nav_panel(
           tags$ul(
             tags$li("Globale Target-/Sample-Filter begrenzen die dargestellten Gruppen."),
             tags$li(code("Dateien getrennt anzeigen"), " trennt Facets je Datei.")
+          )
+        ),
+        bslib::nav_panel(
+          "Cluster",
+          h3("Was du hier siehst"),
+          tags$ul(
+            tags$li("Scatterplot mit frei konfigurierter X- und Y-Achse je Target."),
+            tags$li("Zwei Darstellungen derselben Daten: ", code("ggplot2"), " (statisch) und ", code("plotly"), " (interaktiv)."),
+            tags$li("Datentabelle unterhalb der Plots mit exakt derselben Plot-Grundlage.")
+          ),
+          h3("Warum diese Seite wichtig ist"),
+          tags$p("Cluster zeigt Zusammenhaenge zwischen zwei Signalkennzahlen auf Sample-Ebene und erlaubt den direkten Vergleich zweier Targets."),
+          h3("Einstellungen mit Effekt"),
+          tags$ul(
+            tags$li(code("Samples (lokal)"), ": lokale Sample-Auswahl, unabhaengig von globalen Sidebar-Filtern."),
+            tags$li(code("Target fuer X-Achse"), " / ", code("Target fuer Y-Achse"), ": bestimmen, aus welchem Target die X-/Y-Werte kommen."),
+            tags$li(code("Datei/Run-uebergreifend paaren"), ": ", code("Ja"), " paart auf Sample-Ebene ueber Runs/Dateien; ", code("Nein"), " paart nur innerhalb identischer Datei+Run."),
+            tags$li(code("Darstellungsmodus"), ": ", code("Aggregiert pro Sample"), " zeigt einen Punkt pro Sample; ", code("Einzelpunkte pro Well"), " zeigt Well-basierte Einzelpunkte/Paare."),
+            tags$li(code("X-Parameter"), " / ", code("Y-Parameter"), ": waehlen die Messgroesse je Achse (Default: Fluoreszenz letzter Cycle)."),
+            tags$li(code("Farbe/Fuellung nach"), ": optionales gruppiertes Markieren; ", code("Keine"), " verwendet eine einheitliche Farbe."),
+            tags$li(code("Cycle-Info"), ": zeigt letzte Cycles fuer X/Y und markiert Unterschiede zwischen Parametern/Punkten sichtbar."),
+            tags$li(code("Titel/Untertitel/Achsenlabel"), ": ueberschreiben die automatisch erzeugten Plotbeschriftungen.")
           )
         ),
         bslib::nav_panel(
