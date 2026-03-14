@@ -8,13 +8,23 @@ tab_cluster <- bslib::nav_panel(
     #cluster_controls .form-control { padding-top: 0.25rem; padding-bottom: 0.25rem; }
     #cluster_controls .selectize-input { min-height: 32px; padding-top: 4px; padding-bottom: 4px; }
     #cluster_controls .selectize-input > input { line-height: 1.1; }
+    #cluster_filter_card,
+    #cluster_filter_card .card-body {
+      height: auto !important;
+      max-height: none !important;
+      overflow: visible !important;
+    }
   ")),
   fluidRow(
     column(
       width = 3,
       bslib::card(
+        id = "cluster_filter_card",
+        fill = FALSE,
         bslib::card_header("Cluster - Einstellungen"),
         bslib::card_body(
+          fillable = FALSE,
+          fill = FALSE,
           div(
             id = "cluster_controls",
             selectizeInput(
