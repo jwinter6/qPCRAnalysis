@@ -1,6 +1,119 @@
   ##########################
   # Report Export
   ##########################
+
+  analysis_export_data <- reactive({
+    if (!isTRUE(rv$data_loaded) || is.null(rv$analysis_master) || nrow(rv$analysis_master) == 0) {
+      return(tibble())
+    }
+
+    filter_analysis_master_data(
+      rv$analysis_master,
+      target_filter = input$target_filter,
+      sample_filter = input$sample_filter
+    )
+  })
+
+  analysis_export_bundle <- reactive({
+    build_analysis_export_bundle(
+      analysis_master = analysis_export_data(),
+      version_info = app_version_info,
+      analysis_label = if (!is.null(rv$analysis_context_label) && nzchar(rv$analysis_context_label)) {
+        rv$analysis_context_label
+      } else {
+        build_analysis_context_label(
+          qpcr_all = rv$qpcr_all,
+          selected_files = sort(unique(rv$qpcr_all$source_file))
+        )
+      },
+      selected_files = if (!is.null(rv$qpcr_all) && "source_file" %in% names(rv$qpcr_all)) {
+        sort(unique(rv$qpcr_all$source_file))
+      } else {
+        character()
+      },
+      target_filter = input$target_filter,
+      sample_filter = input$sample_filter,
+      quantity_missing_any = rv$quantity_missing_any,
+      quantity_missing_all = rv$quantity_missing_all,
+      separate_files = isTRUE(input$separate_files)
+    )
+  })
+
+  output$analysis_master_export_ui <- renderUI({
+    if (!isTRUE(rv$data_loaded) || is.null(rv$analysis_master) || nrow(rv$analysis_master) == 0) {
+      return(tagList(
+        tags$button(
+          type = "button",
+          class = "btn btn-secondary",
+          disabled = "disabled",
+          icon("download"),
+          " Analysedatensatz herunterladen (XLSX)"
+        ),
+        tags$p(
+          class = "text-muted mt-2 mb-0",
+          "Kein analysierter Datensatz verfuegbar. Bitte Analyse ausfuehren."
+        )
+      ))
+    }
+
+    export_df <- analysis_export_data()
+    if (nrow(export_df) == 0) {
+      return(tagList(
+        tags$button(
+          type = "button",
+          class = "btn btn-secondary",
+          disabled = "disabled",
+          icon("download"),
+          " Analysedatensatz herunterladen (XLSX)"
+        ),
+        tags$p(
+          class = "text-muted mt-2 mb-0",
+          "Die aktuellen Target-/Sample-Filter liefern keinen exportierbaren Datensatz."
+        )
+      ))
+    }
+
+    tagList(
+      downloadButton(
+        "download_analysis_master_xlsx",
+        "Analysedatensatz herunterladen (XLSX)"
+      ),
+      tags$p(
+        class = "text-muted mt-2 mb-0",
+        paste0(
+          nrow(export_df), " Zeilen, ",
+          ncol(export_df), " Spalten, ",
+          length(unique(export_df$source_file)), " Datei(en)."
+        )
+      )
+    )
+  })
+
+  output$download_analysis_master_xlsx <- downloadHandler(
+    filename = function() {
+      build_analysis_export_filename(
+        analysis_label = if (!is.null(rv$analysis_context_label) && nzchar(rv$analysis_context_label)) {
+          rv$analysis_context_label
+        } else {
+          "analysis"
+        },
+        version_info = app_version_info
+      )
+    },
+    content = function(file) {
+      export_df <- analysis_export_data()
+      if (nrow(export_df) == 0) {
+        stop("Kein exportierbarer Analysedatensatz vorhanden.")
+      }
+
+      withProgress(message = "Analysedatensatz wird exportiert", value = 0, {
+        incProgress(0.4, detail = "Daten aufbereiten")
+        sheets <- analysis_export_bundle()
+        incProgress(0.6, detail = "XLSX-Datei schreiben")
+        writexl::write_xlsx(sheets, path = file)
+      })
+    }
+  )
   
   report_add_item <- function(title, tab, type, plot = NULL, plotly = NULL, data = NULL) {
     id <- paste0(

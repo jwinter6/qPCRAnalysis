@@ -18,9 +18,14 @@ library(writexl)
 library(outliers)
 library(EnvStats)
 
+source("R/helpers_app_metadata.R")
+source("R/helpers_export.R")
 source("R/helpers_readers.R")
 source("R/helpers_standardcurves.R")
 source("R/helpers_outliers.R")
+
+app_version_info <- read_app_metadata()
+app_version_label <- format_app_version_label(app_version_info)
 
 ############################
 # UI
@@ -49,6 +54,14 @@ ui <- tagList(
     title = "qPCR Dashboard",
     id = "tabs",
     theme = bslib::bs_theme(version = 5, bootswatch = "cosmo"),
+    header = tags$style(
+      HTML(paste0(
+        ".qpcr-statusbar{display:flex;align-items:center;justify-content:flex-start;",
+        "padding:0.5rem 1rem;font-size:0.85rem;color:#6c757d;",
+        "background:#f8f9fa;border-top:1px solid #dee2e6;}"
+      ))
+    ),
+    footer = tags$div(class = "qpcr-statusbar", app_version_label),
     sidebar = ui_sidebar,
     tab_load,
     tab_plate_qc,

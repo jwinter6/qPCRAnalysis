@@ -124,6 +124,8 @@
       rv$has_delta_rn    <- FALSE
       rv$quantity_missing_any <- FALSE
       rv$quantity_missing_all <- FALSE
+      rv$analysis_master <- NULL
+      rv$analysis_context_label <- NULL
       
       output$load_status <- renderText(
         "Es konnten keine gültigen qPCR-Dateien geladen werden."
@@ -259,6 +261,8 @@
     rv$has_delta_rn    <- FALSE
     rv$quantity_missing_any <- FALSE
     rv$quantity_missing_all <- FALSE
+    rv$analysis_master <- NULL
+    rv$analysis_context_label <- NULL
     
     # Status / Info updaten
     output$load_status <- renderText(
@@ -323,6 +327,8 @@
         duration = 8
       )
       rv$data_loaded <- FALSE
+      rv$analysis_master <- NULL
+      rv$analysis_context_label <- NULL
       return(NULL)
     }
     
@@ -336,6 +342,8 @@
         duration = 8
       )
       rv$data_loaded <- FALSE
+      rv$analysis_master <- NULL
+      rv$analysis_context_label <- NULL
       return(NULL)
     }
     
@@ -351,6 +359,8 @@
         duration = 10
       )
       rv$data_loaded <- FALSE
+      rv$analysis_master <- NULL
+      rv$analysis_context_label <- NULL
       return(NULL)
     }
     
@@ -523,6 +533,11 @@
     rv$qpcr_amp     <- qpcr_amp
     rv$qpcr_melt    <- qpcr_melt
     rv$has_delta_rn <- has_delta_rn
+    rv$analysis_master <- build_analysis_master_data(qpcr_all, qpcr_summary)
+    rv$analysis_context_label <- build_analysis_context_label(
+      qpcr_all = qpcr_all,
+      selected_files = selected
+    )
     rv$data_loaded  <- TRUE
     
     # 11) Status-Meldung + Tab-Wechsel

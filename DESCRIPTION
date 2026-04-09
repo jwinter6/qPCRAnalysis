@@ -1,0 +1,7 @@
+Package: qPCRAnalysis
+Title: qPCR Dashboard for qPCR Analysis
+Version: 1.0.0
+Description: Interactive Shiny dashboard for loading, analysing, and exporting qPCR experiment data.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true

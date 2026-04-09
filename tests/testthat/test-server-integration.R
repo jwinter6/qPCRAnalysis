@@ -57,6 +57,12 @@ test_that("Server-Workflow verarbeitet Uploads und Quantity-Filterung korrekt", 
       expect_gt(nrow(fs), 0)
       expect_true(any(is.na(fs$Quantity)))
 
+      export_df <- analysis_export_data()
+      expect_gt(nrow(export_df), 0)
+      expect_true(all(c("Target_ID", "Ct_value", "Ct_mean", "rn_delta", "delta_rn_last") %in% names(export_df)))
+      expect_true(all(export_df$Target_ID %in% input$target_filter))
+      expect_true(all(export_df$`Sample Name` %in% input$sample_filter))
+
       qty_df <- ctqty_quantity_data()
       expect_gt(nrow(qty_df), 0)
       expect_false(any(is.na(qty_df$Quantity)))

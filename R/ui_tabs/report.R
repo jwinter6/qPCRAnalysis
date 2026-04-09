@@ -7,6 +7,14 @@ tab_report <- bslib::nav_panel(
       bslib::card(
         bslib::card_header("Report Export (PDF / HTML / Word)"),
         bslib::card_body(
+          h5("Analysedatensatz (XLSX)"),
+          tags$p(
+            class = "text-muted",
+            "Exportiert den aktuell analysierten Master Data Table inklusive Metadaten, aktiven Filtern und Warnhinweisen."
+          ),
+          uiOutput("analysis_master_export_ui"),
+          tags$hr(),
+          h5("Report"),
           textInput("report_name", "Report-Name (ohne Dateiendung)", value = ""),
           selectInput(
             "report_format",

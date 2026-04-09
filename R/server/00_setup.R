@@ -17,6 +17,8 @@
     has_delta_rn    = FALSE,
     quantity_missing_any = FALSE,
     quantity_missing_all = FALSE,
+    analysis_master = NULL,
+    analysis_context_label = NULL,
     report_items = list(),
     report_last_path = NULL,
     report_last_name = NULL,

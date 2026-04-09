@@ -30,6 +30,25 @@ if (!exists("load_reader_helpers")) {
   }
 }
 
+if (!exists("load_app_helpers")) {
+  load_app_helpers <- function() {
+    library(dplyr)
+    library(tidyr)
+    library(tibble)
+    library(stringr)
+    library(readxl)
+    library(xml2)
+
+    env <- new.env(parent = globalenv())
+    with_project_root({
+      source("R/helpers_app_metadata.R", local = env)
+      source("R/helpers_export.R", local = env)
+      source("R/helpers_readers.R", local = env)
+    })
+    env
+  }
+}
+
 if (!exists("load_app_server")) {
   load_app_server <- function() {
     env <- new.env(parent = globalenv())

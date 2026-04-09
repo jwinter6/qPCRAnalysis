@@ -26,8 +26,10 @@ Tabellen sowie Exportfunktionen.
 - Standardkurven inkl. LDR-Bereich, Steigung, R2 und Effizienz
 - Outlier-Analyse auf Residuen (Dixon, Grubbs, Rosner)
 - PNG- und XLSX-Downloads pro Analysebereich
+- Zentral gepflegte Versionsanzeige in der UI (Quelle: `DESCRIPTION`, optional `QPCRANALYSIS_BUILD`)
 - Plate Overview (96/384-Well) mit Targets/Samples/Farbstoff/Quantity
 - Report Export (PDF/HTML/Word) mit Auswahl der Inhalte
+- XLSX-Export des analysierten Master Data Table im Tab `Report Export`
 
 ## Unterstützte Formate
 
@@ -60,6 +62,10 @@ Tabellen sowie Exportfunktionen.
 
 Zusatz fuer Report-Export:
 - LaTeX (z. B. TinyTeX) fuer PDF-Export
+
+Versionierung:
+- Die UI liest die Versionsnummer aus `DESCRIPTION` (`Version:`).
+- Optional kann eine Build-Nummer ueber `QPCRANALYSIS_BUILD` gesetzt werden.
 
 ## App starten
 
@@ -139,7 +145,8 @@ docker run --rm -p 3838:3838 qpcranalysis
 5. Im Tab "Cluster" lokale Samples und X-/Y-Targets fuer einen unabhaengigen Scatterplot waehlen.
 6. Ergebnisse in den Tabs ansehen und bei Bedarf als PNG/XLSX exportieren.
 7. Plate Overview pruefen (Plattenansichten nach Target/Sample/Farbstoff/Quantity).
-8. Inhalte per Button zum Report hinzufuegen und im Tab "Report Export" als PDF/HTML/Word exportieren.
+8. Im Tab "Report Export" den analysierten Gesamtdatensatz als XLSX exportieren.
+9. Inhalte per Button zum Report hinzufuegen und im Tab "Report Export" als PDF/HTML/Word exportieren.
 
 ## Ergebnisse & Exporte
 
@@ -152,7 +159,17 @@ docker run --rm -p 3838:3838 qpcranalysis
 - Standardkurven: Uebersichtstabelle + Slope/Effizienz-Plots + Scatterplot
 - Outlier Tests: Tabelle + Residuenplot
 - Plate Overview: Plattenansichten (Targets, Samples, Farbstoff, Quantity, Well Type)
+- Analysedatensatz-Export: XLSX mit Sheet `Analysedatensatz` plus Metadaten/Parameter/Warnungen
 - Report Export: PDF/HTML/Word mit Auswahl der Inhalte
+
+## Version & Analysedatensatz-Export
+
+- Die aktuelle App-Version ist in der Statusleiste unten links sichtbar.
+- Versionsquelle ist `DESCRIPTION`; aendere fuer Releases nur das Feld `Version`.
+- Optionaler Build-Zusatz kommt aus `QPCRANALYSIS_BUILD`.
+- Der XLSX-Export befindet sich im Tab `Report Export` im Abschnitt `Analysedatensatz (XLSX)`.
+- Das Haupt-Sheet `Analysedatensatz` enthaelt den analysierten Master Data Table mit Rohspalten und abgeleiteten Kennzahlen wie `Ct_value`, `Ct_mean`, `Ct_sd`, `rn_delta` und `delta_rn_last`.
+- Zusatz-Sheets `Metadaten`, `Parameter` und `Warnings` dokumentieren Exportkontext und aktive Filter.
 
 ## Projektstruktur (Auszug)
 

@@ -1,3 +1,5 @@
+help_version_label <- format_app_version_label(read_app_metadata())
+
 tab_help <- bslib::nav_panel(
   "Hilfe",
   value = "help",
@@ -36,7 +38,9 @@ tab_help <- bslib::nav_panel(
             ),
             tags$li(
               strong("Ergebnisse exportieren."),
-              " Pro Card stehen Download-Buttons (PNG/XLSX) bereit."
+              " Pro Card stehen Download-Buttons (PNG/XLSX) bereit; den vollstaendigen Analysedatensatz exportierst du im Tab ",
+              code("Report Export"),
+              "."
             ),
             tags$li(
               strong("Report erzeugen."),
@@ -49,6 +53,84 @@ tab_help <- bslib::nav_panel(
             tags$li("Quantity-basierte Auswertungen ignorieren fehlende Quantity-Werte (kein Ersatz durch 0)."),
             tags$li("Die meisten Plots/Tables reagieren sofort auf globale Sidebar-Filter."),
             tags$li("Der Tab Cluster nutzt eigene lokale Samples/Targets und ist absichtlich unabhaengig von globalen Target-/Sample-Filtern.")
+          )
+        ),
+        bslib::nav_panel(
+          "Version & Export",
+          h3("Version anzeigen"),
+          tags$p(
+            "Die aktuelle Software-Version ist dauerhaft in der Statusleiste unten links sichtbar."
+          ),
+          tags$ul(
+            tags$li(
+              "Zentrales Versionsfeld: ",
+              code("DESCRIPTION"),
+              " -> ",
+              code("Version"),
+              "."
+            ),
+            tags$li(
+              "Aktuell geladen: ",
+              strong(help_version_label),
+              "."
+            ),
+            tags$li(
+              "Optional kann eine Build-Nummer ueber die Umgebungsvariable ",
+              code("QPCRANALYSIS_BUILD"),
+              " eingeblendet werden."
+            )
+          ),
+          h3("Analysedatensatz exportieren (XLSX)"),
+          tags$p(
+            "Den Export findest du im Tab ",
+            code("Report Export"),
+            " im Abschnitt ",
+            code("Analysedatensatz (XLSX)"),
+            "."
+          ),
+          tags$ol(
+            tags$li("Dateien laden und ", code("Analyse starten"), " ausfuehren."),
+            tags$li("Optional globale Target-/Sample-Filter setzen."),
+            tags$li(
+              "Im Tab ",
+              code("Report Export"),
+              " auf ",
+              code("Analysedatensatz herunterladen (XLSX)"),
+              " klicken."
+            )
+          ),
+          h3("Was der Export enthaelt"),
+          tags$ul(
+            tags$li(
+              code("Analysedatensatz"),
+              ": Master Data Table mit Rohspalten plus abgeleiteten Kennzahlen wie ",
+              code("Ct_value"),
+              ", ",
+              code("Ct_mean"),
+              ", ",
+              code("Ct_sd"),
+              ", ",
+              code("rn_delta"),
+              " und ",
+              code("delta_rn_last"),
+              "."
+            ),
+            tags$li(
+              code("Metadaten"),
+              ": Exportzeit, Version, Analyse-Label und beruecksichtigte Quelldateien."
+            ),
+            tags$li(
+              code("Parameter"),
+              ": aktive Target-/Sample-Filter sowie relevante Analysehinweise."
+            ),
+            tags$li(
+              code("Warnings"),
+              ": z. B. fehlende Quantity-Werte oder leere Exportergebnisse."
+            )
+          ),
+          tags$p(
+            class = "text-muted",
+            "Wenn kein finaler Datensatz verfuegbar ist oder die aktuellen Filter keine Zeilen liefern, bleibt der Download deaktiviert."
           )
         ),
         bslib::nav_panel(
